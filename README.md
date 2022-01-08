@@ -2,7 +2,8 @@
 Segunda versão do Aplicativo de Rede Social para o público vegetariano e vegano. Projeto refeito em IONIC 6 [(inicialmente desenvolvido em Ionic 1)](https://github.com/ramou1/vegan) em 2017, para o Trabalho de Graduação do curso de Análise e Desenvolvimento de Sistemas.
 
 ## Download
-Baixe a última versão apk do projeto [aqui.](https://github.com/ramou1/vegan2.0/raw/master/veggie.apk)
+Última versão do apk do projeto indisponível no momento.
+<!-- Baixe a última versão apk do projeto [aqui.](https://github.com/ramou1/vegan2.0/raw/master/veggie.apk) -->
 
 ## O que o app faz?
 :herb: Acesse a timeline com as postagens mais recentes dos seus amigos; <br />
@@ -12,5 +13,5 @@ Baixe a última versão apk do projeto [aqui.](https://github.com/ramou1/vegan2.
 :herb: Crie, edite e acesse seu perfil pessoal; <br />
 :herb: Adicione amigos e conhecer novas pessoas para compartilhar experiências e conhecimento;<br />
 
-## Imagem 
+## Imagem do App (Antigo)
 ![text](https://i.imgur.com/DZSMvQQ.jpg)
