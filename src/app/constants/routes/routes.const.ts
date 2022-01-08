@@ -1,0 +1,16 @@
+export const APP_ROUTES = {
+    START: "start",
+    LOGIN: "login",
+    INITIAL_CHOICE: "init",
+    REGISTER: "register",
+    MAIN: "main",
+    HOME: "home",
+    EVENTS: "events",
+    EVENT_DETAILS: "event-details",
+    MAP: "map",
+    PROFILE: "profile",
+    PROFILE_EDIT: "edit",
+    RECIPES: "recipes",
+    RECIPE_DETAILS: "recipe-details",
+    RECOVER_PASSWORD: "recover",
+}

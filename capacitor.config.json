@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "app_vegan",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

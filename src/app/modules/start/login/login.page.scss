@@ -1,0 +1,34 @@
+.forgot-password {
+    font-size: 0.7em;
+    text-align: right;
+    font-weight: 700;
+    color: var(--ion-color-primary);
+    margin-bottom: 4vh;
+}
+
+ion-item {
+    --background: transparent;
+    margin-bottom: 1vh;
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 6px;
+}
+
+ion-icon.md.hydrated {
+    // margin-top: 2vh;
+    margin-top: calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end));
+}
+
+.login-bg {
+    margin-bottom: 4vh;
+}
+
+.sign-up {
+    font-size: 0.7em;
+    text-align: center;
+    margin: 6vh 0;
+
+    span {
+        font-weight: 700;
+        color: var(--ion-color-primary);
+    }
+}

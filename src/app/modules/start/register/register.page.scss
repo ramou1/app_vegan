@@ -1,0 +1,25 @@
+ion-item {
+    --background: transparent;
+    margin-bottom: 1vh;
+    border: 1px solid var(--ion-color-secondary);
+    border-radius: 6px;
+}
+
+ion-icon.md.hydrated {
+    // margin-top: 2vh;
+    margin-top: calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end));
+}
+
+.register-bg {
+    margin-bottom: 4vh;
+}
+
+.register-title {
+    font-size: 0.9em;
+    font-weight: 700;
+}
+
+ion-select {
+    color: var(--ion-color-primary) !important;
+    font-size: 0.8em !important;
+}

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let post of posts">
+    <ion-card-header>
+      <ion-item class="ion-no-padding">
+        <ion-avatar>
+          <img src="../assets/images/{{post.creator_image ? post.creator_image : 'avatar-default.png'}}">
+        </ion-avatar>
+        <h1 class="card-title">{{post.creator ? post.creator : ''}}</h1>
+        <h2 class="card-subtitle">{{post.date ? post.date : '--/--/----'}}</h2>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img src="../assets/images/{{post.image ? post.image : 'slider-default.png'}}">
+      <p [innerHTML]="post.text">
+        {{ post.text? excerptText(post.text) : '' }}...
+      </p>
+
+    </ion-card-content>
+
+    <ion-row class="cardfooter">
+      <ion-col size="5">
+        <ion-button fill="clear">
+          <ion-icon name="happy-outline"></ion-icon>
+          <ion-label>{{post.likes? post.likes : '0'}} Likes</ion-label>
+        </ion-button>
+      </ion-col>
+      <ion-col size="5" offset="2">
+        <ion-button fill="clear">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          <ion-label>{{post.comments? post.likes : '0'}} Comments</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>

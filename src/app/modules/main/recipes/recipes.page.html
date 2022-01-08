@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>recipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let recipe of recipes" (click)="openRecipe(recipe)">
+    <ion-card-header>
+      <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="recipe-title"> {{ recipe.title }} </p>
+    </ion-card-content>
+
+    <ion-row class="cardfooter">
+      <ion-col size="5">
+        <ion-button fill="clear">
+          <ion-icon name="happy-outline"></ion-icon>
+          <ion-label>{{recipe.likes? recipe.likes : '0'}} Likes</ion-label>
+        </ion-button>
+      </ion-col>
+      <ion-col size="5" offset="2">
+        <ion-button fill="clear">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          <ion-label>{{recipe.comments? recipe.likes : '0'}} Comments</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>
