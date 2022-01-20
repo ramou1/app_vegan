@@ -21,7 +21,6 @@ export class RecipeDetailsPage implements OnInit {
   }
 
   public getRecipeData(): void {
-
     const params = this.route.snapshot.queryParams;
     if (params.event) {
       this.data = JSON.parse(params.event);
@@ -35,6 +34,10 @@ export class RecipeDetailsPage implements OnInit {
         this.router.navigateByUrl(APP_ROUTES.MAIN);
       }, 2000);
     }
+  }
+
+  public goBack(): void {
+    this.router.navigate[(APP_ROUTES.MAIN, APP_ROUTES.RECIPES)];
   }
 
 }

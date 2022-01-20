@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>events</ion-title>
+    <ion-title>Eventos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-card *ngFor="let event of events" (click)="openEvent(event)">
+    <ion-card-header>
+      <img src="../assets/images/{{event.image ? event.image : 'slider-default.png'}}">
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="event-title"> {{ event?.title }} </p>
+
+      <ion-item lines="none">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        <ion-label>
+          <p class="event-local"> {{ event?.local }} </p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+
+    <ion-row class="cardfooter">
+      <ion-col size="5">
+        <ion-button fill="clear">
+          <ion-icon name="people-outline"></ion-icon>
+          <ion-label>{{event.confirmed? event.confirmed.length : '0'}} Confirmed</ion-label>
+        </ion-button>
+      </ion-col>
+      <ion-col size="5" offset="2">
+        <ion-button fill="clear">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          <ion-label>{{event.comments? event.comments : '0'}} Comments</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
 
 </ion-content>

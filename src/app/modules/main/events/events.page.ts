@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { EVENTS } from 'src/app/constants/mock.const';
+import { APP_ROUTES } from 'src/app/constants/routes/routes.const';
 
 @Component({
   selector: 'app-events',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
+  public events = EVENTS;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  public openRecipe(recipe: any): void {
+    const objToSend: NavigationExtras = {
+      queryParams: { event: JSON.stringify(recipe) },
+    };
+
+    this.router.navigate([APP_ROUTES.MAIN, APP_ROUTES.EVENT_DETAILS], objToSend);
   }
 
 }
