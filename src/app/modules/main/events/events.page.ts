@@ -16,12 +16,16 @@ export class EventsPage implements OnInit {
   ngOnInit() {
   }
 
-  public openRecipe(recipe: any): void {
+  public openEvent(event: any): void {
     const objToSend: NavigationExtras = {
-      queryParams: { event: JSON.stringify(recipe) },
+      queryParams: { event: JSON.stringify(event) },
     };
 
     this.router.navigate([APP_ROUTES.MAIN, APP_ROUTES.EVENT_DETAILS], objToSend);
+  }
+
+  public checkInterested(event: any): void {
+
   }
 
 }

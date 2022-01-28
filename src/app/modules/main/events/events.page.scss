@@ -30,11 +30,17 @@ ion-button {
 }
 
 .event-title {
+    margin-top: 15px;
+    font-size: 16px;
     text-align: center;
     font-weight: 700;
 }
 
 .event-local {
-    text-align: center;
+    // text-align: center;
     // font-weight: 700;
+}
+
+.interested-button {
+    margin: 15px;
 }

@@ -24,4 +24,8 @@ export class RecipesPage implements OnInit {
     this.router.navigate([APP_ROUTES.MAIN, APP_ROUTES.RECIPE_DETAILS], objToSend);
   }
 
+  public likeRecipe(recipe: any): void {
+    recipe.liked = !recipe.liked;    
+  }
+
 }
