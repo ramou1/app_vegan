@@ -5,14 +5,17 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  
   <ion-card *ngFor="let recipe of recipes">
-    <ion-card-header class="ion-no-padding"r>
-      <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
-    </ion-card-header>
+    <div (click)="openRecipe(recipe)">
+      <ion-card-header class="ion-no-padding">
+        <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
+      </ion-card-header>
 
-    <ion-card-content>
-      <p class="recipe-title"> {{ recipe?.title }} </p>
-    </ion-card-content>
+      <ion-card-content>
+        <p class="recipe-title"> {{ recipe?.title }} </p>
+      </ion-card-content>
+    </div>
 
     <ion-row class="cardfooter">
       <ion-col size="5">
@@ -29,7 +32,6 @@
         </ion-button>
       </ion-col>
     </ion-row>
-
   </ion-card>
 
 </ion-content>

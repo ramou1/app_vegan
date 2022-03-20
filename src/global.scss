@@ -29,6 +29,17 @@
     margin: 25px;
 }
 
+ion-button.search-page {
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+     width: 100% !important;
+}
+
+ion-title {
+    font-size: 1em;
+    font-weight: 700;
+}
+
 ion-header {
     &:after {
           content: none !important;
@@ -37,6 +48,7 @@ ion-header {
 
 ion-toolbar {
     --border-width: 0 !important;
+    --background: transparent;
 }
 
 ion-slides {

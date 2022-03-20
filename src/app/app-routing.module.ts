@@ -15,7 +15,7 @@ const routes: Routes = [
     path: "",
     redirectTo: APP_ROUTES.START,
     pathMatch: "full",
-  },
+  }
 ];
 
 @NgModule({

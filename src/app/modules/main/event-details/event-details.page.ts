@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-event-details',
@@ -7,9 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventDetailsPage implements OnInit {
 
-  constructor() { }
+  public data;
+  @Input() event;
+
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
+    console.log(this.event);
+  }
+
+  ionViewDidEnter(): void {
+    this.getRecipeData();
+  }
+
+  public getRecipeData(): void {
+    if (this.event) {
+      this.data = this.event;      
+    }
+    else {
+      // this.toast.presentErrorToast(EVENTS_TXT.EVENTS_SHOW_ERROR);
+      // console.log(EVENTS_TXT.EVENTS_SHOW_ERROR);
+      setTimeout(() => {
+        this.goBack();
+      }, 2000);
+    }
+  }
+
+
+  public goBack(): void {
+    this.modalCtrl.dismiss().catch((err) => {
+      // console.log(err);
+    });
   }
 
 }

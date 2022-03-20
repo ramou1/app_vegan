@@ -1,14 +1,29 @@
 <ion-content>
 
   <div class="profile-background">
-    <!-- <ion-button class="custom-button" fill="clear" (click)="editProfile()">
+    
+    <ion-toolbar>
+      <ion-buttons slot="end">
+  
+        <ion-button (click)="openShare()">
+          <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+        </ion-button>
+  
+        <ion-button (click)="openSettings()">
+          <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+    </ion-toolbar>
+
+    <!-- <ion-button class="custom-button" fill="clear" (click)="openSettings()">
         <ion-icon name="pencil-outline"></ion-icon>
         Edit
       </ion-button> -->
   </div>
 
   <div class="profile-picture">
-    <img src="../assets/images/{{user.image ? user.image : 'avatar-default.png'}}">
+    <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
   </div>
 
   <h1 class="user-name"> {{ user?.name }} </h1>

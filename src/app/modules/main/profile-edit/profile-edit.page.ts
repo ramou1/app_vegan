@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { APP_ROUTES } from 'src/app/constants/routes/routes.const';
 
 @Component({
   selector: 'app-profile-edit',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {
+  }
+
+  public goBack(): void {
+    this.modalCtrl.dismiss().catch((err) => {
+      // console.log(err);
+    });
   }
 
 }

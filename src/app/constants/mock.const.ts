@@ -144,7 +144,7 @@ export const EVENTS = [
         creator_image: null,
         date: '09/10/2022',
         image: 'event01.jpg',
-        title: 'Evento',
+        title: 'Vegan Festival',
         local: 'Local X, Rua Y',
         description: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
         confirmed: [{ id: '432193921' }, { id: '981793921' }, { id: '54793921' }, { id: '981274611' }, { id: '11059673' }, { id: '03374655' }, { id: '02756208' }, { id: '672943900' }],
@@ -155,7 +155,7 @@ export const EVENTS = [
         creator_image: null,
         date: '05/04/2022',
         image: 'event02.jpg',
-        title: 'Evento',
+        title: 'Vegan Fest',
         local: 'Local X, Rua Y',
         description: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
         confirmed: [{ id: '032193921' }, { id: '432193921' }, { id: '54793921' }, { id: '981274611' }, { id: '11059673' }, { id: '02756208' }, { id: '672943900' }],
@@ -166,7 +166,7 @@ export const EVENTS = [
         creator_image: null,
         date: '10/03/2022',
         image: 'event03.jpg',
-        title: 'Evento',
+        title: 'Vegan Street Market',
         local: 'Local X, Rua Y',
         description: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
         confirmed: [{ id: '032193921' }, { id: '432193921' }, { id: '981793921' }, { id: '54793921' }, { id: '981274611' }, { id: '11059673' }, { id: '03374655' }, { id: '02756208' }, { id: '672943900' }],
@@ -177,7 +177,7 @@ export const EVENTS = [
         creator_image: null,
         date: '10/03/2022',
         image: 'event04.jpg',
-        title: 'Evento',
+        title: 'Vegan Mystic Fest',
         local: 'Local X, Rua Y',
         description: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
         confirmed: [{ id: '032193921' }, { id: '432193921' }, { id: '981793921' }, { id: '54793921' }, { id: '551793900' }],
@@ -262,3 +262,23 @@ export const USER = {
     }],
     about: ['Animal Lover', 'Nightlife', 'Dining', 'Entertainment']
 }
+
+export const USERS = [
+    { "id": 1, "first_name": "Gary", "last_name": "Ortiz", "email": "gortiz0@mapy.cz", "country": "Indonesia", "modified": "2015-05-16", "birth_date": "1997-05-16" },
+    { "id": 2, "first_name": "Albert", "last_name": "Williamson", "email": "awilliamson1@narod.ru", "country": "China", "modified": "2015-03-11", "birth_date": "1997-03-11" },
+    { "id": 3, "first_name": "Mildred", "last_name": "Fuller", "email": "mfuller2@npr.org", "country": "Peru", "modified": "2015-02-15", "birth_date": "1997-02-15" },
+    { "id": 4, "first_name": "Russell", "last_name": "Robinson", "email": "rrobinson3@google.pl", "country": "Belarus", "modified": "2014-10-31", "birth_date": "1997-10-31" },
+    { "id": 5, "first_name": "Laura", "last_name": "Harper", "email": "lharper4@boston.com", "country": "Philippines", "modified": "2015-01-14", "birth_date": "1997-01-14" },
+    { "id": 6, "first_name": "Larry", "last_name": "Sanders", "email": "lsanders5@cornell.edu", "country": "China", "modified": "2015-01-11", "birth_date": "1997-01-11" },
+    { "id": 7, "first_name": "Michael", "last_name": "Rice", "email": "mrice6@geocities.jp", "country": "Philippines", "modified": "2014-12-06", "birth_date": "1997-12-06" },
+    { "id": 8, "first_name": "Sara", "last_name": "Harris", "email": "sharris7@deliciousdays.com", "country": "Indonesia", "modified": "2014-11-05", "birth_date": "1997-11-05" },
+    { "id": 9, "first_name": "Phyllis", "last_name": "Webb", "email": "pwebb8@reddit.com", "country": "China", "modified": "2015-04-02", "birth_date": "1997-04-02" },
+    { "id": 10, "first_name": "Roger", "last_name": "Alvarez", "email": "ralvarez9@nsw.gov.au", "country": "Finland", "modified": "2015-03-21", "birth_date": "1997-03-21" },
+    { "id": 11, "first_name": "Maria", "last_name": "Carpenter", "email": "mcarpentera@so-net.ne.jp", "country": "Sweden", "modified": "2015-08-18", "birth_date": "1997-08-18" },
+];
+
+export const RECENT_SEARCH = [
+    { "id": 5, "first_name": "Laura", "last_name": "Harper", "email": "lharper4@boston.com", "country": "Philippines", "modified": "2015-01-14", "birth_date": "1997-01-14" },
+    { "id": 6, "first_name": "Larry", "last_name": "Sanders", "email": "lsanders5@cornell.edu", "country": "China", "modified": "2015-01-11", "birth_date": "1997-01-11" },
+    { "id": 11, "first_name": "Maria", "last_name": "Carpenter", "email": "mcarpentera@so-net.ne.jp", "country": "Sweden", "modified": "2015-08-18", "birth_date": "1997-08-18" },
+]

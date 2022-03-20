@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { EVENTS } from 'src/app/constants/mock.const';
 import { APP_ROUTES } from 'src/app/constants/routes/routes.const';
+import { EventDetailsPage } from '../event-details/event-details.page';
 
 @Component({
   selector: 'app-events',
@@ -10,21 +12,42 @@ import { APP_ROUTES } from 'src/app/constants/routes/routes.const';
 })
 export class EventsPage implements OnInit {
   public events = EVENTS;
+  public buttonColor = 'tertiary';
+  public interestedText = 'I want to Go!';
+  public interestedIcon = 'leaf-outline';
+  public interested: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
 
-  public openEvent(event: any): void {
-    const objToSend: NavigationExtras = {
-      queryParams: { event: JSON.stringify(event) },
-    };
+  async openEvent(event: any): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: EventDetailsPage,
+      cssClass: 'search-modal',
+      componentProps: {
+        // finalize: false,
+        event: event
+      }
+    });
 
-    this.router.navigate([APP_ROUTES.MAIN, APP_ROUTES.EVENT_DETAILS], objToSend);
+    return await modal.present();
   }
 
   public checkInterested(event: any): void {
+    this.interested = !this.interested;
+
+    if (this.interested) {
+      this.buttonColor = 'primary';
+      this.interestedText = `I'm Interested`;
+      this.interestedIcon = 'checkmark-circle-outline'
+    }
+    else {
+      this.buttonColor = 'danger';
+      this.interestedText = `I'm not Interested`;
+      this.interestedIcon = 'close-circle-outline'
+    }
 
   }
 

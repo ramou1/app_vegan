@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { RECIPES } from 'src/app/constants/mock.const';
 import { APP_ROUTES } from 'src/app/constants/routes/routes.const';
+import { RecipeDetailsPage } from '../recipe-details/recipe-details.page';
 
 @Component({
   selector: 'app-recipes',
@@ -11,17 +13,22 @@ import { APP_ROUTES } from 'src/app/constants/routes/routes.const';
 export class RecipesPage implements OnInit {
   public recipes = RECIPES;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {   
   }
 
-  public openRecipe(recipe: any): void {
-    const objToSend: NavigationExtras = {
-      queryParams: { event: JSON.stringify(recipe) },
-    };
+  async openRecipe(recipe: any): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: RecipeDetailsPage,
+      cssClass: 'search-modal',
+      componentProps: {
+        // finalize: false,
+        recipe: recipe
+      }
+    });
 
-    this.router.navigate([APP_ROUTES.MAIN, APP_ROUTES.RECIPE_DETAILS], objToSend);
+    return await modal.present();
   }
 
   public likeRecipe(recipe: any): void {

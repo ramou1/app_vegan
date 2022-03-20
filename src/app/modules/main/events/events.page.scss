@@ -16,6 +16,11 @@ ion-icon {
 
 ion-button {
     margin: 0;
+
+    ion-icon {
+        padding-left: 10px;
+        font-size: 18px;
+    }
 }
 
 .card-title {

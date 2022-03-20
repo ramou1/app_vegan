@@ -14,6 +14,7 @@ import { RecipesPage } from "./recipes/recipes.page";
 import { ProfilePage } from "./profile/profile.page";
 import { RecoverPasswordPage } from "./recover-password/recover-password.page";
 import { RecipeDetailsPage } from "./recipe-details/recipe-details.page";
+import { SearchPage } from "./search/search.page";
 
 
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: APP_ROUTES.HOME,
         component: HomePage
+      },
+      {
+        path: APP_ROUTES.SEARCH,
+        component: SearchPage
       },
       {
         path: APP_ROUTES.EVENTS,
@@ -71,6 +76,7 @@ const routes: Routes = [
   declarations: [
     MainComponent,
     HomePage,
+    SearchPage,
     EventsPage,
     EventDetailsPage,
     MapPage,

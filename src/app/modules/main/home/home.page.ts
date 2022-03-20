@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { POSTS } from 'src/app/constants/mock.const';
+import { APP_ROUTES } from 'src/app/constants/routes/routes.const';
+import { SearchPage } from '../search/search.page';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +14,7 @@ export class HomePage implements OnInit {
   public posts = POSTS;
   public likedIcon = 'heart-outline';
 
-  constructor() { }
+  constructor(private router: Router, private modalCtrl: ModalController) { }
 
 
   ngOnInit() {    
@@ -33,8 +37,13 @@ export class HomePage implements OnInit {
     this.getContent().scrollToTop(500);
   }
 
-  // public logScrollStart() {
+  async openSearch(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: SearchPage,
+      cssClass: 'search-modal',
+    });
 
-  // }
+    return await modal.present();
+  }
 
 }

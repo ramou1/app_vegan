@@ -5,6 +5,7 @@ export const APP_ROUTES = {
     REGISTER: "register",
     MAIN: "main",
     HOME: "home",
+    SEARCH: "search",
     EVENTS: "events",
     EVENT_DETAILS: "event-details",
     MAP: "map",

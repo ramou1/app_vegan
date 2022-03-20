@@ -1,8 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>event-details</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>{{data?.title}}</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
 
