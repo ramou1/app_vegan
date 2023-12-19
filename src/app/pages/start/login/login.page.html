@@ -1,0 +1,27 @@
+<ion-content>
+
+  <img class="login-bg" src="../assets/images/login-bg.png">
+
+  <div class="app-padding">
+  <form [formGroup]="loginGroup" (submit)="login()">
+    <ion-item lines="none">
+      <ion-label position="floating">Username</ion-label>
+      <ion-input formControlName="username" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="{{passwordType}}"></ion-input>
+      <ion-icon slot="end" *ngIf="showPassword" name="eye-off-outline" (click)="toggleShow()">
+      </ion-icon>
+      <ion-icon slot="end" *ngIf="!showPassword" name="eye-outline" (click)="toggleShow()">
+      </ion-icon>
+    </ion-item>
+
+    <p class="forgot-password" (click)="gotoRecoverPassword()">Forgot password?</p>
+    <p class="sign-up" (click)="gotoSignUp()">Don't have an account? <span>Sign Up</span></p>
+    <ion-button expand="block" color="primary" type="submit" [disabled]="loginGroup.invalid">Sign In</ion-button>
+  </form>
+</div>
+
+</ion-content>

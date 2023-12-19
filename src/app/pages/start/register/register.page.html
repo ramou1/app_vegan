@@ -1,0 +1,45 @@
+<ion-content>
+
+  <img class="register-bg" src="../assets/images/login-bg.png">
+
+  <div class="app-padding">
+    <h1 class="register-title">Fill the fields</h1>
+    <form [formGroup]="registerGroup">
+      <ion-item lines="none">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name" type="text" pattern="[a-zA-Z]+"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password" type="{{passwordType}}"></ion-input>
+        <ion-icon slot="end" [name]="passwordIcon" (click)="toggleShow()"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Birth Date</ion-label>
+        <ion-datetime presentation="date" max="2010-12-09" displayFormat="DD/MM/YYYY" formControlName="birth"
+          placeholder="Birth Date" cancelText="Cancelar" doneText="Concluir">
+        </ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Which do you identify with?</ion-label>
+        <ion-select interface="popover" formControlName="identify">
+          <ion-select-option value="vegetarian">Vegetarian</ion-select-option>
+          <ion-select-option value="vegan">Vegan</ion-select-option>
+          <ion-select-option value="interested">Interested in the cause</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button (click)="register()" expand="block" color="primary" [disabled]="registerGroup.invalid">Register
+      </ion-button>
+    </form>
+  </div>
+
+</ion-content>

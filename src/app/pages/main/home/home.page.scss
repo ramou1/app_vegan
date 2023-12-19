@@ -1,0 +1,32 @@
+.cardfooter {
+    font-weight: 700;
+    color: var(--ion-color-primary);
+}
+
+ion-avatar {
+    height: 100%;
+}
+
+ion-col {
+    margin: 0 auto;
+    display: flex;
+}
+
+ion-icon {
+    padding-right: 6px;
+    font-size: 16px;
+}
+
+ion-button {
+    margin: 0;
+}
+
+.card-title {
+    font-size: 1em;
+    margin: auto 0;
+}
+
+.card-subtitle {
+    font-size: 0.7em;
+    margin: auto;
+}

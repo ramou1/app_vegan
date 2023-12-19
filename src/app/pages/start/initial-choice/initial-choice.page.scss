@@ -1,0 +1,12 @@
+ion-content {
+    --background: #8ad195;
+    // --background: var(--ion-color-primary-tint);
+}
+
+.vegan-logo {
+    position: absolute;
+    z-index: 100;
+    top: 40%;
+    margin: 0 25%;
+    width: 50%;
+}

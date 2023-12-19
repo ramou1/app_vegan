@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="openSearch()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [scrollEvents]="true">
+
+  <ion-card *ngFor="let post of posts">
+    <ion-card-header>
+      <ion-row>
+        <ion-col size="2">
+          <ion-avatar>
+            <img src="../assets/images/{{post.creator_image ? post.creator_image : 'default-user.png'}}">
+          </ion-avatar>
+        </ion-col>
+
+        <ion-col size="7">
+          <h1 class="card-title">{{post.creator ? post.creator : ''}}</h1>
+        </ion-col>
+
+        <ion-col size="3">
+          <h2 class="card-subtitle">{{post.date ? post.date : '--/--/----'}}</h2>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img src="../assets/images/{{post.image}}" *ngIf="post.image">
+      <p [innerHTML]="post.text">
+        {{ post.text? excerptText(post.text) : '' }}...
+      </p>
+
+    </ion-card-content>
+
+    <ion-row class="cardfooter">
+      <ion-col size="5">
+        <ion-button fill="clear" (click)="likePost(post)">
+          <ion-icon *ngIf="post.liked" name="heart"></ion-icon>
+          <ion-icon *ngIf="!post.liked" name="heart-outline"></ion-icon>
+          <ion-label>{{post.likes? post.likes.length : '0'}} Likes</ion-label>
+        </ion-button>
+      </ion-col>
+      <ion-col size="5" offset="2">
+        <ion-button fill="clear" (click)="openComments(post)">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          <ion-label>{{post.comments? post.comments.length : '0'}} Comments</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-button class="interested-button" expand="block" shape="round" color="primary" (click)="scrollToTop()">Scroll to
+    Top</ion-button>
+
+</ion-content>
