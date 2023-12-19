@@ -6,6 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components/components.module';
+import { EventDetailsPage } from './events/event-details/event-details.page';
+import { EventsPage } from './events/events.page';
+import { MapPage } from './map/map.page';
 
 const routes: Routes = [
   {
@@ -15,6 +18,25 @@ const routes: Routes = [
       {
         path: APP_ROUTES.HOME,
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+      },
+      {
+        path: APP_ROUTES.RECIPES,
+        // components: EventsPage,
+        loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesPageModule)
+      },
+      {
+        path: APP_ROUTES.EVENTS,
+        // component: EventsPage,
+        loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule)
+      },
+      {
+        path: APP_ROUTES.EVENT_DETAILS,
+        component: EventDetailsPage
+      },
+      {
+        path: APP_ROUTES.MAP,
+        // component: MapPage,
+        loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
       },
       {
         path: APP_ROUTES.PROFILE,

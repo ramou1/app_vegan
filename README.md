@@ -15,5 +15,8 @@ Segunda versão do Aplicativo de Rede Social para o público vegetariano e vegan
 :herb: Crie, edite e acesse seu perfil pessoal; <br />
 :herb: Pesquise e adicione amigos e conheça novas pessoas para compartilhar experiências e conhecimento;<br />
 
+## Ideias Nome Aplicativo
+VeggieNet, GreenBites, VegoSocial, LeafyLife, PlantPower, HerbivoreHub, EarthyEats, MeatlessMeet, PurePlates, GardenGuru, VeggieVision, NutriNet, VeggieVibes, FreshFeeds, GreenGrub, VivaVeg, VeggieVerse, CleanCuisine, VeggieVortex, VeggieVision.
+
 ## Imagem do App (Antigo)
 ![text](https://i.imgur.com/DZSMvQQ.jpg)

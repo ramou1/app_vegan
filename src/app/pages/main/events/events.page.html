@@ -1,13 +1,42 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>events</ion-title>
+    <ion-title>Eventos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">events</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <ion-card *ngFor="let event of events">
+    <div (click)="openEvent(event)">
+      <ion-card-header class="ion-no-padding">
+        <img src="../assets/images/{{event.image ? event.image : 'slider-default.png'}}">
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="event-title"> {{ event?.title }} </p>
+
+        <ion-item lines="none">
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-label>
+            <p class="event-local"> {{ event?.local }} </p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-icon name="people-outline" slot="start"></ion-icon>
+          <ion-label>
+            <p class="event-local"> {{ event.confirmed? event.confirmed.length : '0' }} Confirmed</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </div>
+
+    <ion-button class="interested-button" expand="block" shape="round" color="{{buttonColor}}"
+      (click)="checkInterested(event)">
+      {{interestedText}}
+      <ion-icon slot="end" name="{{interestedIcon}}" ></ion-icon>
+    </ion-button>
+
+  </ion-card>
+
 </ion-content>

@@ -1,13 +1,118 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <div class="profile-background">
     <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="openShare()">
+          <ion-icon slot="icon-only" name="share-social-outline" color="light"></ion-icon>
+        </ion-button>
+
+        <ion-button (click)="openSettings()">
+          <ion-icon slot="icon-only" name="settings-outline" color="light"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
     </ion-toolbar>
-  </ion-header>
+  </div>
+
+  <div class="profile-picture">
+    <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
+  </div>
+
+  <h1 class="user-name"> {{ user?.name }} </h1>
+  <h1 class="user-description"> {{ user?.description }} </h1>
+
+  <ion-row>
+    <ion-col size="4">
+      <h1 class="info-title"> Friends </h1>
+      <p class="info-data"> {{ user?.friends ? user.friends.length : '0' }} </p>
+    </ion-col>
+
+    <ion-col size="4">
+      <h1 class="info-title"> Trophies </h1>
+      <p class="info-data"> {{ user?.trophies ? user.trophies.length : '0' }} </p>
+    </ion-col>
+
+    <ion-col size="4">
+      <h1 class="info-title"> Posts </h1>
+      <p class="info-data"> {{ user?.posts ? user.posts.length : '0' }} </p>
+    </ion-col>
+  </ion-row>
+
+  <div class="ion-padding">
+    <h1 class="posts-title">Interests</h1>
+    <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
+      <ion-icon [name]="interest.icon"></ion-icon>
+      <ion-label>{{ interest.description }}</ion-label>
+    </ion-chip>
+
+    <h1 class="posts-title">Posts</h1>
+    <!-- <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let post of user.posts">
+        <ion-card>
+
+          <ion-card-content>
+            <img src="../assets/images/{{post.image}}" *ngIf="post.image">
+            <p class="post-text" [innerHTML]="post.text">
+              {{ post.text? excerptText(post.text) : '' }}...
+            </p>
+
+          </ion-card-content>
+
+          <ion-row class="cardfooter">
+            <ion-col size="5">
+              <ion-button fill="clear">
+                <ion-icon *ngIf="post.liked" name="heart"></ion-icon>
+                <ion-icon *ngIf="!post.liked" name="heart-outline"></ion-icon>
+                <ion-label>{{post.likes? post.likes.length : '0'}}</ion-label>
+              </ion-button>
+            </ion-col>
+            <ion-col size="5" offset="2">
+              <ion-button fill="clear">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                <ion-label>{{post.comments? post.comments.length : '0'}}</ion-label>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </ion-slide>
+    </ion-slides> -->
+  </div>
+
+  <div class="ion-padding">
+    <h1 class="posts-title">Recipes</h1>
+    <!-- <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let recipe of user.recipes">
+        <ion-card>
+          <ion-card-header class="ion-no-padding">
+            <img src="../assets/images/{{recipe.image}}" *ngIf="recipe.image">
+          </ion-card-header>
+
+          <ion-card-content>
+            <p class="recipes-title"> {{ recipe?.title }} </p>
+          </ion-card-content>
+
+          <ion-row class="cardfooter">
+            <ion-col size="5">
+              <ion-button fill="clear">
+                <ion-icon *ngIf="recipe.liked" name="heart"></ion-icon>
+                <ion-icon *ngIf="!recipe.liked" name="heart-outline"></ion-icon>
+                <ion-label>{{recipe.likes? recipe.likes.length : '0'}}</ion-label>
+              </ion-button>
+            </ion-col>
+            <ion-col size="5" offset="2">
+              <ion-button fill="clear">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                <ion-label>{{recipe.comments? recipe.comments.length : '0'}}</ion-label>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </ion-slide>
+    </ion-slides> -->
+  </div>
+
 </ion-content>

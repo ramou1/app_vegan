@@ -14,4 +14,11 @@ export const APP_ROUTES = {
     EDIT_PASSWORD: 'edit-password',
     SIGNATURE: 'signature',
     TERMS: 'terms',
+
+    RECIPES: 'recipes',
+    RECIPE_DETAILS: 'recipe-details',
+    EVENTS: 'events',
+    EVENT_DETAILS: 'event-details',
+
+    MAP: 'map',
 }
