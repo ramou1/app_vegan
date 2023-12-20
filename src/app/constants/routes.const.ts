@@ -11,6 +11,7 @@ export const APP_ROUTES = {
     PRIVACY: 'privacy',
     
     PROFILE: 'profile',
+    PROFILE_EDIT: 'profile-edit',
     EDIT_PASSWORD: 'edit-password',
     SIGNATURE: 'signature',
     TERMS: 'terms',

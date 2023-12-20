@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { CommentsComponent } from 'src/app/components/comments/comments.component';
+import { SearchComponent } from 'src/app/components/search/search.component';
 import { POSTS } from 'src/app/constants/mock.const';
 
 @Component({
@@ -37,25 +39,25 @@ export class HomePage implements OnInit {
   }
 
   async openSearch(): Promise<void> {
-    // const modal = await this.modalCtrl.create({
-    //   component: SearchModal,
-    //   cssClass: 'search-modal',
-    // });
+    const modal = await this.modalCtrl.create({
+      component: SearchComponent,
+      cssClass: 'search-modal',
+    });
 
-    // return await modal.present();
+    return await modal.present();
   }
 
   async openComments(post: any): Promise<void> {
-    // const modal = await this.modalCtrl.create({
-    //   component: CommentsModal,
-    //   cssClass: 'comments-modal',
-    //   componentProps: {
-    //     comments: post.comments,
-    //     post_id: post.post_id
-    //   }
-    // });
+    const modal = await this.modalCtrl.create({
+      component: CommentsComponent,
+      cssClass: 'comments-modal',
+      componentProps: {
+        comments: post.comments,
+        post_id: post.post_id
+      }
+    });
 
-    // return await modal.present();
+    return await modal.present();
   }
 
 }

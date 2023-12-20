@@ -5,7 +5,7 @@ import { MainComponent } from './main.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ComponentsModule } from 'src/app/components/components/components.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 import { EventDetailsPage } from './events/event-details/event-details.page';
 import { EventsPage } from './events/events.page';
 import { MapPage } from './map/map.page';

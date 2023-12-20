@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { USER } from 'src/app/constants/mock.const';
 import { ToastService } from 'src/app/services/toast.service';
+import { ProfileEditPage } from './profile-edit/profile-edit.page';
 
 @Component({
   selector: 'app-profile',
@@ -41,12 +42,12 @@ export class ProfilePage implements OnInit {
   // }
 
   async openSettings(): Promise<void> {
-    // const modal = await this.modalCtrl.create({
-    //   component: ProfileEditPage,
-    //   cssClass: 'edit-profile-modal',
-    // });
+    const modal = await this.modalCtrl.create({
+      component: ProfileEditPage,
+      cssClass: 'edit-profile-modal',
+    });
 
-    // return await modal.present();
+    return await modal.present();
   }
 
 
