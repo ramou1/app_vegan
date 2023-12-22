@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent  implements OnInit {
 
+  tabClicked = 'home';
   constructor() { }
 
   ngOnInit() {}
+
+  changeTab(tab: string) {
+    this.tabClicked = tab;
+  }
 
 }

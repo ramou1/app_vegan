@@ -1,0 +1,39 @@
+ion-button {
+    font-size: 15px;
+    font-weight: 500;
+    height: 60px;
+    --border-radius: 12px;
+    text-transform: initial;
+    letter-spacing: 0;
+    --box-shadow: none;
+    margin: 0;
+}
+
+ion-button + ion-button {
+    margin-top: 10px;
+}
+
+ion-button.search-page {
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+    width: 100% !important;
+}
+
+ion-button.favorite-button {
+    z-index: 1000;
+    position: absolute;
+    height: 30px;
+    font-size: 10px;
+    right: 2%;
+    top: 4%;
+    --border-radius: 20px;
+
+    .button-native {
+        padding-inline-start: 10px;
+        padding-inline-end: 10px;
+    }
+
+    ion-icon {
+        font-size: 12px;
+    }
+}

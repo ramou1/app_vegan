@@ -2,12 +2,6 @@
     margin: 25px;
 }
 
-ion-button.search-page {
-    --padding-start: 0 !important;
-    --padding-end: 0 !important;
-    width: 100% !important;
-}
-
 ion-header {
     background: #fff;
     box-shadow: none !important;
@@ -36,24 +30,10 @@ ion-slides {
     height: auto;
 }
 
-ion-button {
-    margin: 15px 0;
-    letter-spacing: 0;
-    font-weight: 600;
-    height: 3em;
-}
+
 
 ion-label {
     font-size: 0.8em !important;
-}
-
-.successToast {
-    --background: var(--ion-color-secondary);
-
-}
-
-.errorToast {
-    --background: var(--ion-color-danger);
 }
 
 .comments-modal {

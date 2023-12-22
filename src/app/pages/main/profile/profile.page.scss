@@ -12,15 +12,11 @@ ion-slides {
     margin: auto;
 }
 
-ion-icon {
-    padding-right: 6px;
-    font-size: 16px;
-}
-
 .posts-title {
     font-size: 16px;
     font-weight: 600;
-    margin-left: 10px;
+    margin: 0;
+    margin-bottom: 8px;
 }
 
 .recipes-title {
@@ -33,47 +29,47 @@ ion-icon {
     width: 34%;
     height: auto;
     margin: 0 auto;
-    margin-top: -6vh;
+    margin-top: -8vh;
 
     >img {
         border-radius: 20%;
-        filter: drop-shadow(0 0 10px var(--ion-color-primary));
     }
 }
 
-ion-button {
-    margin: 0;
-    height: 2em;
-}
-
-.user-name {
+h1.user-name {
     text-align: center;
     font-size: 16px;
     font-weight: 600;
 }
 
-.user-description {
+h3.user-description {
     text-align: center;
     font-size: 11px;
-    margin-top: 0;
-    margin-bottom: 15px;
+    margin: 0;
     color: var(--ion-color-secondary);
 }
 
-.info-title {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 300;
-    color: var(--ion-color-primary);
-}
-
-.info-data {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0;
-}
-
 .post-text {
-        font-size: 11px;
+    font-size: 11px;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin: 3vh auto;
+    text-align: center;
+
+    .info-data {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .info-title {
+        font-size: 12px;
+        font-weight: 500;
+        margin: 0;
+        color: var(--ion-color-primary);
+    }
 }

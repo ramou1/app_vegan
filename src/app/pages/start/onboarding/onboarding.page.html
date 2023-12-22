@@ -1,0 +1,67 @@
+<ion-header>
+  <img src="./assets/images/logo-meelnutri.svg" class="header-logo">
+  <!-- <h3 (click)="skipOnBoarding()">Pular</h3> -->
+  <ion-button fill="clear" (click)="skipOnBoarding()" class="skip-onboarding">
+    <span *ngIf="index === 0">Pular</span>
+  </ion-button>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- DRAGGABLE ESTAVA FALSE -->
+  <swiper-container #swiper class="onboarding-slider" pagination="true" pagination-clickable="true"
+    centered-slides="true" (slidechange)="changeSlide()" draggable="true">
+
+    <swiper-slide>
+      <div class="slide-div">
+        <img src="./assets/images/onboarding/img01.svg" class="img01">
+        <h1>Seja bem-vindo (a)!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. <br><br>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. <br><br>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+        </p>
+        <ion-button expand="block" (click)="nextSlide()">Vamos lá!</ion-button>
+        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</h5>
+      </div>
+    </swiper-slide>
+
+    <swiper-slide>
+      <div class="slide-div">
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur
+          sint occaecat cupidatat non proident. <br><br>
+          Sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <img src="./assets/images/onboarding/img02.svg" class="img02">
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur
+          sint occaecat cupidatat non proident. <br><br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. <br><br>
+          Sed do eiusmod tempor incididunt ut labore et.
+        </p>
+      </div>
+    </swiper-slide>
+
+  </swiper-container>
+
+  <div *ngIf="index > 0">
+    <ion-fab vertical="bottom" horizontal="start">
+      <ion-fab-button (click)="previousSlide()" color="secondary">
+        <ion-icon name="chevron-back"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="index === 2 ? skipOnBoarding() : nextSlide()">
+        <ion-icon [name]="index === 2 ? 'checkmark' : 'chevron-forward'"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+</ion-content>

@@ -5,33 +5,26 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  
-  <ion-card *ngFor="let recipe of recipes">
-    <div (click)="openRecipe(recipe)">
-      <ion-card-header class="ion-no-padding">
-        <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
-      </ion-card-header>
 
-      <ion-card-content>
-        <p class="recipe-title"> {{ recipe?.title }} </p>
-      </ion-card-content>
-    </div>
+  <ion-searchbar #recipesSearchbar placeholder="search recipes" class="custom-searchbar"
+    (ionInput)="filterList($event)"></ion-searchbar>
 
-    <ion-row class="cardfooter">
-      <ion-col size="5">
-        <ion-button fill="clear">
-          <ion-icon *ngIf="recipe.liked" name="heart"></ion-icon>
-          <ion-icon *ngIf="!recipe.liked" name="heart-outline"></ion-icon>
-          <ion-label>{{recipe.likes? recipe.likes.length : '0'}} Likes</ion-label>
-        </ion-button>
-      </ion-col>
-      <ion-col size="5" offset="2">
-        <ion-button fill="clear">
-          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-          <ion-label>{{recipe.comments? recipe.comments.length : '0'}} Comments</ion-label>
-        </ion-button>
-      </ion-col>
-    </ion-row>
+  <ion-card *ngFor="let recipe of filteredRecipes" (click)="openRecipe(recipe)">
+    <ion-card-content class="ion-no-padding">
+      <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
+
+      <ion-button [color]="recipe.favorited ? 'primary' : 'secondary'" (click)="favoriteRecipe(recipe)" expand="block"
+        class="favorite-button">
+        <ion-icon [name]="recipe.favorited ? 'star': 'star-outline'" color="light"></ion-icon>
+        <span>{{recipe.favorited ? 'favorited': 'favorite'}}</span>
+      </ion-button>
+
+      <div>
+        <h3 class="recipe-title"> {{ recipe?.title }} </h3>
+      </div>
+    </ion-card-content>
+
   </ion-card>
+
 
 </ion-content>

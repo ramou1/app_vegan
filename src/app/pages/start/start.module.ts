@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { APP_ROUTES } from 'src/app/constants/routes.const';
 import { STORAGE } from 'src/app/constants/storage.const';
@@ -10,16 +10,18 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { RecoverPasswordPage } from './recover-password/recover-password.page';
+import { OnboardingPage } from './onboarding/onboarding.page';
 
 // const SHOW_ONBOARDING = localStorage.getItem(STORAGE.SHOW_ONBOARDING);
 // const INITIAL_ROUTE = SHOW_ONBOARDING === '0' ? APP_ROUTES.INITIAL_CHOICE : APP_ROUTES.ONBOARDING;
 const INITIAL_ROUTE = APP_ROUTES.INITIAL_CHOICE;
+// const INITIAL_ROUTE = APP_ROUTES.ONBOARDING;
 
 const routes: Routes = [
-  // {
-  //   path: APP_ROUTES.ONBOARDING,
-  //   component: OnboardingPage,
-  // },
+  {
+    path: APP_ROUTES.ONBOARDING,
+    component: OnboardingPage,
+  },
   {
     path: APP_ROUTES.INITIAL_CHOICE,
     component: InitialChoicePage
@@ -56,8 +58,10 @@ const routes: Routes = [
   declarations: [
     InitialChoicePage,
     LoginPage,
+    OnboardingPage,
     RegisterPage,
     RecoverPasswordPage,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class StartModule { }
