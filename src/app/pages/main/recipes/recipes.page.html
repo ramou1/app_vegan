@@ -9,7 +9,9 @@
   <ion-searchbar #recipesSearchbar placeholder="search recipes" class="custom-searchbar"
     (ionInput)="filterList($event)"></ion-searchbar>
 
-  <ion-card *ngFor="let recipe of filteredRecipes" (click)="openRecipe(recipe)">
+  <app-card-layout [type]="'recipes'" [data]="filteredRecipes"></app-card-layout>
+
+  <!-- <ion-card *ngFor="let recipe of filteredRecipes" (click)="openRecipe(recipe)">
     <ion-card-content class="ion-no-padding">
       <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
 
@@ -24,7 +26,6 @@
       </div>
     </ion-card-content>
 
-  </ion-card>
-
+  </ion-card> -->
 
 </ion-content>

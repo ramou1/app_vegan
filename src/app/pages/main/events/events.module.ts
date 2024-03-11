@@ -8,10 +8,12 @@ import { EventsPageRoutingModule } from './events-routing.module';
 
 import { EventsPage } from './events.page';
 import { EventDetailsPage } from './event-details/event-details.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    ComponentsModule,
     FormsModule,
     IonicModule,
     EventsPageRoutingModule

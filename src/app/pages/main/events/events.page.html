@@ -6,7 +6,9 @@
 
 <ion-content class="ion-padding">
 
-  <ion-card *ngFor="let event of events">
+  <app-card-layout [type]="'events'" [data]="events"></app-card-layout>
+
+  <!-- <ion-card *ngFor="let event of events">
     <div (click)="openEvent(event)">
       <ion-card-header class="ion-no-padding">
         <img src="../assets/images/{{event.image ? event.image : 'slider-default.png'}}">
@@ -36,7 +38,6 @@
       {{interestedText}}
       <ion-icon slot="end" name="{{interestedIcon}}" ></ion-icon>
     </ion-button>
-
-  </ion-card>
+  </ion-card> -->
 
 </ion-content>

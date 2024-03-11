@@ -23,29 +23,22 @@ ion-button {
     }
 }
 
-.card-title {
-    padding-left: 10px;
-    font-size: 1em;
-    margin: auto 0;
+
+ion-card {
+    .event-title {
+        margin-top: 15px;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 700;
+    }
+    
+    .event-local {
+        // text-align: center;
+        // font-weight: 700;
+    }
+    
+    .interested-button {
+        margin: 15px;
+    }
 }
 
-.card-subtitle {
-    font-size: 0.7em;
-    margin: auto;
-}
-
-.event-title {
-    margin-top: 15px;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 700;
-}
-
-.event-local {
-    // text-align: center;
-    // font-weight: 700;
-}
-
-.interested-button {
-    margin: 15px;
-}
