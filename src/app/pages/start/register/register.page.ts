@@ -10,7 +10,7 @@ import { APP_ROUTES } from 'src/app/constants/routes.const';
 })
 export class RegisterPage implements OnInit {
 
-  public registerGroup: FormGroup;
+  public registerForm: FormGroup;
   public showPassword: boolean = false;
   public passwordType: string = 'password';
   public passwordIcon: string = 'eye-off-outline';
@@ -22,7 +22,7 @@ export class RegisterPage implements OnInit {
   }
 
   private buildForm(): void {
-    this.registerGroup = this.fb.group({
+    this.registerForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
       name: [null, [Validators.required]],
       password: [null, [Validators.required]],
@@ -30,8 +30,8 @@ export class RegisterPage implements OnInit {
       identify: [null, [Validators.required]]
     });
 
-    this.registerGroup.patchValue({ email: 'email@gmail.com', name: 'user', password: '123456789', identify: 'vegetarian' });
-    console.log(this.registerGroup.value);
+    this.registerForm.patchValue({ email: 'email@gmail.com', name: 'user', password: '123456789', birth:'10/10/2000', identify: 'vegetarian' });
+    console.log(this.registerForm.value);
     
   }
 
@@ -43,6 +43,10 @@ export class RegisterPage implements OnInit {
 
   public register(): void {
     this.router.navigateByUrl(APP_ROUTES.MAIN);
+  }
+
+  public goToLogin(): void {
+    this.router.navigate([APP_ROUTES.START, APP_ROUTES.LOGIN]);
   }
 
 }

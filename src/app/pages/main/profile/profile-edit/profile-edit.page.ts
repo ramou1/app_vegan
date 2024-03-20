@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { ESTADOS } from 'src/app/constants/estados.const';
 import { USER } from 'src/app/constants/mock.const';
+import { APP_ROUTES } from 'src/app/constants/routes.const';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class ProfileEditPage implements OnInit {
   public formGroup: FormGroup;
   estados = ESTADOS;
 
-  constructor(private fb: FormBuilder, private toast: ToastService, private modalCtrl: ModalController) { }
+  constructor(private fb: FormBuilder, private toast: ToastService, private modalCtrl: ModalController, public navCtrl: NavController) { }
 
   async ngOnInit() {
     this.createForm();
@@ -78,6 +79,8 @@ export class ProfileEditPage implements OnInit {
   public logout(): void {
     //TODO
     // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+    this.modalCtrl.dismiss();
+    this.navCtrl.navigateRoot(APP_ROUTES.START);
   }
 
   public saveData(): void {

@@ -37,28 +37,21 @@
       <p [innerHTML]="post.text">
         {{ post.text? excerptText(post.text) : '' }}...
       </p>
-
     </ion-card-content>
 
-    <ion-row class="cardfooter">
-      <ion-col size="5">
-        <ion-button fill="clear" (click)="likePost(post)">
-          <ion-icon *ngIf="post.liked" name="heart"></ion-icon>
-          <ion-icon *ngIf="!post.liked" name="heart-outline"></ion-icon>
-          <ion-label>{{post.likes? post.likes.length : '0'}} Likes</ion-label>
-        </ion-button>
-      </ion-col>
-      <ion-col size="5" offset="2">
-        <ion-button fill="clear" (click)="openComments(post)">
-          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-          <ion-label>{{post.comments? post.comments.length : '0'}} Comments</ion-label>
-        </ion-button>
-      </ion-col>
-    </ion-row>
+    <ion-footer>
+      <ion-button fill="clear" (click)="likePost(post)">
+        <ion-icon *ngIf="post.liked" name="heart"></ion-icon>
+        <ion-icon *ngIf="!post.liked" name="heart-outline"></ion-icon>
+        <ion-label>{{post.likes? post.likes.length : '0'}}</ion-label>
+      </ion-button>
+
+      <ion-button fill="clear" (click)="openComments(post)">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        <ion-label>{{post.comments? post.comments.length : '0'}}</ion-label>
+      </ion-button>
+    </ion-footer>
 
   </ion-card>
-
-  <ion-button class="interested-button" expand="block" shape="round" color="primary" (click)="scrollToTop()">Scroll to
-    Top</ion-button>
 
 </ion-content>

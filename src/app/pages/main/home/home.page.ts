@@ -27,15 +27,12 @@ export class HomePage implements OnInit {
   }
 
   public likePost(post: any): void {
-    post.liked = !post.liked;    
+    post.liked = !post.liked;  
+    post.liked ? post.likes.length++ : post.likes.length--;  
   }
 
   public getContent() {
     return document.querySelector('ion-content');
-  }
-
-  public scrollToTop(): void {
-    this.getContent().scrollToTop(500);
   }
 
   async openSearch(): Promise<void> {
