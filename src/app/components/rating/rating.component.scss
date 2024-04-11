@@ -1,5 +1,17 @@
 .ion-padding {
-    top: 20%;
+    top: 15%;
+}
+
+ion-item {
+    --background: transparent;
+    border: 1px solid var(--ion-color-secondary);
+    border-radius: 6px;
+}
+
+.rating-decoration {
+    width: 65%;
+    margin: 0 auto;
+    display: block;
 }
 
 .rating-title {
@@ -30,4 +42,8 @@
         margin-top: 6vh;
         font-weight: 700;
     }
+}
+
+ion-button.send-button {
+    margin-top: 2vh;
 }

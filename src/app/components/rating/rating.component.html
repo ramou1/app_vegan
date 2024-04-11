@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button>
+      <ion-button (click)="goBack()">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -12,6 +12,8 @@
 
 <ion-content class="ion-padding">
 
+  <img src="assets/images/plants-decoration.png" class="rating-decoration">
+
   <div class="rating-title">
     <h2>como você avalia <br>
       sua experiência no app?</h2>
@@ -19,54 +21,49 @@
 
   <div class="rating-buttons">
     <ion-button fill="clear" (click)="rate(1)">
-      <ion-icon name="star" [color]="rating === 1 ? 'warning' : 'medium'"></ion-icon>
-      <!-- color="warning" -->
+      <ion-icon name="star" [color]="rating >= 1 ? 'warning' : 'medium'"></ion-icon>
     </ion-button>
-
+  
     <ion-button fill="clear" (click)="rate(2)">
-      <ion-icon name="star" [color]="rating <= 2 ? 'medium': 'warning'"></ion-icon>
+      <ion-icon name="star" [color]="rating >= 2 ? 'warning' : 'medium'"></ion-icon>
     </ion-button>
-
+  
     <ion-button fill="clear" (click)="rate(3)">
-      <ion-icon name="star" [color]="rating <= 3 ? 'medium': 'warning'"></ion-icon>
+      <ion-icon name="star" [color]="rating >= 3 ? 'warning' : 'medium'"></ion-icon>
     </ion-button>
-
+  
     <ion-button fill="clear" (click)="rate(4)">
-      <ion-icon name="star" [color]="rating <= 4 ? 'medium': 'warning'"></ion-icon>
+      <ion-icon name="star" [color]="rating >= 4 ? 'warning' : 'medium'"></ion-icon>
     </ion-button>
-
+  
     <ion-button fill="clear" (click)="rate(5)">
-      <ion-icon name="star" [color]="rating <= 5 ? 'medium': 'warning'"></ion-icon>
+      <ion-icon name="star" [color]="rating >= 5 ? 'warning' : 'medium'"></ion-icon>
     </ion-button>
   </div>
+  
 
   <div class="rating-info">
 
-    <!-- se for ruim, colocar campo de informação -->
     <div *ngIf="rating <= 3 && rating > 0">
-      <form [formGroup]="ratingGroup" (submit)="send()">
+      <form [formGroup]="ratingGroup">
         <ion-item lines="none">
-          <ion-textarea formControlName="username" rows="6" fill="outline"
+          <ion-textarea formControlName="description" rows="4" fill="outline"
             placeholder="what can we improve?"></ion-textarea>
         </ion-item>
 
-        <ion-button expand="block" color="primary" type="submit" [disabled]="ratingGroup.invalid">send</ion-button>
+        <ion-button expand="block" color="primary" class="send-button" type="submit" [disabled]="ratingGroup.invalid" (click)="send()">send</ion-button>
       </form>
     </div>
 
-    <!-- se for bom, colocar o que gosta mais por  -->
     <div *ngIf="rating > 3">
       <p>o que você mais gosta no app?</p>
 
-      <ion-chip>
-        <ion-label>design bonito</ion-label>
-        <ion-icon name="close"></ion-icon>
+      <ion-chip *ngFor="let chip of chips" (click)="toggleChip(chip.slug)" [color]="selected.includes(chip.slug) ? 'primary' : 'medium'">
+        <ion-label>{{chip.title}}</ion-label>
+        <ion-icon name="checkmark-circle" *ngIf="selected.includes(chip.slug)"></ion-icon>
       </ion-chip>
 
-      <ion-chip>
-        <ion-label>bons restaurantes</ion-label>
-        <ion-icon name="close"></ion-icon>
-      </ion-chip>
+      <ion-button expand="block" color="primary" class="send-button" type="submit" [disabled]="selected.length === 0" (click)="send()">send</ion-button>
     </div>
 
   </div>
