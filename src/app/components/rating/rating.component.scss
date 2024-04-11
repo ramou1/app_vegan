@@ -1,0 +1,33 @@
+.ion-padding {
+    top: 20%;
+}
+
+.rating-title {
+    text-align: center;
+    // font-size: 20px;
+    margin-top: 20px;
+}
+
+.rating-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    ion-button+ion-button {
+        margin-top: 0;
+    }
+
+    ion-button {
+        ion-icon {
+            font-size: 30px;
+        }
+    }
+}
+
+.rating-info {
+    p {
+        text-align: center;
+        margin-top: 6vh;
+        font-weight: 700;
+    }
+}

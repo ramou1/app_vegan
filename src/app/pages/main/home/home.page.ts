@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
+import { RatingComponent } from 'src/app/components/rating/rating.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { POSTS } from 'src/app/constants/mock.const';
 
@@ -52,6 +53,16 @@ export class HomePage implements OnInit {
         comments: post.comments,
         post_id: post.post_id
       }
+    });
+
+    return await modal.present();
+  }
+
+  // teste da tela de rating, apagar depois
+  async openRating(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: RatingComponent,
+      cssClass: 'search-modal',
     });
 
     return await modal.present();

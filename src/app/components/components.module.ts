@@ -6,11 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { CardLayoutComponent } from './card-layout/card-layout.component';
 import { RouterModule } from '@angular/router';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
     CardLayoutComponent,
     CommentsComponent,
+    RatingComponent,
     SearchComponent
   ],
   imports: [
@@ -23,6 +25,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     CardLayoutComponent,
     CommentsComponent,
+    RatingComponent,
     SearchComponent
   ]
 })
