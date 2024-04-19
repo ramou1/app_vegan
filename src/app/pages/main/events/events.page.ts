@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { IonSearchbar, ModalController } from '@ionic/angular';
 import { EVENTS } from 'src/app/constants/mock.const';
 import { EventDetailsPage } from './event-details/event-details.page';
 
@@ -10,15 +10,33 @@ import { EventDetailsPage } from './event-details/event-details.page';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-  public events = EVENTS;
+  
   public buttonColor = 'tertiary';
   public interestedText = 'I want to Go!';
   public interestedIcon = 'leaf-outline';
   public interested: boolean = false;
 
+  @ViewChild('eventsSearchbar') searchbar: IonSearchbar;
+  public events = EVENTS;
+  public filteredEvents: any = [];
+
   constructor(private router: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {
+    this.filteredEvents = this.events;
+  }
+
+  public filterList(evt: any): void {
+    const searchTerm = evt.target.value;
+
+    if (searchTerm === '') {
+      this.filteredEvents = this.events;
+    }
+    else {
+      this.filteredEvents = this.events?.filter((data: any) => {
+        return data.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+      }).slice(0, 15);
+    }
   }
 
   async openEvent(event: any): Promise<void> {

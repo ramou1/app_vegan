@@ -48,16 +48,6 @@ export class ProfileEditPage implements OnInit {
     // this.toast.presentChooseAlert('Deseja deletar a conta?');
   }
 
-  public changeProfilePicture(): void {
-    //TODO
-    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
-  }
-
-  public changeBGPicture(): void {
-    //TODO
-    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
-  }
-
   async openInterests(): Promise<void> {
     // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
 

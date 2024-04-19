@@ -17,6 +17,44 @@ export class ProfilePage implements OnInit {
     slidesPerView: 1.5,
   };
 
+  public profileButtons = [
+    {
+      text: 'change profile picture',
+    },
+    {
+      text: 'view profile picture',
+      // data: {
+      //   action: 'share',
+      // },
+    },
+    {
+      text: 'Cancelar',
+      role: 'cancel',
+      data: {
+        action: 'cancel',
+      },
+    },
+  ];
+
+  public backgroundButtons = [
+    {
+      text: 'change background picture',
+    },
+    {
+      text: 'view background picture',
+      // data: {
+      //   action: 'share',
+      // },
+    },
+    {
+      text: 'Cancelar',
+      role: 'cancel',
+      data: {
+        action: 'cancel',
+      },
+    },
+  ];
+
   constructor(private router: Router, private modalCtrl: ModalController, private toast: ToastService) { }
 
   async ngOnInit() {
@@ -48,6 +86,16 @@ export class ProfilePage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  public changeProfilePicture(): void {
+    //TODO
+    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+  }
+
+  public changeBGPicture(): void {
+    //TODO
+    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
   }
 
 

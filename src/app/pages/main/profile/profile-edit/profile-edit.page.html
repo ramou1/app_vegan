@@ -14,48 +14,7 @@
 
   <div class="app-padding">
 
-    <ion-row>
-      <ion-col size="5">
-        <img class="profile-picture" src="../assets/images/{{user.image ? user.image : 'default-user.png'}}" />
-      </ion-col>
-      <ion-col>
-        <ion-item (click)="changeProfilePicture()" lines="none" class="ion-no-padding change-picture" button>
-          <ion-icon name="create-outline" color="primary"></ion-icon>
-          <ion-label>Change profile picture</ion-label>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col size="5">
-        <img class="profile-picture"
-          src="../assets/images/{{user.background ? user.background : 'background-default.png'}}" />
-      </ion-col>
-      <ion-col>
-        <ion-item (click)="changeBGPicture()" lines="none" class="ion-no-padding change-picture" button>
-          <ion-icon name="create-outline" color="primary"></ion-icon>
-          <ion-label>Change background</ion-label>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-
-
     <ion-progress-bar type="indeterminated" *ngIf="loading"></ion-progress-bar>
-
-    <div class="interests">
-      <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
-        <ion-icon [name]="interest.icon"></ion-icon>
-        <ion-label>{{ interest.description }}</ion-label>
-        <ion-icon name="close-circle" (click)="deleteInterest(interest)"></ion-icon>
-      </ion-chip>
-
-      <ion-chip color="tertiary" (click)="openInterests()">
-        <ion-icon *ngIf="user.interests" name="create"></ion-icon>
-        <ion-label *ngIf="user.interests">Edit interests</ion-label>
-        <ion-icon *ngIf="!user.interests" name="add"></ion-icon>
-        <ion-label *ngIf="!user.interests">Add interests</ion-label>
-      </ion-chip>
-    </div>
 
     <form [formGroup]="formGroup">
 
@@ -119,6 +78,21 @@
           <ion-select-option value="interested">Interested in the cause</ion-select-option>
         </ion-select>
       </ion-item>
+
+      <div class="interests">
+        <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
+          <ion-icon [name]="interest.icon"></ion-icon>
+          <ion-label>{{ interest.description }}</ion-label>
+          <ion-icon name="close-circle" (click)="deleteInterest(interest)"></ion-icon>
+        </ion-chip>
+  
+        <ion-chip color="tertiary" (click)="openInterests()">
+          <ion-icon *ngIf="user.interests" name="create"></ion-icon>
+          <ion-label *ngIf="user.interests">Edit interests</ion-label>
+          <ion-icon *ngIf="!user.interests" name="add"></ion-icon>
+          <ion-label *ngIf="!user.interests">Add interests</ion-label>
+        </ion-chip>
+      </div>
 
       <div class="footer-buttons">
         <ion-button (click)="saveData()" fill="outline" size="default" expand="block" color="dark"> Save

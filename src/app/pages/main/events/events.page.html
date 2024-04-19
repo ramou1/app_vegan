@@ -6,7 +6,10 @@
 
 <ion-content class="ion-padding">
 
-  <app-card-layout [type]="'events'" [data]="events"></app-card-layout>
+  <ion-searchbar #eventsSearchbar placeholder="search events" class="custom-searchbar"
+    (ionInput)="filterList($event)"></ion-searchbar>
+
+  <app-card-layout [type]="'events'" [data]="filteredEvents"></app-card-layout>
 
   <!-- <ion-card *ngFor="let event of events">
     <div (click)="openEvent(event)">
