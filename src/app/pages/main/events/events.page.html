@@ -9,16 +9,29 @@
   <ion-searchbar #eventsSearchbar placeholder="search events" class="custom-searchbar"
     (ionInput)="filterList($event)"></ion-searchbar>
 
-  <app-card-layout [type]="'events'" [data]="filteredEvents"></app-card-layout>
+  <!-- <app-card-layout [type]="'events'" [data]="filteredEvents"></app-card-layout> -->
 
-  <!-- <ion-card *ngFor="let event of events">
+  <ion-card *ngFor="let event of filteredEvents">
     <div (click)="openEvent(event)">
       <ion-card-header class="ion-no-padding">
+
+        <div class="event-buttons-container">
+          <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
+            (click)="openShare()">
+            <ion-icon slot="icon-only" name="share-social-outline" color="primary"></ion-icon>
+          </ion-button>
+
+          <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
+            (click)="presentEventActions(event)">
+            <ion-icon slot="icon-only" md="ellipsis-vertical" color="primary"></ion-icon>
+          </ion-button>
+        </div>
+
         <img src="../assets/images/{{event.image ? event.image : 'slider-default.png'}}">
       </ion-card-header>
 
       <ion-card-content>
-        <p class="event-title"> {{ event?.title }} </p>
+        <h3 class="event-title"> {{ event?.title }} </h3>
 
         <ion-item lines="none">
           <ion-icon name="location-outline" slot="start"></ion-icon>
@@ -39,8 +52,8 @@
     <ion-button class="interested-button" expand="block" shape="round" color="{{buttonColor}}"
       (click)="checkInterested(event)">
       {{interestedText}}
-      <ion-icon slot="end" name="{{interestedIcon}}" ></ion-icon>
+      <ion-icon slot="end" name="{{interestedIcon}}"></ion-icon>
     </ion-button>
-  </ion-card> -->
+  </ion-card>
 
 </ion-content>

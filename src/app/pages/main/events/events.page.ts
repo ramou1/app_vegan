@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSearchbar, ModalController } from '@ionic/angular';
+import { ActionSheetController, IonSearchbar, ModalController } from '@ionic/angular';
 import { EVENTS } from 'src/app/constants/mock.const';
 import { EventDetailsPage } from './event-details/event-details.page';
+import { ReportComponent } from 'src/app/components/report/report.component';
 
 @Component({
   selector: 'app-events',
@@ -10,7 +11,7 @@ import { EventDetailsPage } from './event-details/event-details.page';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-  
+
   public buttonColor = 'tertiary';
   public interestedText = 'I want to Go!';
   public interestedIcon = 'leaf-outline';
@@ -20,7 +21,7 @@ export class EventsPage implements OnInit {
   public events = EVENTS;
   public filteredEvents: any = [];
 
-  constructor(private router: Router, private modalCtrl: ModalController) { }
+  constructor(private router: Router, private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {
     this.filteredEvents = this.events;
@@ -66,6 +67,53 @@ export class EventsPage implements OnInit {
       this.interestedIcon = 'close-circle-outline'
     }
 
+  }
+
+  public openShare(): void {
+    //TODO SHARE
+    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+  }
+
+  async presentEventActions(event: any) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'denunciar evento',
+          handler: () => {
+            this.reportEvent(event);
+          }
+        },
+        {
+          text: 'favoritar evento',
+          data: {
+            action: 'share',
+          },
+        },
+        {
+          text: 'convidar amigos',
+        },
+        // {
+        //   text: 'cancelar',
+        //   role: 'cancel',
+        //   data: {
+        //     action: 'cancel',
+        //   },
+        // },
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  async reportEvent(event: any): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: ReportComponent,
+      cssClass: 'report-modal',
+      componentProps: {
+        post_id: event.id
+      }
+    });
+
+    return await modal.present();
   }
 
 }

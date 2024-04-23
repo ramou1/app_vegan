@@ -8,37 +8,48 @@ ion-col {
     display: flex;
 }
 
-ion-icon {
-    margin: 0;
-    padding-right: 6px;
-    font-size: 16px;
-}
+// ion-icon {
+//     margin: 0;
+//     padding-right: 6px;
+//     font-size: 16px;
+// }
 
-ion-button {
-    margin: 0;
+// ion-button {
+//     margin: 0;
 
-    ion-icon {
-        padding-left: 10px;
-        font-size: 18px;
-    }
-}
-
+//     ion-icon {
+//         padding-left: 10px;
+//         font-size: 18px;
+//     }
+// }
 
 ion-card {
+    div.event-buttons-container {
+        position: absolute;
+        right: 0;
+
+        ion-button {
+            margin: 0;
+        }
+
+        ion-button + ion-button {
+            margin: 10px;
+        }
+    }
+
     .event-title {
         margin-top: 15px;
         font-size: 16px;
         text-align: center;
         font-weight: 700;
     }
-    
+
     .event-local {
         // text-align: center;
         // font-weight: 700;
     }
-    
+
     .interested-button {
         margin: 15px;
     }
 }
-

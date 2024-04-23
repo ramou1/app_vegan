@@ -80,8 +80,7 @@ export class HomePage implements OnInit {
       component: ReportComponent,
       cssClass: 'report-modal',
       componentProps: {
-        comments: post.comments,
-        post_id: post.post_id
+        post_id: post.id
       }
     });
 
