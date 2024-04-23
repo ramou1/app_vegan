@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
 import { RatingComponent } from 'src/app/components/rating/rating.component';
+import { ReportComponent } from 'src/app/components/report/report.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { POSTS } from 'src/app/constants/mock.const';
 
@@ -16,8 +17,29 @@ export class HomePage implements OnInit {
   public posts = POSTS;
   public likedIcon = 'heart-outline';
 
-  constructor(private router: Router, private modalCtrl: ModalController) { }
+  public optButtons = [
+    {
+      text: 'denunciar post',
+    },
+    {
+      text: 'compartilhar post',
+    },
+    {
+      text: 'favorite post',
+      // data: {
+      //   action: 'share',
+      // },
+    },
+    {
+      text: 'Cancelar',
+      role: 'cancel',
+      data: {
+        action: 'cancel',
+      },
+    },
+  ];
 
+  constructor(private router: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {    
   }
@@ -45,6 +67,19 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
+  async reportPost(post: any): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: ReportComponent,
+      cssClass: 'report-modal',
+      componentProps: {
+        comments: post.comments,
+        post_id: post.post_id
+      }
+    });
+
+    return await modal.present();
+  }
+
   async openComments(post: any): Promise<void> {
     const modal = await this.modalCtrl.create({
       component: CommentsComponent,
@@ -58,7 +93,7 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  // teste da tela de rating, apagar depois
+  // TODO: teste da tela de rating, apagar depois
   async openRating(): Promise<void> {
     const modal = await this.modalCtrl.create({
       component: RatingComponent,
