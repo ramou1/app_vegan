@@ -7,12 +7,14 @@ import { SearchComponent } from './search/search.component';
 import { CardLayoutComponent } from './card-layout/card-layout.component';
 import { RouterModule } from '@angular/router';
 import { RatingComponent } from './rating/rating.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
     CardLayoutComponent,
     CommentsComponent,
     RatingComponent,
+    ReportComponent,
     SearchComponent
   ],
   imports: [
@@ -26,6 +28,7 @@ import { RatingComponent } from './rating/rating.component';
     CardLayoutComponent,
     CommentsComponent,
     RatingComponent,
+    ReportComponent,
     SearchComponent
   ]
 })

@@ -14,6 +14,10 @@
     font-size: 11px;
 }
 
+ion-avatar {
+    margin-inline-end: 10px !important;
+}
+
 ion-icon {
     font-size: 22px;
 }
@@ -25,7 +29,7 @@ ion-button {
 ion-input {
     font-size: 14px;
     background: var(--ion-color-light);
-    border-radius: 20px;
+    border-radius: 15px;
     --padding-start: 15px;
 }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { USER } from 'src/app/constants/mock.const';
 import { ToastService } from 'src/app/services/toast.service';
 import { ProfileEditPage } from './profile-edit/profile-edit.page';
@@ -17,45 +17,7 @@ export class ProfilePage implements OnInit {
     slidesPerView: 1.5,
   };
 
-  public profileButtons = [
-    {
-      text: 'change profile picture',
-    },
-    {
-      text: 'view profile picture',
-      // data: {
-      //   action: 'share',
-      // },
-    },
-    {
-      text: 'Cancelar',
-      role: 'cancel',
-      data: {
-        action: 'cancel',
-      },
-    },
-  ];
-
-  public backgroundButtons = [
-    {
-      text: 'change background picture',
-    },
-    {
-      text: 'view background picture',
-      // data: {
-      //   action: 'share',
-      // },
-    },
-    {
-      text: 'Cancelar',
-      role: 'cancel',
-      data: {
-        action: 'cancel',
-      },
-    },
-  ];
-
-  constructor(private router: Router, private modalCtrl: ModalController, private toast: ToastService) { }
+  constructor(private router: Router, private modalCtrl: ModalController, private toast: ToastService, private actionSheetCtrl: ActionSheetController) { }
 
   async ngOnInit() {
     await this.getUserData();
@@ -74,7 +36,7 @@ export class ProfilePage implements OnInit {
     //TODO SHARE
     // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
   }
-  
+
   // public openSettings(): void {
   //   this.router.navigate([APP_ROUTES.MAIN, APP_ROUTES.PROFILE_EDIT]);
   // }
@@ -86,6 +48,30 @@ export class ProfilePage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  async changeImageActions(type: string) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'change ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
+        },
+        {
+          text: 'view ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
+          // data: {
+          //   action: 'share',
+          // },
+        },
+        // {
+        //   text: 'cancelar',
+        //   role: 'cancel',
+        //   data: {
+        //     action: 'cancel',
+        //   },
+        // },
+      ]
+    });
+    await actionSheet.present();
   }
 
   public changeProfilePicture(): void {

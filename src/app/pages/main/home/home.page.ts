@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
 import { RatingComponent } from 'src/app/components/rating/rating.component';
 import { ReportComponent } from 'src/app/components/report/report.component';
@@ -17,29 +17,7 @@ export class HomePage implements OnInit {
   public posts = POSTS;
   public likedIcon = 'heart-outline';
 
-  public optButtons = [
-    {
-      text: 'denunciar post',
-    },
-    {
-      text: 'compartilhar post',
-    },
-    {
-      text: 'favorite post',
-      // data: {
-      //   action: 'share',
-      // },
-    },
-    {
-      text: 'Cancelar',
-      role: 'cancel',
-      data: {
-        action: 'cancel',
-      },
-    },
-  ];
-
-  constructor(private router: Router, private modalCtrl: ModalController) { }
+  constructor(private router: Router, private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {    
   }
@@ -67,6 +45,36 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
+  async presentPostActions(post: any) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'denunciar post',
+          handler: () => {
+            this.reportPost(post);
+          }
+        },
+        {
+          text: 'compartilhar post',
+        },
+        {
+          text: 'favorite post',
+          data: {
+            action: 'share',
+          },
+        },
+        // {
+        //   text: 'cancelar',
+        //   role: 'cancel',
+        //   data: {
+        //     action: 'cancel',
+        //   },
+        // },
+      ]
+    });
+    await actionSheet.present();
+  }
+  
   async reportPost(post: any): Promise<void> {
     const modal = await this.modalCtrl.create({
       component: ReportComponent,
