@@ -41,3 +41,15 @@ ion-button.favorite-button {
         padding-left: 6px;
     }
 }
+
+ion-button.edit-image-button {
+    height: 35px;
+    width: 35px;
+    --padding-end: 0;
+    --padding-start: 0;
+    --border-radius: 25px !important;
+
+    ion-icon {
+        font-size: 1.4em !important;
+    }
+}

@@ -11,11 +11,14 @@ ion-header {
     }
 
     ion-title {
-        // padding: 0;
         font-size: 16px;
         font-weight: 600;
         text-transform: lowercase;
         color: var(--ion-color-dark);
+    }
+
+    ion-buttons + ion-title {
+        padding-left: 0;
     }
 }
 

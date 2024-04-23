@@ -1,3 +1,7 @@
+ion-toolbar.edit-bg-toolbar {
+    margin-top: 3vh;
+}
+
 .profile-background {
     height: 15vh;
     background-color: var(--ion-color-primary);
@@ -33,6 +37,12 @@ ion-slides {
 
     >img {
         border-radius: 20%;
+    }
+
+    ion-button.edit-image-button {
+        position: absolute;
+        margin-left: -3vh;
+        margin-top: 12vh;
     }
 }
 
