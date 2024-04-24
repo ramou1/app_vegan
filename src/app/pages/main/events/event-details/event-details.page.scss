@@ -3,6 +3,20 @@ h2 {
     margin-bottom: 0;
 }
 
+h4 {
+    text-align: center;
+}
+
 ion-button {
     height: 45px;
+}
+
+ion-item {
+    ion-icon {
+        margin-inline-end: 10px !important;
+    }
+
+    ion-label {
+        color: var(--ion-color-dark);
+    }
 }
