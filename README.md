@@ -4,7 +4,7 @@ Segunda versão do Aplicativo de Rede Social para o público vegetariano e vegan
 ## Download
 <!-- Última versão do apk do projeto indisponível no momento. -->
 <!-- Baixe a última versão apk do projeto [aqui.](https://github.com/ramou1/vegan2.0/raw/master/veggie.apk) -->
-Baixe a última versão apk do projeto [aqui.](https://github.com/ramou1/app_vegan/tree/main/versions/app-vegan.apk)
+Baixe a última versão apk do projeto [aqui.](https://github.com/ramou1/app_vegan/raw/main/versions/app-vegan.apk)
 
 ## O que o app faz (ou vai fazer um dia)?
 :herb: acesse a timeline com as postagens mais recentes dos seus amigos; <br />
