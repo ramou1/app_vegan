@@ -104,7 +104,7 @@ export class HomePage implements OnInit {
   async openRating(): Promise<void> {
     const modal = await this.modalCtrl.create({
       component: RatingComponent,
-      cssClass: 'search-modal',
+      cssClass: 'rating-modal',
     });
 
     return await modal.present();

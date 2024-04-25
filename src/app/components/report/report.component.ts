@@ -18,4 +18,7 @@ export class ReportComponent implements OnInit {
     });
   }
 
+  public send(): void {
+  }
+
 }

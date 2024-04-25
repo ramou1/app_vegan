@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSearchbar, ModalController } from '@ionic/angular';
 import { RECIPES } from 'src/app/constants/mock.const';
+import { RecipeDetailsPage } from './recipe-details/recipe-details.page';
 
 @Component({
   selector: 'app-recipes',
@@ -35,16 +36,16 @@ export class RecipesPage implements OnInit {
   }
 
   async openRecipe(recipe: any): Promise<void> {
-    // const modal = await this.modalCtrl.create({
-    //   component: RecipeDetailsPage,
-    //   cssClass: 'search-modal',
-    //   componentProps: {
-    //     // finalize: false,
-    //     recipe: recipe
-    //   }
-    // });
+    const modal = await this.modalCtrl.create({
+      component: RecipeDetailsPage,
+      cssClass: 'recipe-modal',
+      componentProps: {
+        // finalize: false,
+        recipe: recipe
+      }
+    });
 
-    // return await modal.present();
+    return await modal.present();
   }
 
   public favoriteRecipe(recipe: any): void {

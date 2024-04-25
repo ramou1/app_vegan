@@ -4,12 +4,24 @@
       <ion-button (click)="goBack()">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
-      <ion-title>{{data?.title}}</ion-title>
+      <ion-title>{{recipe?.title}}</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
+
+  <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
+  <h2>{{recipe.title}}</h2>
+  <h4>{{recipe.creator}} | {{recipe.registerDate}}</h4>
+
+  <div class="ion-padding">
+
+    <ion-item>
+      <p class="recipe-description"> {{ recipe.text }} </p>
+    </ion-item>
+
+  </div>
 
 </ion-content>
