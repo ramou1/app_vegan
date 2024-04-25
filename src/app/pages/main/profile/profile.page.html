@@ -34,28 +34,28 @@
 
   <!-- header="Ação" -->
 
-  <h1 class="user-name"> {{ user?.name }} </h1>
-  <h3 class="user-description"> {{ user?.description }} </h3>
+  <h3 class="user-name"> {{ user?.name }} </h3>
+  <h5 class="user-description"> {{ user?.description }} </h5>
 
   <div class="info-container">
     <div>
-      <h1 class="info-data"> {{ user?.friends ? user.friends.length : '0' }} </h1>
+      <h3 class="info-data"> {{ user?.friends ? user.friends.length : '0' }} </h3>
       <p class="info-title"> Friends </p>
     </div>
 
     <div>
-      <h1 class="info-data"> {{ user?.trophies ? user.trophies.length : '0' }} </h1>
+      <h3 class="info-data"> {{ user?.trophies ? user.trophies.length : '0' }} </h3>
       <p class="info-title"> Trophies </p>
     </div>
 
     <div>
-      <h1 class="info-data"> {{ user?.posts ? user.posts.length : '0' }} </h1>
+      <h3 class="info-data"> {{ user?.posts ? user.posts.length : '0' }} </h3>
       <p class="info-title"> Posts </p>
     </div>
   </div>
 
   <div class="ion-padding">
-    <h1 class="posts-title">Interests</h1>
+    <h3 class="posts-title">Interests</h3>
     <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
       <ion-icon [name]="interest.icon"></ion-icon>
       <ion-label>{{ interest.description }}</ion-label>
@@ -63,7 +63,7 @@
   </div>
 
   <div class="ion-padding">
-    <h1 class="posts-title">Posts</h1>
+    <h3 class="posts-title">Posts</h3>
     <!-- <ion-slides [options]="slideOpts">
       <ion-slide *ngFor="let post of user.posts">
         <ion-card>
@@ -98,7 +98,7 @@
   </div>
 
   <div class="ion-padding">
-    <h1 class="posts-title">Recipes</h1>
+    <h3 class="posts-title">Recipes</h3>
     <!-- <ion-slides [options]="slideOpts">
       <ion-slide *ngFor="let recipe of user.recipes">
         <ion-card>

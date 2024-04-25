@@ -1,10 +1,24 @@
+ion-searchbar.custom-searchbar {
+    margin: 15px 10px;
+    width: 93%;
+}
+
 .user-name {
-    font-size: 1em;
     padding-left: 10px;
 }
 
 ion-button {
     --padding-start: 0;
     --padding-end: 0;
-     width: 100%;
+    width: 100%;
+}
+
+ion-button.add-user-button {
+    width: 30vw;
+    height: 4vh;
+
+    ion-icon {
+        font-size: 18px;
+        padding-right: 5px;
+    }
 }

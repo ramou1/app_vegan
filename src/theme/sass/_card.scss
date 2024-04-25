@@ -3,5 +3,10 @@ ion-card {
     margin-top: 0;
     min-height: 8vh;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0 0 25px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 0 25px;
+
+    ion-footer {
+        box-shadow: none !important;
+    }
 }
+

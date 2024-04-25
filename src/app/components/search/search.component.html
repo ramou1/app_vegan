@@ -6,8 +6,8 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="filtrar(pesquisa)" placeholder="Search" color="primary"
-      debounce="500" animated></ion-searchbar>
+    <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="filtrar(pesquisa)" placeholder="search" class="custom-searchbar"
+      color="medium" animated></ion-searchbar>
 
   </ion-toolbar>
 </ion-header>
@@ -15,26 +15,31 @@
 <ion-content>
 
   <ion-list *ngIf="!searching && recentSearch.length > 0">
-    <ion-list-header>Recent Search</ion-list-header>
+    <ion-list-header>recent search</ion-list-header>
     <ion-item *ngFor="let user of recentSearch; let i = index" (click)="openProfile(user)">
       <ion-avatar item-start>
         <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
       </ion-avatar>
-      <h2 class="user-name">{{ user.first_name }}</h2>
+      <h3 class="user-name">{{ user.first_name }}</h3>
 
       <ion-icon name="close-outline" size="small" slot="end" (click)="deleteRecent(user, i)"></ion-icon>
 
     </ion-item>
   </ion-list>
 
-
-
   <ion-list *ngIf="searching">
     <ion-item *ngFor="let user of listaFiltrada" (click)="openProfile(user)">
       <ion-avatar item-start>
         <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
       </ion-avatar>
-      <h2 class="user-name">{{ user.first_name }}</h2>
+      <h3 class="user-name">{{ user.first_name }}</h3>
+
+      <ion-buttons slot="end">
+        <ion-button shape="round" color="primary" class="add-user-button" fill="outline" (click)="addUser(user)">
+          <ion-icon slot="icon-only" name="person-add"></ion-icon>
+          adicionar
+        </ion-button>
+      </ion-buttons>
     </ion-item>
   </ion-list>
 

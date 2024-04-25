@@ -42,10 +42,9 @@
     </ion-card-header>
 
     <ion-card-content>
-      <img src="../assets/images/{{post.image}}" *ngIf="post.image">
       <p [innerHTML]="post.text">
-        {{ post.text? excerptText(post.text) : '' }}...
-      </p>
+        {{ post.text? excerptText(post.text) : '' }}...</p>
+      <img src="../assets/images/{{post.image}}" *ngIf="post.image">
     </ion-card-content>
 
     <ion-footer>

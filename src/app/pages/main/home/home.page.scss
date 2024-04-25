@@ -6,13 +6,15 @@ ion-card-header {
 
     .second-column {
         .card-title {
-            // font-size: 1.1em;
             margin: auto;
+            color: var(--ion-color-dark);
+            font-weight: 700;
+            font-size: 1.1em !important;
         }
-    
-        // .card-subtitle {
-        //     font-size: 0.8em;
-        // }
+
+        .card-subtitle {
+            line-height: 15px;
+        }
     }
 }
 

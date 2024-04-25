@@ -8,7 +8,7 @@ import { USERS, RECENT_SEARCH } from 'src/app/constants/mock.const';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent  implements OnInit {
+export class SearchComponent implements OnInit {
 
   pesquisa: any;
   searching: boolean = false;
@@ -49,7 +49,12 @@ export class SearchComponent  implements OnInit {
   public deleteRecent(user: any, i: any): void {
     //TODO DELETE RECENT
     console.log("delete recent search: ", user);
-    this.recentSearch.splice(i,1);    
+    this.recentSearch.splice(i, 1);
+  }
+
+  public addUser(user: any): void {
+    //TODO ADD USER
+    console.log("add user: ", user);
   }
 
 }

@@ -23,6 +23,11 @@ ion-col {
 //     }
 // }
 
+
+ion-searchbar.custom-searchbar {
+    margin-bottom: 3vh;
+}
+
 ion-card {
     div.event-buttons-container {
         position: absolute;
@@ -32,7 +37,7 @@ ion-card {
             margin: 0;
         }
 
-        ion-button + ion-button {
+        ion-button+ion-button {
             margin: 10px;
         }
     }

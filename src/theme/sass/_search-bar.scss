@@ -1,8 +1,7 @@
-.custom-searchbar {
+ion-searchbar.custom-searchbar {
     // border: 2px solid var(--ion-color-medium);
-    border-radius: 10px;
+    border-radius: 12px !important;
     --box-shadow: none;
-    margin-bottom: 3vh;
     background-color: var(--ion-color-medium);
 
     .searchbar-search-icon.sc-ion-searchbar-md {
@@ -11,7 +10,7 @@
 
     .searchbar-input.sc-ion-searchbar-md {
         font-weight: 600;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 20px;
         padding-inline-start: 45px;
         background: none;

@@ -46,15 +46,13 @@ ion-slides {
     }
 }
 
-h1.user-name {
+h3.user-name {
     text-align: center;
-    font-size: 16px;
     font-weight: 600;
 }
 
-h3.user-description {
+h5.user-description {
     text-align: center;
-    font-size: 11px;
     margin: 0;
     color: var(--ion-color-secondary);
 }
