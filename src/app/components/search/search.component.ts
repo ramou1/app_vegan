@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { USERS, RECENT_SEARCH } from 'src/app/constants/mock.const';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-search',
@@ -41,9 +42,17 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  public openProfile(user: any): void {
+  async openUserProfile(user: any): Promise<void> {
     //TODO OPEN USER PROFILE
     // this.router.navigate[(APP_ROUTES.MAIN, APP_ROUTES.PROFILE)];
+    console.log(user);
+
+    const modal = await this.modalCtrl.create({
+      component: UserProfileComponent,
+      cssClass: 'rating-modal',
+    });
+
+    return await modal.present();
   }
 
   public deleteRecent(user: any, i: any): void {

@@ -31,7 +31,7 @@
         </ion-col>
 
         <ion-col size="9" class="second-column">
-          <h4 class="card-title">{{post.creator ? post.creator : ''}}</h4>
+          <h4 class="card-title" (click)="openUserProfile(post.creator)">{{post.creator ? post.creator : ''}}</h4>
           <h5 class="card-subtitle">{{post.registerDate ? post.registerDate : '--/--/----'}}</h5>
         </ion-col>
 

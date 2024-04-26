@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController) { }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
   public excerptText(text: string): string {
@@ -28,8 +28,8 @@ export class HomePage implements OnInit {
   }
 
   public likePost(post: any): void {
-    post.liked = !post.liked;  
-    post.liked ? post.likes.length++ : post.likes.length--;  
+    post.liked = !post.liked;
+    post.liked ? post.likes.length++ : post.likes.length--;
   }
 
   public getContent() {
@@ -74,7 +74,7 @@ export class HomePage implements OnInit {
     });
     await actionSheet.present();
   }
-  
+
   async reportPost(post: any): Promise<void> {
     const modal = await this.modalCtrl.create({
       component: ReportComponent,
@@ -102,6 +102,18 @@ export class HomePage implements OnInit {
 
   // TODO: teste da tela de rating, apagar depois
   async openRating(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: RatingComponent,
+      cssClass: 'rating-modal',
+    });
+
+    return await modal.present();
+  }
+
+  async openUserProfile(user: any): Promise<void> {
+    console.log(user);
+    // this.router.navigate(['/profile', user_id]);
+
     const modal = await this.modalCtrl.create({
       component: RatingComponent,
       cssClass: 'rating-modal',

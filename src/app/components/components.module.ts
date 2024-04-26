@@ -8,6 +8,7 @@ import { CardLayoutComponent } from './card-layout/card-layout.component';
 import { RouterModule } from '@angular/router';
 import { RatingComponent } from './rating/rating.component';
 import { ReportComponent } from './report/report.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReportComponent } from './report/report.component';
     CommentsComponent,
     RatingComponent,
     ReportComponent,
-    SearchComponent
+    SearchComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { ReportComponent } from './report/report.component';
     CommentsComponent,
     RatingComponent,
     ReportComponent,
-    SearchComponent
+    SearchComponent,
+    UserProfileComponent,
   ]
 })
 export class ComponentsModule { }

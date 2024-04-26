@@ -16,7 +16,7 @@
 
   <ion-list *ngIf="!searching && recentSearch.length > 0">
     <ion-list-header>recent search</ion-list-header>
-    <ion-item *ngFor="let user of recentSearch; let i = index" (click)="openProfile(user)">
+    <ion-item *ngFor="let user of recentSearch; let i = index" (click)="openUserProfile(user)">
       <ion-avatar item-start>
         <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
       </ion-avatar>
@@ -28,7 +28,7 @@
   </ion-list>
 
   <ion-list *ngIf="searching">
-    <ion-item *ngFor="let user of listaFiltrada" (click)="openProfile(user)">
+    <ion-item *ngFor="let user of listaFiltrada" (click)="openUserProfile(user)">
       <ion-avatar item-start>
         <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
       </ion-avatar>
