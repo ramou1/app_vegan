@@ -17,7 +17,7 @@ ion-header {
         color: var(--ion-color-dark);
     }
 
-    ion-buttons + ion-title {
+    ion-buttons+ion-title {
         padding-left: 0;
     }
 }
@@ -39,9 +39,12 @@ ion-label {
 
 .comments-modal {
     --height: 90%;
+    --border-radius: 15px;
     // align-items: end;
 }
 
 .report-modal {
-    --height: 50%;
+    --height: 80%;
+    --width: 90%;
+    --border-radius: 15px;
 }

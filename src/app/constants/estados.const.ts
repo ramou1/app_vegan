@@ -26,5 +26,4 @@ export const ESTADOS = [
     {"EST_NOME": "São Paulo", "EST_SIGLA": "SP"},
     {"EST_NOME": "Sergipe", "EST_SIGLA": "SE"},
     {"EST_NOME": "Tocantins", "EST_SIGLA": "TO"}
-
 ]
