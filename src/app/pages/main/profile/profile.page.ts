@@ -4,6 +4,7 @@ import { ActionSheetController, ModalController } from '@ionic/angular';
 import { USER } from 'src/app/constants/mock.const';
 import { ToastService } from 'src/app/services/toast.service';
 import { ProfileEditPage } from './profile-edit/profile-edit.page';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,7 @@ export class ProfilePage implements OnInit {
     slidesPerView: 1.5,
   };
 
-  constructor(private router: Router, private modalCtrl: ModalController, private toast: ToastService, private actionSheetCtrl: ActionSheetController) { }
+  constructor(private router: Router, private modalCtrl: ModalController, private toast: ToastService, private actionSheetCtrl: ActionSheetController, private sanitizer: DomSanitizer) { }
 
   async ngOnInit() {
     await this.getUserData();
@@ -58,6 +59,9 @@ export class ProfilePage implements OnInit {
         },
         {
           text: 'view ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
+          // handler: () => {
+          //   this.openImage(type);
+          // }
           // data: {
           //   action: 'share',
           // },
@@ -73,6 +77,13 @@ export class ProfilePage implements OnInit {
     });
     await actionSheet.present();
   }
+
+  // openImage(imageUrl: string) {
+  //   imageUrl = 'https://www.w3schools.com/w3css/img_lights.jpg';
+  //   // imageUrl = '../assets/images/' +
+  //   //   this.user.image ? this.user.image : 'default-user.png';
+  //   window.open(imageUrl, '_blank');
+  // }
 
   public changeProfilePicture(): void {
     //TODO

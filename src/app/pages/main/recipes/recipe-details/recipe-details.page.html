@@ -18,8 +18,33 @@
 
   <div class="ion-padding">
 
+    <ion-row class="recipe-info">
+      <ion-col>
+        <ion-icon name="time-outline"></ion-icon>
+        <span>{{recipe.cookTime}}</span>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="bar-chart-outline"></ion-icon>
+        <span>{{recipe.calories}}</span>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="people-outline"></ion-icon>
+        <span>{{recipe.servings}}</span>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-item>
+      <p class="recipe-instructions"> {{ recipe.instructions }} </p>
+    </ion-item> -->
+
     <ion-item>
-      <p class="recipe-description"> {{ recipe.text }} </p>
+      <h3>instruções</h3>
+      <p class="recipe-instructions">{{ recipe.instructions }}</p>
+    </ion-item>
+
+    <ion-item>
+      <h3>ingredientes</h3>
+      <p class="recipe-instructions">{{ recipe.ingredients }}</p>
     </ion-item>
 
   </div>
