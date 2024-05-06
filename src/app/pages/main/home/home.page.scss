@@ -4,6 +4,12 @@ ion-card-header {
         // display: flex;
     }
 
+    ion-avatar {
+        height: 48px;
+        width: 48px;
+        margin-right: 8px;
+    }
+
     .second-column {
         .card-title {
             margin: auto;
@@ -30,12 +36,6 @@ ion-footer {
     ion-label {
         font-size: 14px !important;
     }
-}
-
-ion-avatar {
-    height: 48px;
-    width: 48px;
-    margin-right: 8px;
 }
 
 ion-button {

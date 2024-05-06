@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { RatingComponent } from './rating/rating.component';
 import { ReportComponent } from './report/report.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RatingComponent,
     ReportComponent,
     SearchComponent,
+    SkeletonComponent,
     UserProfileComponent,
   ],
   imports: [
@@ -32,6 +34,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RatingComponent,
     ReportComponent,
     SearchComponent,
+    SkeletonComponent,
     UserProfileComponent,
   ]
 })

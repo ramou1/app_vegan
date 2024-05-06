@@ -1,0 +1,29 @@
+<ion-card *ngIf="data === 'home'">
+  <ion-card-header>
+    <ion-row>
+      <ion-col size="2">
+        <ion-avatar>
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-avatar>
+      </ion-col>
+
+      <ion-col>
+        <h4><ion-skeleton-text [animated]="true" style="width: 100px"></ion-skeleton-text></h4>
+        <h5><ion-skeleton-text [animated]="true" style="width: 75px"></ion-skeleton-text></h5>
+      </ion-col>
+
+    </ion-row>
+  </ion-card-header>
+
+  <ion-card-content>
+    <h4><ion-skeleton-text [animated]="true"></ion-skeleton-text></h4>
+    <h4><ion-skeleton-text [animated]="true"></ion-skeleton-text></h4>
+    <h4><ion-skeleton-text [animated]="true" style="width: 100px;"></ion-skeleton-text></h4>
+    <ion-skeleton-text [animated]="true" style="width: 100%; height: 200px;"></ion-skeleton-text>
+  </ion-card-content>
+
+  <ion-footer class="ion-padding">
+    <ion-skeleton-text [animated]="true" style="width: 40px"></ion-skeleton-text>
+    <ion-skeleton-text [animated]="true" style="width: 40px"></ion-skeleton-text>
+  </ion-footer>
+</ion-card>
