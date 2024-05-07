@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,8 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent  implements OnInit {
 
-  constructor() { }
+  @Input() user: any;
 
-  ngOnInit() {}
+  constructor(private modalCtrl: ModalController) { }
+
+  ngOnInit() {
+    console.log(this.user);
+  }
+
+  public openShare(): void {
+    //TODO SHARE
+    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+  }
+
+  public addUser(user: any): void {
+    //TODO ADD USER
+    console.log("add user: ", user);
+  }
+
+  public goBack(): void {
+    this.modalCtrl.dismiss();
+  }
 
 }

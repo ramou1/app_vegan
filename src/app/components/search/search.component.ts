@@ -49,7 +49,11 @@ export class SearchComponent implements OnInit {
 
     const modal = await this.modalCtrl.create({
       component: UserProfileComponent,
-      cssClass: 'rating-modal',
+      cssClass: 'user-profile-modal',
+      componentProps: {
+        // finalize: false,
+        user: user
+      }
     });
 
     return await modal.present();

@@ -7,28 +7,6 @@ ion-toolbar.edit-bg-toolbar {
     background-color: var(--ion-color-primary);
 }
 
-ion-slides {
-    max-height: 90%;
-}
-
-.card-subtitle {
-    font-size: 0.7em;
-    margin: auto;
-}
-
-.posts-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-    margin-bottom: 8px;
-}
-
-.recipes-title {
-    margin: 10px;
-    font-size: 12px;
-    font-weight: 500;
-}
-
 .profile-picture {
     width: 34%;
     height: auto;
@@ -55,6 +33,28 @@ h5.user-description {
     text-align: center;
     margin: 0;
     color: var(--ion-color-secondary);
+}
+
+ion-slides {
+    max-height: 90%;
+}
+
+.card-subtitle {
+    font-size: 0.7em;
+    margin: auto;
+}
+
+.posts-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.recipes-title {
+    margin: 10px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .post-text {

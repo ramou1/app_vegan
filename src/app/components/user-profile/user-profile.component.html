@@ -1,3 +1,62 @@
-<p>
-  user-profile works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div class="profile-background">
+
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="openShare()">
+          <ion-icon slot="icon-only" name="share-social-outline" color="light"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <div class="profile-picture">
+    <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
+  </div>
+
+  <h3 class="user-name"> {{ user?.first_name }} {{ user?.last_name }} </h3>
+  <h5 class="user-description"> {{ user?.description }} </h5>
+
+  <div class="info-container">
+    <div>
+      <h3 class="info-data"> {{ user?.friends ? user.friends.length : '0' }} </h3>
+      <p class="info-title"> Friends </p>
+    </div>
+
+    <div>
+      <h3 class="info-data"> {{ user?.trophies ? user.trophies.length : '0' }} </h3>
+      <p class="info-title"> Trophies </p>
+    </div>
+
+    <div>
+      <h3 class="info-data"> {{ user?.posts ? user.posts.length : '0' }} </h3>
+      <p class="info-title"> Posts </p>
+    </div>
+  </div>
+
+  <ion-button shape="round" color="primary" class="add-user-button" fill="outline" (click)="addUser(user)">
+    <ion-icon slot="icon-only" name="person-add"></ion-icon>
+    adicionar amigo
+  </ion-button>
+
+  <div class="ion-padding">
+    <h3 class="posts-title">Interests</h3>
+    <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
+      <ion-icon [name]="interest.icon"></ion-icon>
+      <ion-label>{{ interest.description }}</ion-label>
+    </ion-chip>
+  </div>
+</ion-content>

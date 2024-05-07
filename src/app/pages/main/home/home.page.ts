@@ -5,6 +5,7 @@ import { CommentsComponent } from 'src/app/components/comments/comments.componen
 import { RatingComponent } from 'src/app/components/rating/rating.component';
 import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
+import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
 import { POSTS } from 'src/app/constants/mock.const';
 
 @Component({
@@ -110,13 +111,17 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  async openUserProfile(user: any): Promise<void> {
-    console.log(user);
+  async openUserProfile(user_id: any): Promise<void> {
+    console.log("user_id", user_id);
     // this.router.navigate(['/profile', user_id]);
 
     const modal = await this.modalCtrl.create({
-      component: RatingComponent,
-      cssClass: 'rating-modal',
+      component: UserProfileComponent,
+      cssClass: 'user-profile-modal',
+      componentProps: {
+        // finalize: false,
+        user: { id: user_id }
+      }
     });
 
     return await modal.present();
