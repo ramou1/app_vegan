@@ -43,8 +43,16 @@ ion-label {
     // align-items: end;
 }
 
-.report-modal {
+.report-posts-modal {
     --height: 80%;
     --width: 90%;
     --border-radius: 15px;
+}
+
+.report-problems-modal {
+    --height: 45%;
+    --width: 90%;
+    --border-radius: 15px;
+    --backdrop-opacity: 0.5 !important; //fundo meio transparente
+    overflow: hidden;
 }

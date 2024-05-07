@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ActionSheetController, IonSearchbar, ModalController } from '@ionic/angular';
 import { EVENTS } from 'src/app/constants/mock.const';
 import { EventDetailsPage } from './event-details/event-details.page';
-import { ReportComponent } from 'src/app/components/report/report.component';
+import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
 
 @Component({
   selector: 'app-events',
@@ -106,8 +106,8 @@ export class EventsPage implements OnInit {
 
   async reportEvent(event: any): Promise<void> {
     const modal = await this.modalCtrl.create({
-      component: ReportComponent,
-      cssClass: 'report-modal',
+      component: ReportPostsComponent,
+      cssClass: 'report-posts-modal',
       componentProps: {
         post_id: event.id
       }

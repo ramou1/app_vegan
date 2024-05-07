@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>relatar um problema</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="reportGroup">
+    <ion-item lines="none">
+      <ion-label position="floating">What problem are you going through?</ion-label>
+      <ion-select placeholder="Selecione" interface="popover" formControlName="type">
+        <ion-select-option value="bug">Bug</ion-select-option>
+        <ion-select-option value="performance-issue">Performance Issue</ion-select-option>
+        <ion-select-option value="feature-request">Feature Request</ion-select-option>
+        <ion-select-option value="user-interface">User Interface Issue</ion-select-option>
+        <ion-select-option value="account-related">Account Related</ion-select-option>
+        <ion-select-option value="payment-issues">Payment Issues</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description" placeholder="Describe the problem" type="text" rows="5"></ion-textarea>
+    </ion-item>
+  </form>
+
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" color="primary" type="submit" (click)="sendReport()">send
+    report</ion-button>
+</ion-footer>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
 import { RatingComponent } from 'src/app/components/rating/rating.component';
-import { ReportComponent } from 'src/app/components/report/report.component';
+import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { POSTS } from 'src/app/constants/mock.const';
 
@@ -77,8 +77,8 @@ export class HomePage implements OnInit {
 
   async reportPost(post: any): Promise<void> {
     const modal = await this.modalCtrl.create({
-      component: ReportComponent,
-      cssClass: 'report-modal',
+      component: ReportPostsComponent,
+      cssClass: 'report-posts-modal',
       componentProps: {
         post_id: post.id
       }

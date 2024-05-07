@@ -79,13 +79,18 @@
         </ion-select>
       </ion-item>
 
+      <p class="report-problems" (click)="reportProblems()">
+        <ion-icon slot="start" name="alert-circle"></ion-icon>
+        Report Problems
+      </p>
+
       <div class="interests">
         <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
           <ion-icon [name]="interest.icon"></ion-icon>
           <ion-label>{{ interest.description }}</ion-label>
           <ion-icon name="close-circle" (click)="deleteInterest(interest)"></ion-icon>
         </ion-chip>
-  
+
         <ion-chip color="tertiary" (click)="openInterests()">
           <ion-icon *ngIf="user.interests" name="create"></ion-icon>
           <ion-label *ngIf="user.interests">Edit interests</ion-label>

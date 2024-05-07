@@ -3,12 +3,12 @@ import { ModalController } from '@ionic/angular';
 import { REPORTS } from 'src/app/constants/reports.const';
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.scss'],
+  selector: 'app-report-posts',
+  templateUrl: './report-posts.component.html',
+  styleUrls: ['./report-posts.component.scss'],
 })
-export class ReportComponent implements OnInit {
-
+export class ReportPostsComponent  implements OnInit {
+  
   public reports = REPORTS;
 
   constructor(private modalCtrl: ModalController) { }

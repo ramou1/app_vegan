@@ -7,16 +7,18 @@ import { SearchComponent } from './search/search.component';
 import { CardLayoutComponent } from './card-layout/card-layout.component';
 import { RouterModule } from '@angular/router';
 import { RatingComponent } from './rating/rating.component';
-import { ReportComponent } from './report/report.component';
+import { ReportPostsComponent } from './report-posts/report-posts.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
+import { ReportProblemsComponent } from './report-problems/report-problems.component';
 
 @NgModule({
   declarations: [
     CardLayoutComponent,
     CommentsComponent,
     RatingComponent,
-    ReportComponent,
+    ReportPostsComponent,
+    ReportProblemsComponent,
     SearchComponent,
     SkeletonComponent,
     UserProfileComponent,
@@ -32,7 +34,8 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
     CardLayoutComponent,
     CommentsComponent,
     RatingComponent,
-    ReportComponent,
+    ReportPostsComponent,
+    ReportProblemsComponent,
     SearchComponent,
     SkeletonComponent,
     UserProfileComponent,

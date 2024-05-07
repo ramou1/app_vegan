@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController, NavController } from '@ionic/angular';
+import { ReportProblemsComponent } from 'src/app/components/report-problems/report-problems.component';
 import { ESTADOS } from 'src/app/constants/estados.const';
 import { USER } from 'src/app/constants/mock.const';
 import { APP_ROUTES } from 'src/app/constants/routes.const';
@@ -60,6 +61,18 @@ export class ProfileEditPage implements OnInit {
     // });
 
     // return await modal.present();
+  }
+
+  async reportProblems(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: ReportProblemsComponent,
+      cssClass: 'report-problems-modal',
+      componentProps: {
+        // post_id: event.id
+      }
+    });
+
+    return await modal.present();
   }
 
   public deleteInterest(interest: any): void {

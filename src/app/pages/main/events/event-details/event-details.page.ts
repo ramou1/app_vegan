@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
-import { ReportComponent } from 'src/app/components/report/report.component';
+import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
 
 @Component({
   selector: 'app-event-details',
@@ -72,8 +72,8 @@ export class EventDetailsPage implements OnInit {
 
   async reportEvent(event: any): Promise<void> {
     const modal = await this.modalCtrl.create({
-      component: ReportComponent,
-      cssClass: 'report-modal',
+      component: ReportPostsComponent,
+      cssClass: 'report-posts-modal',
       componentProps: {
         post_id: event.id
       }

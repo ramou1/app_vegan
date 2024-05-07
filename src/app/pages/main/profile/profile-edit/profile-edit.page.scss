@@ -11,6 +11,19 @@ form {
     margin-bottom: 40px;
 }
 
+.report-problems {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 20px 5px;
+    display: flex;
+    color: var(--ion-color-danger);
+
+    ion-icon {
+        margin-right: 5px;
+        font-size: 14px;
+    }
+}
+
 .delete-account {
     text-align: center;
     font-size: 12px;
