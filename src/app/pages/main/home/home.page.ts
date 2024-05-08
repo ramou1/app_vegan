@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
+import { NotificationsComponent } from 'src/app/components/notifications/notifications.component';
 import { RatingComponent } from 'src/app/components/rating/rating.component';
 import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
@@ -35,6 +36,16 @@ export class HomePage implements OnInit {
 
   public getContent() {
     return document.querySelector('ion-content');
+  }
+
+  async openNotifications(): Promise<void> {
+    // this.router.navigate(['/notifications']);
+    const modal = await this.modalCtrl.create({
+      component: NotificationsComponent,
+      cssClass: 'notifications-modal',
+    });
+
+    return await modal.present();
   }
 
   async openSearch(): Promise<void> {
