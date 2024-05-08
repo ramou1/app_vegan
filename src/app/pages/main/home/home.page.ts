@@ -115,6 +115,11 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
+  async repostPost(post: any): Promise<void> {
+    // TODO REPOST POST
+    console.log("repost", post);
+  }
+
   // TODO: teste da tela de rating, apagar depois
   async openRating(): Promise<void> {
     const modal = await this.modalCtrl.create({

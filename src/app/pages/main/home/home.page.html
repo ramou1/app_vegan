@@ -63,6 +63,11 @@
         <ion-icon name="chatbox-ellipses-outline"></ion-icon>
         <ion-label>{{post.comments? post.comments.length : '0'}}</ion-label>
       </ion-button>
+
+      <ion-button fill="clear" (click)="repostPost(post)">
+        <ion-icon name="repeat-outline"></ion-icon>
+      </ion-button>
+
     </ion-footer>
 
   </ion-card>
