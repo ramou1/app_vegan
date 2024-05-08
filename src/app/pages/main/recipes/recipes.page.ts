@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { IonSearchbar, ModalController } from '@ionic/angular';
 import { RECIPES } from 'src/app/constants/mock.const';
 import { RecipeDetailsPage } from './recipe-details/recipe-details.page';
+import { NewRecipePage } from './new-recipe/new-recipe.page';
 
 @Component({
   selector: 'app-recipes',
@@ -10,15 +11,15 @@ import { RecipeDetailsPage } from './recipe-details/recipe-details.page';
   styleUrls: ['./recipes.page.scss'],
 })
 export class RecipesPage implements OnInit {
-  
+
   @ViewChild('recipesSearchbar') searchbar: IonSearchbar;
   public recipes = RECIPES;
   public filteredRecipes: any = [];
 
   constructor(private router: Router, private modalCtrl: ModalController) { }
 
-  ngOnInit() {  
-    console.log(this.recipes); 
+  ngOnInit() {
+    console.log(this.recipes);
     this.filteredRecipes = this.recipes;
   }
 
@@ -50,6 +51,15 @@ export class RecipesPage implements OnInit {
 
   public favoriteRecipe(recipe: any): void {
     recipe.favorited = !recipe.favorited;
+  }
+
+  async newRecipe(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: NewRecipePage,
+      cssClass: 'recipe-modal',
+    });
+
+    return await modal.present();
   }
 
 }

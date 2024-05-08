@@ -6,6 +6,12 @@
       </ion-button>
       <ion-title>{{recipe?.title}}</ion-title>
     </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="favoriteRecipe(recipe)">
+        <ion-icon slot="icon-only" name="star-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

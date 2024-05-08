@@ -4,6 +4,7 @@ import { ActionSheetController, IonSearchbar, ModalController } from '@ionic/ang
 import { EVENTS } from 'src/app/constants/mock.const';
 import { EventDetailsPage } from './event-details/event-details.page';
 import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
+import { NewEventPage } from './new-event/new-event.page';
 
 @Component({
   selector: 'app-events',
@@ -111,6 +112,15 @@ export class EventsPage implements OnInit {
       componentProps: {
         post_id: event.id
       }
+    });
+
+    return await modal.present();
+  }
+
+  async newEvent(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: NewEventPage,
+      cssClass: 'event-modal',
     });
 
     return await modal.present();

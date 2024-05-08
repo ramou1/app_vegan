@@ -37,11 +37,14 @@ public getRecipeData(): void {
   }
 }
 
-
 public goBack(): void {
   this.modalCtrl.dismiss().catch((err) => {
     // console.log(err);
   });
+}
+
+public favoriteRecipe(recipe: any): void {
+  recipe.favorited = !recipe.favorited;
 }
 
 }

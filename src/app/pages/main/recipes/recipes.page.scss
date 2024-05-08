@@ -19,28 +19,22 @@ ion-card {
         }
     }
 
+    ion-icon {
+        padding-right: 0;
+        font-size: 14px;
+    }
 }
 
-ion-col {
-    margin: 0 auto;
-    display: flex;
-}
+// .card-title {
+//     padding-left: 10px;
+//     font-size: 1em;
+//     margin: auto 0;
+// }
 
-ion-icon {
-    padding-right: 6px;
-    font-size: 16px;
-}
-
-.card-title {
-    padding-left: 10px;
-    font-size: 1em;
-    margin: auto 0;
-}
-
-.card-subtitle {
-    font-size: 0.7em;
-    margin: auto;
-}
+// .card-subtitle {
+//     font-size: 0.7em;
+//     margin: auto;
+// }
 
 ion-searchbar.custom-searchbar {
     margin-bottom: 3vh;
