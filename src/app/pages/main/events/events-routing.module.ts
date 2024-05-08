@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: APP_ROUTES.EVENT_DETAILS,
     component: EventDetailsPage
+  },
+  {
+    path: 'new-event',
+    loadChildren: () => import('./new-event/new-event.module').then( m => m.NewEventPageModule)
   }
 ];
 

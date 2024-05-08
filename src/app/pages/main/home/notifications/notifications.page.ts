@@ -3,10 +3,10 @@ import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.scss'],
+  templateUrl: './notifications.page.html',
+  styleUrls: ['./notifications.page.scss'],
 })
-export class NotificationsComponent  implements OnInit {
+export class NotificationsPage implements OnInit {
 
   constructor(private modalCtrl: ModalController) { }
 
@@ -15,5 +15,4 @@ export class NotificationsComponent  implements OnInit {
   public goBack(): void {
     this.modalCtrl.dismiss();
   }
-
 }

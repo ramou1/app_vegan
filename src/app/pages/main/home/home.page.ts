@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
-import { NotificationsComponent } from 'src/app/components/notifications/notifications.component';
 import { RatingComponent } from 'src/app/components/rating/rating.component';
 import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
 import { POSTS } from 'src/app/constants/mock.const';
+import { NotificationsPage } from './notifications/notifications.page';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +41,7 @@ export class HomePage implements OnInit {
   async openNotifications(): Promise<void> {
     // this.router.navigate(['/notifications']);
     const modal = await this.modalCtrl.create({
-      component: NotificationsComponent,
+      component: NotificationsPage,
       cssClass: 'notifications-modal',
     });
 
@@ -74,6 +74,9 @@ export class HomePage implements OnInit {
           data: {
             action: 'share',
           },
+        },
+        {
+          text: 'unfollow',
         },
         // {
         //   text: 'cancelar',
