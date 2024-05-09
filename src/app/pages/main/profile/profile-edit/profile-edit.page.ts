@@ -34,7 +34,8 @@ export class ProfileEditPage implements OnInit {
   createForm() {
     this.formGroup = this.fb.group({
       name: [null, Validators.required],
-      description: [null, Validators.required],
+      username: [null, Validators.required],
+      // description: [null, Validators.required],
       birth: [null, [Validators.required]],
       email: [null, Validators.required],
       phoneNumber: [null, [Validators.required, Validators.minLength(15)]],

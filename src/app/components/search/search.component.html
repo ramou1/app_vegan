@@ -6,8 +6,8 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="filtrar(pesquisa)" placeholder="search" class="custom-searchbar"
-      color="medium" animated></ion-searchbar>
+    <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="filtrar(pesquisa)" placeholder="search name or username"
+      class="custom-searchbar" color="medium" animated></ion-searchbar>
 
   </ion-toolbar>
 </ion-header>
@@ -20,7 +20,11 @@
       <ion-avatar item-start>
         <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
       </ion-avatar>
-      <h3 class="user-name">{{ user.first_name }}</h3>
+
+      <div class="user-info">
+        <h3 class="user-name">{{ user.first_name }}</h3>
+        <p class="user-username">{{ user.username }}</p>
+      </div>
 
       <ion-icon name="close-outline" size="small" slot="end" (click)="deleteRecent(user, i)"></ion-icon>
 
@@ -32,7 +36,11 @@
       <ion-avatar item-start>
         <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
       </ion-avatar>
-      <h3 class="user-name">{{ user.first_name }}</h3>
+
+      <div class="user-info">
+        <h3 class="user-name">{{ user.first_name }}</h3>
+        <p class="user-username">{{ user.username }}</p>
+      </div>
 
       <ion-buttons slot="end">
         <ion-button shape="round" color="primary" class="follow-user-button" fill="outline" (click)="addUser(user)">

@@ -16,7 +16,8 @@
 
     <ion-toolbar class="edit-bg-toolbar">
       <ion-buttons slot="end">
-        <ion-button shape="round" size="small" fill="solid" color="secondary" class="edit-image-button" (click)="changeImageActions('background')">
+        <ion-button shape="round" size="small" fill="solid" color="secondary" class="edit-image-button"
+          (click)="changeImageActions('background')">
           <ion-icon slot="icon-only" md="camera" color="primary"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -27,14 +28,15 @@
   <div class="profile-picture">
     <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
 
-    <ion-button shape="round" size="small" fill="solid" color="secondary" class="edit-image-button" (click)="changeImageActions('profile')">
+    <ion-button shape="round" size="small" fill="solid" color="secondary" class="edit-image-button"
+      (click)="changeImageActions('profile')">
       <ion-icon slot="icon-only" md="camera" color="primary"></ion-icon>
     </ion-button>
   </div>
 
   <!-- header="Ação" -->
 
-  <h3 class="user-name"> {{ user?.name }} </h3>
+  <h3 class="user-name"> {{ user?.first_name }} </h3>
   <h5 class="user-username"> {{ user?.username }} </h5>
   <!-- <h5 class="user-description"> {{ user?.description }} </h5> -->
 

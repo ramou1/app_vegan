@@ -24,9 +24,14 @@
       </ion-item>
 
       <ion-item lines="none">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input [disabled]="loading" formControlName="username" placeholder="Write here" type="text"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item lines="none">
         <ion-label position="floating">Description</ion-label>
         <ion-input [disabled]="loading" formControlName="description" placeholder="Write here" type="text"></ion-input>
-      </ion-item>
+      </ion-item> -->
 
       <ion-item lines="none">
         <ion-label position="floating">Birth Date</ion-label>
