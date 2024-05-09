@@ -29,11 +29,17 @@ h3.user-name {
     margin-bottom: 0;
 }
 
-h5.user-description {
+h5.user-username {
     text-align: center;
     margin: 0;
     color: var(--ion-color-secondary);
 }
+
+// h5.user-description {
+//     text-align: center;
+//     margin: 0;
+//     color: var(--ion-color-secondary);
+// }
 
 ion-slides {
     max-height: 90%;

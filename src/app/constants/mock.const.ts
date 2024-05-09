@@ -222,6 +222,7 @@ export const EVENTS = [
 
 export const USER = {
     first_name: 'Fulano Silva',
+    username: 'fulano.silva',
     description: 'i am a programmer',
     birth: '19/07/2000',
     email: 'teste@gmail.com',
@@ -318,21 +319,21 @@ export const USER = {
 }
 
 export const USERS = [
-    { id: 1, first_name: "Gary", last_name: "Ortiz", identify: "vegan", image: "adam.jpg", email: "gortiz0@mapy.cz", country: "Indonesia", modified: "2015-05-16", birth_date: "1997-05-16" },
-    { id: 2, first_name: "Albert", last_name: "Williamson", identify: "interested", image: "", email: "awilliamson1@narod.ru", country: "China", modified: "2015-03-11", birth_date: "1997-03-11" },
-    { id: 3, first_name: "Mildred Maria", last_name: "Fuller", identify: "vegan", image: "", email: "mfuller2@npr.org", country: "Peru", modified: "2015-02-15", birth_date: "1997-02-15" },
-    { id: 4, first_name: "Russell", last_name: "Robinson", identify: "vegetarian", image: "perry.png", email: "rrobinson3@google.pl", country: "Belarus", modified: "2014-10-31", birth_date: "1997-10-31" },
-    { id: 5, first_name: "Laura Sara", last_name: "Harper", identify: "vegan", image: "ben.png", email: "lharper4@boston.com", country: "Philippines", modified: "2015-01-14", birth_date: "1997-01-14" },
-    { id: 6, first_name: "Larry", last_name: "Sanders", identify: "vegan", image: "max.png", email: "lsanders5@cornell.edu", country: "China", modified: "2015-01-11", birth_date: "1997-01-11" },
-    { id: 7, first_name: "Michael", last_name: "Rice", identify: "vegan", image: "", email: "mrice6@geocities.jp", country: "Philippines", modified: "2014-12-06", birth_date: "1997-12-06" },
-    { id: 8, first_name: "Sara", "last_name": "Harris", identify: "vegetarian", image: "", email: "sharris7@deliciousdays.com", country: "Indonesia", modified: "2014-11-05", birth_date: "1997-11-05" },
-    { id: 9, first_name: "Phyllis", last_name: "Webb", identify: "vegetarian", image: "", email: "pwebb8@reddit.com", country: "China", modified: "2015-04-02", birth_date: "1997-04-02" },
-    { id: 10, first_name: "Roger", last_name: "Alvarez", identify: "vegan", image: "mike.png", email: "ralvarez9@nsw.gov.au", country: "Finland", modified: "2015-03-21", birth_date: "1997-03-21" },
-    { id: 11, first_name: "Maria", last_name: "Carpenter", identify: "interested", image: "", email: "mcarpentera@so-net.ne.jp", country: "Sweden", modified: "2015-08-18", birth_date: "1997-08-18" },
+    { id: 1, first_name: "Gary", last_name: "Ortiz", username: 'gary.ortiz', identify: "vegan", image: "adam.jpg", email: "gortiz0@mapy.cz", country: "Indonesia", modified: "2015-05-16", birth_date: "1997-05-16" },
+    { id: 2, first_name: "Albert", last_name: "Williamson", username: 'albert03', identify: "interested", image: "", email: "awilliamson1@narod.ru", country: "China", modified: "2015-03-11", birth_date: "1997-03-11" },
+    { id: 3, first_name: "Mildred Maria", last_name: "Fuller", username: 'fuller02', identify: "vegan", image: "", email: "mfuller2@npr.org", country: "Peru", modified: "2015-02-15", birth_date: "1997-02-15" },
+    { id: 4, first_name: "Russell", last_name: "Robinson", username: 'russell.robinson', identify: "vegetarian", image: "perry.png", email: "rrobinson3@google.pl", country: "Belarus", modified: "2014-10-31", birth_date: "1997-10-31" },
+    { id: 5, first_name: "Laura Sara", last_name: "Harper", username: 'laura.harper', identify: "vegan", image: "ben.png", email: "lharper4@boston.com", country: "Philippines", modified: "2015-01-14", birth_date: "1997-01-14" },
+    { id: 6, first_name: "Larry", last_name: "Sanders", username: 'larry.sdr', identify: "vegan", image: "max.png", email: "lsanders5@cornell.edu", country: "China", modified: "2015-01-11", birth_date: "1997-01-11" },
+    { id: 7, first_name: "Michael", last_name: "Rice", username: 'm.rice', identify: "vegan", image: "", email: "mrice6@geocities.jp", country: "Philippines", modified: "2014-12-06", birth_date: "1997-12-06" },
+    { id: 8, first_name: "Sara", "last_name": "Harris", username: 'sara_harris', identify: "vegetarian", image: "", email: "sharris7@deliciousdays.com", country: "Indonesia", modified: "2014-11-05", birth_date: "1997-11-05" },
+    { id: 9, first_name: "Phyllis", last_name: "Webb", username: 'phyllis002', identify: "vegetarian", image: "", email: "pwebb8@reddit.com", country: "China", modified: "2015-04-02", birth_date: "1997-04-02" },
+    { id: 10, first_name: "Roger", last_name: "Alvarez", username: 'roger.alv', identify: "vegan", image: "mike.png", email: "ralvarez9@nsw.gov.au", country: "Finland", modified: "2015-03-21", birth_date: "1997-03-21" },
+    { id: 11, first_name: "Maria", last_name: "Carpenter", username: 'maria.carpenter', identify: "interested", image: "", email: "mcarpentera@so-net.ne.jp", country: "Sweden", modified: "2015-08-18", birth_date: "1997-08-18" },
 ];
 
 export const RECENT_SEARCH = [
-    { "id": 5, first_name: "Laura", last_name: "Harper", identify: "vegan", image: "ben.png", email: "lharper4@boston.com", country: "Philippines", modified: "2015-01-14", birth_date: "1997-01-14" },
-    { "id": 6, first_name: "Larry", last_name: "Sanders", identify: "vegan", image: "max.png", email: "lsanders5@cornell.edu", country: "China", modified: "2015-01-11", birth_date: "1997-01-11" },
-    { "id": 11, first_name: "Maria", last_name: "Carpenter", identify: "interested", image: "", email: "mcarpentera@so-net.ne.jp", country: "Sweden", modified: "2015-08-18", birth_date: "1997-08-18" },
+    { "id": 5, first_name: "Laura", last_name: "Harper", username: 'laura.harper', identify: "vegan", image: "ben.png", email: "lharper4@boston.com", country: "Philippines", modified: "2015-01-14", birth_date: "1997-01-14" },
+    { "id": 6, first_name: "Larry", last_name: "Sanders", username: 'larry.sdr', identify: "vegan", image: "max.png", email: "lsanders5@cornell.edu", country: "China", modified: "2015-01-11", birth_date: "1997-01-11" },
+    { "id": 11, first_name: "Maria", last_name: "Carpenter", username: 'maria.carpenter', identify: "interested", image: "", email: "mcarpentera@so-net.ne.jp", country: "Sweden", modified: "2015-08-18", birth_date: "1997-08-18" },
 ]

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,13 +10,43 @@ export class UserProfileComponent  implements OnInit {
 
   @Input() user: any;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {
     console.log(this.user);
   }
 
-  public openShare(): void {
+  async presentProfileActions() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'compartilhar perfil',
+          handler: () => {
+            this.shareProfile();
+          }
+        },
+        {
+          text: 'denunciar perfil',
+        },
+        {
+          text: 'bloquear perfil',
+          data: {
+            // action: 'share',
+          },
+        },
+        // {
+        //   text: 'cancelar',
+        //   role: 'cancel',
+        //   data: {
+        //     action: 'cancel',
+        //   },
+        // },
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  public shareProfile(): void {
     //TODO SHARE
     // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
   }

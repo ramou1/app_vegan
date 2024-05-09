@@ -6,6 +6,12 @@
       </ion-button>
     </ion-buttons>
 
+    <ion-buttons slot="end">
+      <ion-button (click)="presentProfileActions()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -14,13 +20,14 @@
 
   <div class="profile-background">
 
-    <ion-toolbar>
+    <!-- <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button (click)="openShare()">
-          <ion-icon slot="icon-only" name="share-social-outline" color="light"></ion-icon>
+        <ion-button (click)="presentProfileActions()">
+          <ion-icon slot="icon-only" name="ellipsis-vertical" color="light"></ion-icon>
         </ion-button>
       </ion-buttons>
-    </ion-toolbar>
+    </ion-toolbar> -->
+
   </div>
 
   <div class="profile-picture">
@@ -28,7 +35,8 @@
   </div>
 
   <h3 class="user-name"> {{ user?.first_name }} {{ user?.last_name }} </h3>
-  <h5 class="user-description"> {{ user?.description }} </h5>
+  <h5 class="user-username"> {{ user?.username }} </h5>
+  <!-- <h5 class="user-description"> {{ user?.description }} </h5> -->
 
   <div class="info-container">
     <div>
