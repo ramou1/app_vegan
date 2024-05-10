@@ -57,81 +57,97 @@
     </div>
   </div>
 
-  <div class="ion-padding">
+  <ion-segment [(ngModel)]="type">
+    <ion-segment-button value="posts">
+      <ion-label>posts</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="recipes">
+      <ion-label>recipes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ng-container [ngSwitch]="type">
+    <!-- <ion-list *ngSwitchCase="'posts'">
+      <ion-item>
+        <ion-label>
+          Este é o conteúdo dos posts.
+        </ion-label>
+      </ion-item>
+    </ion-list> -->
+
+    <div *ngSwitchCase="'posts'">
+      <ion-card>
+        <!-- <ion-card-content>
+          <img src="../assets/images/{{user.post.image}}" *ngIf="user.post.image">
+          <p class="post-text" [innerHTML]="user.post.text">
+            {{ user.post.text? excerptText(user.post.text) : '' }}... </p>
+        </ion-card-content>
+
+        <ion-row class="cardfooter">
+          <ion-col size="5">
+            <ion-button fill="clear">
+              <ion-icon *ngIf="user.post.liked" name="heart"></ion-icon>
+              <ion-icon *ngIf="!user.post.liked" name="heart-outline"></ion-icon>
+              <ion-label>{{user.post.likes? user.post.likes.length : '0'}}</ion-label>
+            </ion-button>
+          </ion-col>
+          <ion-col size="5" offset="2">
+            <ion-button fill="clear">
+              <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+              <ion-label>{{user.post.comments? user.post.comments.length : '0'}}</ion-label>
+            </ion-button>
+          </ion-col>
+        </ion-row> -->
+      </ion-card>
+    </div>
+
+    <!-- <ion-list *ngSwitchCase="'recipes'">
+      <ion-item>
+        <ion-label>
+          Este é o conteúdo das receitas.
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container> -->
+
+    <div *ngSwitchCase="'recipes'">
+
+      <!-- <ion-card>
+      <ion-card-header class="ion-no-padding">
+        <img src="../assets/images/{{recipe.image}}" *ngIf="recipe.image">
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="recipes-title"> {{ recipe?.title }} </p>
+      </ion-card-content>
+
+      <ion-row class="cardfooter">
+        <ion-col size="5">
+          <ion-button fill="clear">
+            <ion-icon *ngIf="recipe.liked" name="heart"></ion-icon>
+            <ion-icon *ngIf="!recipe.liked" name="heart-outline"></ion-icon>
+            <ion-label>{{recipe.likes? recipe.likes.length : '0'}}</ion-label>
+          </ion-button>
+        </ion-col>
+        <ion-col size="5" offset="2">
+          <ion-button fill="clear">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+            <ion-label>{{recipe.comments? recipe.comments.length : '0'}}</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card> -->
+    </div>
+  </ng-container>
+
+
+  <!-- <div class="ion-padding">
     <h3 class="posts-title">Interests</h3>
     <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
       <ion-icon [name]="interest.icon"></ion-icon>
       <ion-label>{{ interest.description }}</ion-label>
     </ion-chip>
-  </div>
-
-  <div class="ion-padding">
-    <h3 class="posts-title">Posts</h3>
-    <!-- <ion-slides [options]="slideOpts">
-      <ion-slide *ngFor="let post of user.posts">
-        <ion-card>
-
-          <ion-card-content>
-            <img src="../assets/images/{{post.image}}" *ngIf="post.image">
-            <p class="post-text" [innerHTML]="post.text">
-              {{ post.text? excerptText(post.text) : '' }}...
-            </p>
-
-          </ion-card-content>
-
-          <ion-row class="cardfooter">
-            <ion-col size="5">
-              <ion-button fill="clear">
-                <ion-icon *ngIf="post.liked" name="heart"></ion-icon>
-                <ion-icon *ngIf="!post.liked" name="heart-outline"></ion-icon>
-                <ion-label>{{post.likes? post.likes.length : '0'}}</ion-label>
-              </ion-button>
-            </ion-col>
-            <ion-col size="5" offset="2">
-              <ion-button fill="clear">
-                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-                <ion-label>{{post.comments? post.comments.length : '0'}}</ion-label>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-
-        </ion-card>
-      </ion-slide>
-    </ion-slides> -->
-  </div>
-
-  <div class="ion-padding">
-    <h3 class="posts-title">Recipes</h3>
-    <!-- <ion-slides [options]="slideOpts">
-      <ion-slide *ngFor="let recipe of user.recipes">
-        <ion-card>
-          <ion-card-header class="ion-no-padding">
-            <img src="../assets/images/{{recipe.image}}" *ngIf="recipe.image">
-          </ion-card-header>
-
-          <ion-card-content>
-            <p class="recipes-title"> {{ recipe?.title }} </p>
-          </ion-card-content>
-
-          <ion-row class="cardfooter">
-            <ion-col size="5">
-              <ion-button fill="clear">
-                <ion-icon *ngIf="recipe.liked" name="heart"></ion-icon>
-                <ion-icon *ngIf="!recipe.liked" name="heart-outline"></ion-icon>
-                <ion-label>{{recipe.likes? recipe.likes.length : '0'}}</ion-label>
-              </ion-button>
-            </ion-col>
-            <ion-col size="5" offset="2">
-              <ion-button fill="clear">
-                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-                <ion-label>{{recipe.comments? recipe.comments.length : '0'}}</ion-label>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-
-        </ion-card>
-      </ion-slide>
-    </ion-slides> -->
-  </div>
+  </div> -->
 
 </ion-content>

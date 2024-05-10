@@ -13,6 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ProfilePage implements OnInit {
 
+  public type: string = 'posts';
   public user: any;
   slideOpts = {
     slidesPerView: 1.5,
