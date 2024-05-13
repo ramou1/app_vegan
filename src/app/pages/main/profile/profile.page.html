@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <ion-segment [(ngModel)]="type">
+  <ion-segment [(ngModel)]="type" class="profile-segment">
     <ion-segment-button value="posts">
       <ion-label>posts</ion-label>
     </ion-segment-button>
@@ -75,7 +75,7 @@
       </ion-item>
     </ion-list> -->
 
-    <div *ngSwitchCase="'posts'">
+    <div *ngSwitchCase="'posts'" class="ion-padding">
       <ion-card>
         <!-- <ion-card-content>
           <img src="../assets/images/{{user.post.image}}" *ngIf="user.post.image">
@@ -101,17 +101,7 @@
       </ion-card>
     </div>
 
-    <!-- <ion-list *ngSwitchCase="'recipes'">
-      <ion-item>
-        <ion-label>
-          Este é o conteúdo das receitas.
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ng-container> -->
-
-    <div *ngSwitchCase="'recipes'">
-
+    <div *ngSwitchCase="'recipes'" class="ion-padding">
       <!-- <ion-card>
       <ion-card-header class="ion-no-padding">
         <img src="../assets/images/{{recipe.image}}" *ngIf="recipe.image">
