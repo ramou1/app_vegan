@@ -77,7 +77,7 @@
 
     <div *ngSwitchCase="'posts'" class="ion-padding">
       <ion-card>
-        <!-- <ion-card-content>
+        <ion-card-content>
           <img src="../assets/images/{{user.post.image}}" *ngIf="user.post.image">
           <p class="post-text" [innerHTML]="user.post.text">
             {{ user.post.text? excerptText(user.post.text) : '' }}... </p>
@@ -97,7 +97,7 @@
               <ion-label>{{user.post.comments? user.post.comments.length : '0'}}</ion-label>
             </ion-button>
           </ion-col>
-        </ion-row> -->
+        </ion-row>
       </ion-card>
     </div>
 

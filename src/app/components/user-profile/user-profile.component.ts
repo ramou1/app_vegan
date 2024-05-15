@@ -51,9 +51,9 @@ export class UserProfileComponent  implements OnInit {
     // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
   }
 
-  public addUser(user: any): void {
-    //TODO ADD USER
-    console.log("add user: ", user);
+  public followUser(user: any): void {
+    //TODO FOLLOW USER
+    console.log("follow user: ", user);
   }
 
   public goBack(): void {

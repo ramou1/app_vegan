@@ -1,0 +1,18 @@
+h3.notification-title {
+    font-size: 16px !important;
+}
+
+ion-button.follow-user-button {
+    height: 4vh;
+    font-size: 12px;
+
+    ion-icon {
+        font-size: 14px !important;
+    }
+}
+
+ion-item {
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --padding-start: 0;
+}

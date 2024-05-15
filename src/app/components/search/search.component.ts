@@ -65,7 +65,7 @@ export class SearchComponent implements OnInit {
     this.recentSearch.splice(i, 1);
   }
 
-  public addUser(user: any): void {
+  public followUser(user: any): void {
     //TODO ADD USER
     console.log("add user: ", user);
   }

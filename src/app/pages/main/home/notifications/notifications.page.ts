@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { NOTIFICATIONS } from 'src/app/constants/mock.const';
 
 @Component({
   selector: 'app-notifications',
@@ -8,32 +9,33 @@ import { ModalController } from '@ionic/angular';
 })
 export class NotificationsPage implements OnInit {
 
-  public notifications = [
-    {
-      title: 'New Follower',
-      description: 'John Doe followed you.',
-      icon: 'person-add'
-    },
-    {
-      title: 'New Like',
-      description: 'John Doe liked your post.',
-      icon: 'heart'
-    },
-    {
-      title: 'New Comment',
-      description: 'John Doe commented on your post.',
-      icon: 'chatbubble'
-    },
-    {
-      title: 'New Mention',
-      description: 'John Doe mentioned you in a post.',
-      icon: 'at'
-    }
-  ];
+  public notifications = NOTIFICATIONS;
+
+  //   type: 'follower',
+  //   icon: 'person-add'
+
+  //   type: 'like',
+  //   icon: 'heart'
+
+  //   type: 'comment',
+  //   icon: 'chatbubble'
+
+  //   type: 'mention',
+  //   icon: 'at'
 
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() { }
+
+  getUserAvatar(userId: number): string {
+    // return `../assets/images/${userId.creator_image} ? ${userId.creator_image} : 'default-user.png'`;
+    return '../assets/images/default-user.png';
+  }
+
+  public followUser(user: any): void {
+    //TODO FOLLOW USER
+    console.log("follow user: ", user);
+  }
 
   public goBack(): void {
     this.modalCtrl.dismiss();

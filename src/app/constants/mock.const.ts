@@ -1,3 +1,55 @@
+export const NOTIFICATIONS = [
+    // {
+    //     id: 1,
+    //     user_id: 1,
+    //     title: 'New message',
+    //     description: 'You have a new message from Gary Ortiz',
+    //     date: '2023-01-15T10:30:00Z',
+    //     read: false,
+    //     type: 'message',
+    // },
+    {
+        id: 2,
+        user_id: 1,
+        cited_user_id: 2,
+        title: 'new follower alert!',
+        description: 'Mary is now following you',
+        date: '2023-01-15T10:30:00Z',
+        read: false,
+        type: 'follower',
+    },
+    {
+        id: 3,
+        user_id: 1,
+        cited_user_id: 3,
+        title: 'someone commented on your post!',
+        description: 'Hugo commented on your post',
+        date: '2022-07-20T14:20:00Z',
+        read: true,
+        type: 'comment',
+    },
+    {
+        id: 4,
+        user_id: 1,
+        cited_user_id: 4,
+        title: 'you were mentioned!',
+        description: 'John Doe mentioned you in a post.',
+        date: '2023-03-10T09:45:00Z',
+        read: true,
+        type: 'mention',
+    },
+    {
+        id: 5,
+        user_id: 1,
+        cited_user_id: 4,
+        title: 'your post got a like!',
+        description: 'John Doe liked your post.',
+        date: '2023-05-05T17:15:00Z',
+        read: true,
+        type: 'like',
+    }
+];
+
 export const POSTS = [
     {
         post_id: 13412,
@@ -220,6 +272,7 @@ export const EVENTS = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     }];
 
+//verificar se não é melhor deixar posts e receitas em uma biblioteca separada
 export const USER = {
     first_name: 'Fulano Silva',
     username: 'fulano.silva',
