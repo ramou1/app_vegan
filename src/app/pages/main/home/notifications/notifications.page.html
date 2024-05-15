@@ -20,6 +20,7 @@
       <ion-label>
         <h3 class="notification-title">{{notification.title}}</h3>
         <p class="notification-description">{{notification.description}}</p>
+        <h5 class="notification-time">{{ getTimeDifference(notification.date) }}</h5>
       </ion-label>
 
       <ion-buttons slot="end" *ngIf="notification.type === 'follower'">

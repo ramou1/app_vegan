@@ -2,6 +2,14 @@ h3.notification-title {
     font-size: 16px !important;
 }
 
+p.notification-content {
+    font-size: 13px !important;
+}
+
+h5.notification-time {
+    color: var(--ion-color-primary) !important;
+}
+
 ion-button.follow-user-button {
     height: 4vh;
     font-size: 12px;

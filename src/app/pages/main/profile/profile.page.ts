@@ -11,6 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
+
 export class ProfilePage implements OnInit {
 
   public type: string = 'posts';
@@ -27,6 +28,7 @@ export class ProfilePage implements OnInit {
 
   public getUserData(): void {
     this.user = USER;
+    console.log(this.user);
   }
 
   public excerptText(text: string): string {
