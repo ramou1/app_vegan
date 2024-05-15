@@ -76,28 +76,48 @@
     </ion-list> -->
 
     <div *ngSwitchCase="'posts'" class="ion-padding">
-      <ion-card>
+      <ion-card *ngFor="let post of user.posts" class="post-card">
+        <ion-card-header>
+          <ion-row>
+            <ion-col size="2">
+              <ion-avatar>
+                <img src="../assets/images/{{post.creator_image ? post.creator_image : 'default-user.png'}}">
+              </ion-avatar>
+            </ion-col>
+    
+            <ion-col size="9" class="second-column">
+              <h4 class="card-title">{{post.creator ? post.creator : ''}}</h4>
+              <h5 class="card-subtitle">{{post.registerDate ? post.registerDate : '--/--/----'}}</h5>
+            </ion-col>
+    
+            <ion-col size="1">
+              <ion-icon name="ellipsis-vertical" class="post-options" (click)="presentPostActions(post)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card-header>
+
         <ion-card-content>
-          <img src="../assets/images/{{user.post.image}}" *ngIf="user.post.image">
-          <p class="post-text" [innerHTML]="user.post.text">
-            {{ user.post.text? excerptText(user.post.text) : '' }}... </p>
+          <p [innerHTML]="post.text">
+            {{ post.text? excerptText(post.text) : '' }}...</p>
+          <img src="../assets/images/{{post.image}}" *ngIf="post.image">
         </ion-card-content>
 
-        <ion-row class="cardfooter">
-          <ion-col size="5">
-            <ion-button fill="clear">
-              <ion-icon *ngIf="user.post.liked" name="heart"></ion-icon>
-              <ion-icon *ngIf="!user.post.liked" name="heart-outline"></ion-icon>
-              <ion-label>{{user.post.likes? user.post.likes.length : '0'}}</ion-label>
-            </ion-button>
-          </ion-col>
-          <ion-col size="5" offset="2">
-            <ion-button fill="clear">
-              <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-              <ion-label>{{user.post.comments? user.post.comments.length : '0'}}</ion-label>
-            </ion-button>
-          </ion-col>
-        </ion-row>
+        <ion-footer>
+          <ion-button fill="clear" (click)="likePost(post)">
+            <ion-icon *ngIf="post.liked" name="heart"></ion-icon>
+            <ion-icon *ngIf="!post.liked" name="heart-outline"></ion-icon>
+            <ion-label>{{post.likes? post.likes.length : '0'}}</ion-label>
+          </ion-button>
+    
+          <ion-button fill="clear" (click)="openComments(post)">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+            <ion-label>{{post.comments? post.comments.length : '0'}}</ion-label>
+          </ion-button>
+    
+          <ion-button fill="clear" (click)="repostPost(post)">
+            <ion-icon name="repeat-outline"></ion-icon>
+          </ion-button>
+        </ion-footer>
       </ion-card>
     </div>
 

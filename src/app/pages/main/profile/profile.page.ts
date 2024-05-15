@@ -5,6 +5,7 @@ import { USER } from 'src/app/constants/mock.const';
 import { ToastService } from 'src/app/services/toast.service';
 import { ProfileEditPage } from './profile-edit/profile-edit.page';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CommentsComponent } from 'src/app/components/comments/comments.component';
 
 @Component({
   selector: 'app-profile',
@@ -98,5 +99,56 @@ export class ProfilePage implements OnInit {
     // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
   }
 
+  async presentPostActions(post: any) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'apagar post',
+          handler: () => {
+            this.deletePost(post);
+          }
+        },
+        {
+          text: 'compartilhar post',
+        },
+        // {
+        //   text: 'cancelar',
+        //   role: 'cancel',
+        //   data: {
+        //     action: 'cancel',
+        //   },
+        // },
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  public likePost(post: any): void {
+    post.liked = !post.liked;
+    post.liked ? post.likes.length++ : post.likes.length--;
+  }
+
+  async openComments(post: any): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: CommentsComponent,
+      cssClass: 'comments-modal',
+      componentProps: {
+        comments: post.comments,
+        post_id: post.post_id
+      }
+    });
+
+    return await modal.present();
+  }
+
+  async repostPost(post: any): Promise<void> {
+    // TODO REPOST POST
+    console.log("repost", post);
+  }
+
+  async deletePost(post: any): Promise<void> {
+    // TODO DELETE POST
+    console.log("delete", post);
+  }
 
 }

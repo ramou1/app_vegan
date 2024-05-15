@@ -26,7 +26,7 @@
 
   <!-- <app-skeleton [page]="home"></app-skeleton> -->
 
-  <ion-card *ngFor="let post of posts">
+  <ion-card *ngFor="let post of posts" class="post-card">
     <ion-card-header>
       <ion-row>
         <ion-col size="2" (click)="openUserProfile(post.creator_id)">
@@ -67,7 +67,6 @@
       <ion-button fill="clear" (click)="repostPost(post)">
         <ion-icon name="repeat-outline"></ion-icon>
       </ion-button>
-
     </ion-footer>
 
   </ion-card>

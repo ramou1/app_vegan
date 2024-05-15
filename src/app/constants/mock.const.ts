@@ -202,8 +202,8 @@ export const RECIPES = [
     },
     {
         user_id: 4,
-        creator: 'Vokin',
-        creator_image: null,
+        creator: 'Russell Robinson',
+        creator_image: 'perry.png',
         registerDate: '28/05/2022',
         image: 'recipe04.jpg',
         title: 'Patê de Rúcula',
@@ -274,8 +274,9 @@ export const EVENTS = [
 
 //verificar se não é melhor deixar posts e receitas em uma biblioteca separada
 export const USER = {
-    first_name: 'Fulano Silva',
-    username: 'fulano.silva',
+    id: 4,
+    first_name: 'Russell Robinson',
+    username: 'russell.robinson',
     description: 'i am a programmer',
     birth: '19/07/2000',
     email: 'teste@gmail.com',
@@ -283,7 +284,7 @@ export const USER = {
     country: 'Brasil',
     city: 'São Paulo',
     background: '',
-    image: '',
+    image: 'perry.png',
     interests: [
         {
             icon: 'wine',
@@ -302,8 +303,8 @@ export const USER = {
         }],
     posts: [{
         post_id: 13412,
-        creator: 'Bakertilly',
-        creator_image: 'adam.jpg',
+        creator: 'Russell Robinson',
+        creator_image: 'perry.png',
         registerDate: '10/03/2022',
         image: 'slider-default.png',
         text: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
@@ -313,8 +314,8 @@ export const USER = {
     },
     {
         post_id: 13832,
-        creator: 'Belmondo',
-        creator_image: 'max.png',
+        creator: 'Russell Robinson',
+        creator_image: 'perry.png',
         registerDate: null,
         image: null,
         text: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
@@ -324,8 +325,8 @@ export const USER = {
     },
     {
         post_id: 13992,
-        creator: 'Dallasanta',
-        creator_image: null,
+        creator: 'Russell Robinson',
+        creator_image: 'perry.png',
         registerDate: '10/03/2022',
         image: 'slider-default.png',
         text: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
@@ -347,8 +348,8 @@ export const USER = {
     },
     {
         user_id: 2,
-        creator: 'Irani',
-        creator_image: '',
+        creator: 'Russell Robinson',
+        creator_image: 'perry.png',
         registerDate: '10/03/2022',
         image: 'recipe02.jpg',
         title: 'Yakisoba Vegetariano',
@@ -359,8 +360,8 @@ export const USER = {
     },
     {
         user_id: 3,
-        creator: 'Tomasetto',
-        creator_image: null,
+        creator: 'Russell Robinson',
+        creator_image: 'perry.png',
         registerDate: '10/03/2022',
         image: 'recipe03.jpg',
         title: 'Farofa Verão',
