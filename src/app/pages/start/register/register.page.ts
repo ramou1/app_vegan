@@ -38,7 +38,7 @@ export class RegisterPage implements OnInit {
   public toggleShow() {
     this.showPassword = !this.showPassword;
     this.passwordType = this.showPassword ? 'text' : 'password';
-    this.passwordIcon = this.showPassword ? 'eye-off' : 'eye-off-outline'
+    this.passwordIcon = this.showPassword ? 'eye-outline' : 'eye-off-outline'
   }
 
   public register(): void {
