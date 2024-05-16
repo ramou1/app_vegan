@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EventsPage } from './events.page';
 import { EventDetailsPage } from './event-details/event-details.page';
 import { APP_ROUTES } from 'src/app/constants/routes.const';
+import { NewEventPage } from './new-event/new-event.page';
 
 const routes: Routes = [
   {
@@ -15,8 +16,8 @@ const routes: Routes = [
     component: EventDetailsPage
   },
   {
-    path: 'new-event',
-    loadChildren: () => import('./new-event/new-event.module').then( m => m.NewEventPageModule)
+    path: APP_ROUTES.NEW_EVENT,
+    component: NewEventPage
   }
 ];
 

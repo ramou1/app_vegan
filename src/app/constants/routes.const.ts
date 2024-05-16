@@ -18,8 +18,10 @@ export const APP_ROUTES = {
 
     RECIPES: 'recipes',
     RECIPE_DETAILS: 'recipe-details',
+    NEW_RECIPE: 'new-recipe',
     EVENTS: 'events',
     EVENT_DETAILS: 'event-details',
+    NEW_EVENT: 'new-event',
 
     MAP: 'map',
 }

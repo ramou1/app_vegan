@@ -1,0 +1,11 @@
+ion-item {
+    --background: transparent;
+    margin-bottom: 1vh;
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 6px;
+}
+
+ion-button.add-ending-hour {
+    margin: 20px 0;
+    height: 45px;
+}

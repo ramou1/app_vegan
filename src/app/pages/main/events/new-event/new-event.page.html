@@ -11,4 +11,39 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <form [formGroup]="eventGroup" (ngSubmit)="addEvent()">
+    <ion-item>
+      <ion-label position="floating">imagem</ion-label>
+      <ion-input type="text" formControlName="image"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">nome do evento</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">local</ion-label>
+      <ion-input type="text" formControlName="local"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">data de início</ion-label>
+      <ion-input type="date" formControlName="date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">hora de início</ion-label>
+      <ion-input type="time" formControlName="startingHour"></ion-input>
+    </ion-item>
+    <ion-button expand="block" shape="round" color="" class="add-ending-hour" *ngIf="!ending"
+      (click)="ending = true">adicionar hora de
+      término</ion-button>
+    <ion-item *ngIf="ending">
+      <ion-label position="floating">hora de término</ion-label>
+      <ion-input type="time" formControlName="endingHour"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">descrição</ion-label>
+      <ion-textarea rows="8" formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" shape="round" type="submit" [disabled]="!eventGroup.valid">novo evento</ion-button>
+  </form>
 </ion-content>
