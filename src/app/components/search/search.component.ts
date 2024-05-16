@@ -38,7 +38,7 @@ export class SearchComponent implements OnInit {
     }
 
     this.listaFiltrada = this.usersList.filter((user: any) => {
-      return (user.first_name.toLowerCase().indexOf(pesquisa.toLowerCase()) > -1);
+      return (user.name.toLowerCase().indexOf(pesquisa.toLowerCase()) > -1);
     });
   }
 

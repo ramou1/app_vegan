@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
+import { USER } from 'src/app/constants/mock.const';
 
 @Component({
   selector: 'app-new-event',
@@ -11,8 +12,10 @@ export class NewEventPage implements OnInit {
 
   public eventGroup: FormGroup;
   public ending: boolean = false;
+  public user = USER;
+  public imageUrl: string | null = null;
 
-  constructor(private modalCtrl: ModalController, private fb: FormBuilder) { }
+  constructor(private modalCtrl: ModalController, private fb: FormBuilder, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -20,19 +23,55 @@ export class NewEventPage implements OnInit {
 
   private buildForm(): void {
     this.eventGroup = this.fb.group({
-      creator: [null],
-      creator_image: [null],
+      creator: this.user.name,
+      creator_image: this.user.image,
       registerDate: new Date(),
-      image: [null, [Validators.required]],
+      image: [],
       title: [null, [Validators.required]],
       local: [null, [Validators.required]],
-      date: [null, [Validators.required]],
+      startingDate: [null, [Validators.required]],
+      endingDate: [null],
       startingHour: [null, [Validators.required]],
-      endingHour: [null, [Validators.required]],
+      endingHour: [null],
       description: [null, [Validators.required]],
       confirmed: 0,
       comments: {},
     });
+  }
+
+  async uploadImage() {
+    const mock_image = 'https://doity.com.br/blog/app/uploads/2023/03/Topo-DoityCapa-1.png';
+
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'upload image',
+          handler: () => {
+            // this.openImage(type);
+
+            // TODO: UPLOAD IMAGE
+            this.eventGroup.get('image')?.setValue(mock_image);
+            this.imageUrl = mock_image;
+          }
+        },
+        {
+          text: 'delete image',
+          handler: () => {
+            this.imageUrl = null;
+          },
+          role: 'cancel',
+          // data: {
+          //   action: 'cancel',
+          // },
+        },
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  public removeEnding(): void {
+    this.ending = false;
+    this.eventGroup.get('endingHour')?.reset(); // Opcional: limpar o valor do campo ao removê-lo
   }
 
   public addEvent(): void {

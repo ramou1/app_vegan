@@ -17,6 +17,8 @@ export class ProfilePage implements OnInit {
 
   public type: string = 'posts';
   public user: any;
+  public bgImageUrl: string | null = null;
+  public profileImageUrl: string | null = null;
   slideOpts = {
     slidesPerView: 1.5,
   };
@@ -29,6 +31,8 @@ export class ProfilePage implements OnInit {
 
   public getUserData(): void {
     this.user = USER;
+    this.bgImageUrl = this.user.background;
+    this.profileImageUrl = this.user.image;
     console.log(this.user);
   }
 
@@ -56,10 +60,20 @@ export class ProfilePage implements OnInit {
   }
 
   async changeImageActions(type: string) {
+    const mock_bg_image = 'https://blog.even3.com.br/wp-content/uploads/2020/05/65-imagens-de-destaque_capa-abnt.png';
+
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
           text: 'change ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
+          handler: () => {
+            if (type === 'background') {
+              this.user.background = mock_bg_image;
+              this.bgImageUrl = mock_bg_image;
+            } else {
+              // this.user.image = 'https://www.w3schools.com/w3css/img_lights.jpg';
+            }
+          }
         },
         {
           text: 'view ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
@@ -69,6 +83,18 @@ export class ProfilePage implements OnInit {
           // data: {
           //   action: 'share',
           // },
+        },
+        {
+          text: 'delete ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
+          handler: () => {
+            if (type === 'background') {
+              this.user.background = null;
+              this.bgImageUrl = null;
+            } else {
+              this.user.image = null;
+              this.profileImageUrl = null;
+            }
+          },
         },
         // {
         //   text: 'cancelar',
