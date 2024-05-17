@@ -1,3 +1,7 @@
+ion-content {
+    --padding-top: env(safe-area-inset-top);
+}
+
 .app-padding {
     margin: 25px;
 }
