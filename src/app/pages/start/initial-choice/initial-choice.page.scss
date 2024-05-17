@@ -1,6 +1,7 @@
 ion-content {
-    --background: #8ad195;
-    // --background: var(--ion-color-primary-tint);
+    // --background: #8ad195;
+    // --background: var(--ion-color-tertiary-tint);
+    --background: linear-gradient(to bottom, var(--ion-color-medium), var(--ion-color-primary));
 }
 
 .vegan-logo {
@@ -8,6 +9,6 @@ ion-content {
     // z-index: 100;
     // top: 40%;
     margin: 8vh auto;
-    margin-top: 40vh;
-    width: 60%;
+    margin-top: 30vh;
+    width: 78%;
 }

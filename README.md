@@ -17,7 +17,7 @@ Baixe a última versão apk do projeto [aqui.](https://github.com/ramou1/app_veg
 :herb: pesquise e adicione amigos e conheça novas pessoas para compartilhar experiências e conhecimento;<br />
 
 ## Ideias Nome Aplicativo
-LeafyLife, HerbivoreHub, VeggieVision, GreenHub, VivaVeg, VeggieVerse.
+VeggieVision, GreenHub, VivaVeg, VeggieVerse, VegiFly.
 
 ## Imagem do App (Antigo)
 ![text](https://i.imgur.com/DZSMvQQ.jpg)

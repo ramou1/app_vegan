@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { APP_ROUTES } from 'src/app/constants/routes.const';
 
 @Component({
@@ -18,6 +19,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    
+    StatusBar.setBackgroundColor({ color: 'transparent' });
+    StatusBar.setOverlaysWebView({ overlay: true });
+    StatusBar.setStyle({ style: Style.Light }); // Use Style.Dark se os ícones precisarem ser claros
   }
 
   private buildForm(): void {
@@ -44,6 +49,13 @@ export class LoginPage implements OnInit {
 
   public gotoRecoverPassword(): void {
     this.router.navigate([APP_ROUTES.START, APP_ROUTES.RECOVER_PASSWORD]);
+  }
+
+  ngOnDestroy() {
+    // Restaura a barra de status para a configuração padrão quando a página for deixada
+    StatusBar.setOverlaysWebView({ overlay: false });
+    StatusBar.setBackgroundColor({ color: '#ffffff' });
+    StatusBar.setStyle({ style: Style.Default });
   }
 
 }
