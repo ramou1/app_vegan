@@ -5,16 +5,25 @@ ion-toolbar {
 }
 
 ion-content {
-    // --background: #8ad195;
     // --background: var(--ion-color-tertiary-tint);
     --background: linear-gradient(to bottom, var(--ion-color-primary), var(--ion-color-medium));
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .vegan-logo {
-    // position: absolute;
-    // z-index: 100;
-    // top: 40%;
-    margin: 8vh auto;
-    margin-top: 30vh;
-    width: 78%;
+    // margin: 8vh auto;
+    // width: 78%;
+    width: 65%;
+}
+
+.app-padding {
+    width: 100%;
+    max-width: 300px;
 }
