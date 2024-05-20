@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { APP_ROUTES } from 'src/app/constants/routes.const';
 
 @Component({
@@ -20,8 +21,7 @@ export class InitialChoicePage implements OnInit {
 
   public introImg = [{}, {}, {}, {}];
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public gotoLogin(): void {
     this.router.navigate([APP_ROUTES.START, APP_ROUTES.LOGIN]);

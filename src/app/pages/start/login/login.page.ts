@@ -20,9 +20,9 @@ export class LoginPage implements OnInit {
   ngOnInit(): void {
     this.buildForm();
     
-    StatusBar.setBackgroundColor({ color: 'transparent' });
-    StatusBar.setOverlaysWebView({ overlay: true });
-    StatusBar.setStyle({ style: Style.Light }); // Use Style.Dark se os ícones precisarem ser claros
+    // StatusBar.setBackgroundColor({ color: 'transparent' });
+    // StatusBar.setOverlaysWebView({ overlay: true });
+    // StatusBar.setStyle({ style: Style.Light }); // Use Style.Dark se os ícones precisarem ser claros
   }
 
   private buildForm(): void {

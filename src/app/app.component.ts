@@ -16,11 +16,10 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      StatusBar.setBackgroundColor({ color: '#ffffff' });
-      StatusBar.setStyle({ style: Style.Light });
-
-      // StatusBar.setStyle({ style: Style.Light }); // ou Style.Dark conforme a necessidade
-      // StatusBar.setOverlaysWebView({ overlay: true }); // Define a barra de status como sobreposição
+      // StatusBar.setBackgroundColor({ color: '#ffffff' });
+      StatusBar.setBackgroundColor({ color: 'transparent' });
+      StatusBar.setOverlaysWebView({ overlay: true });
+      StatusBar.setStyle({ style: Style.Light }); // ou Style.Dark conforme a necessidade
     });
   }
 }

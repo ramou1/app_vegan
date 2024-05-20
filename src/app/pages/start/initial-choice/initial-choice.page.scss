@@ -1,7 +1,13 @@
+ion-header,
+ion-toolbar {
+    padding-top: 0 !important;
+    --padding-top: 0 !important;
+}
+
 ion-content {
     // --background: #8ad195;
     // --background: var(--ion-color-tertiary-tint);
-    --background: linear-gradient(to bottom, var(--ion-color-medium), var(--ion-color-primary));
+    --background: linear-gradient(to bottom, var(--ion-color-primary), var(--ion-color-medium));
 }
 
 .vegan-logo {
