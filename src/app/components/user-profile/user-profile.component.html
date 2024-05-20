@@ -40,19 +40,20 @@
 
   <div class="info-container">
     <div>
-      <h3 class="info-data"> {{ user?.friends ? user.friends.length : '0' }} </h3>
-      <p class="info-title"> Friends </p>
+      <h3 class="info-data"> {{ user?.following ? user.following.length : '0' }} </h3>
+      <p class="info-title"> following </p>
+    </div>
+
+    <div>
+      <h3 class="info-data"> {{ user?.followers ? user.followers.length : '0' }} </h3>
+      <p class="info-title"> followers </p>
     </div>
 
     <div>
       <h3 class="info-data"> {{ user?.trophies ? user.trophies.length : '0' }} </h3>
-      <p class="info-title"> Trophies </p>
+      <p class="info-title"> trophies </p>
     </div>
 
-    <div>
-      <h3 class="info-data"> {{ user?.posts ? user.posts.length : '0' }} </h3>
-      <p class="info-title"> Posts </p>
-    </div>
   </div>
 
   <ion-button shape="round" color="primary" class="follow-user-button" fill="outline" (click)="followUser(user)">
