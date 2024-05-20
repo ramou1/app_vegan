@@ -42,17 +42,9 @@ ion-card {
         }
     }
 
-    ion-item {
-        ion-icon {
-            margin-inline-end: 10px !important;
-        }
-    }
-
     .event-title {
-        margin-top: 15px;
-        font-size: 16px;
+        margin: 15px 0;
         text-align: center;
-        font-weight: 700;
     }
 
     .event-local {
@@ -60,7 +52,15 @@ ion-card {
         // font-weight: 700;
     }
 
-    .interested-button {
-        margin: 15px;
+    .event-info {
+        ion-icon {
+            font-size: 20px;
+            margin-inline-end: 8px !important;
+        }
     }
+
+    .interested-button {
+        height: 45px;
+        margin: 0 15px 15px;
+    }   
 }

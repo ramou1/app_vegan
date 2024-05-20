@@ -154,10 +154,16 @@ export const RECIPES = [
         creator: 'FGV',
         creator_image: null,
         registerDate: '10/04/2022',
-        image: 'recipe01.jpg',
+        images: ['recipe01.jpg', 'recipe01.jpg', 'recipe01.jpg'],
         title: 'Panqueca de Avocado',
-        instructions: 'In a large pot of salted boiling water, cook the spaghetti according to package instructions until al dente. Reserve 1 cup of pasta water, then drain the spaghetti.',
-        ingredients: null,
+        instructions: `
+        - Preparação do Avocado: Corte o avocado ao meio, retire o caroço e, com uma colher, retire a polpa. Amasse a polpa do avocado com um garfo até formar um purê liso.<br>
+        - Mistura dos Ingredientes Secos: Em uma tigela grande, misture a farinha, o açúcar, o fermento em pó, o bicarbonato de sódio e o sal.<br>
+        - Mistura dos Ingredientes Molhados: Em outra tigela, bata o ovo. Adicione o leite, o óleo (ou manteiga derretida), o purê de avocado e o extrato de baunilha. Misture bem até que todos os ingredientes estejam incorporados.<br>
+        - Combinação dos Ingredientes: Despeje a mistura dos ingredientes molhados sobre os ingredientes secos. Mexa delicadamente até que a massa esteja homogênea, mas não misture demais. A massa deve ter alguns grumos.<br>
+        - Cozimento das Panquecas: Aqueça uma frigideira grande ou uma chapa em fogo médio. Unte levemente com manteiga ou óleo. Despeje cerca de 1/4 de xícara de massa na frigideira para cada panqueca. Cozinhe até que bolhas comecem a se formar na superfície da panqueca e as bordas pareçam firmes, cerca de 2-3 minutos. Vire a panqueca e cozinhe por mais 1-2 minutos até que esteja dourada dos dois lados. Transfira as panquecas prontas para um prato e mantenha-as aquecidas enquanto cozinha o restante da massa.<br>
+        - Servir: Sirva as panquecas de avocado quentes, acompanhadas de mel, xarope de bordo, frutas frescas ou iogurte, conforme desejado.<br>`,
+        ingredients: ['1 avocado maduro (ou abacate pequeno)', '1 xícara de farinha de trigo (ou farinha de trigo integral para uma versão mais saudável)', '1 colher de sopa de açúcar (pode ser substituído por mel ou adoçante a gosto)', '1 colher de chá de fermento em pó', '1/2 colher de chá de bicarbonato de sódio', '1/4 colher de chá de sal', '1 ovo grande', '1 xícara de leite (pode usar leite vegetal como amêndoa, soja ou aveia)', '1 colher de sopa de óleo vegetal (ou manteiga derretida)', '1 colher de chá de extrato de baunilha', 'Manteiga ou óleo para cozinhar as panquecas'],
         cookTime: '30 min',
         servings: 4,
         calories: 300,
@@ -171,13 +177,26 @@ export const RECIPES = [
         creator: 'Irani',
         creator_image: '',
         registerDate: '12/04/2022',
-        image: 'recipe02.jpg',
+        images: ['recipe02.jpg'],
         title: 'Yakisoba Vegetariano',
-        instructions: 'In a large pot of salted boiling water, cook the spaghetti according to package instructions until al dente. Reserve 1 cup of pasta water, then drain the spaghetti.',
-        ingredients: ['', ''],
-        cookTime: '30 min',
-        servings: 4,
-        calories: 300,
+        instructions: `
+        - Cozimento do Macarrão: Em uma panela grande com água fervente e salgada, cozinhe o macarrão para yakisoba conforme as instruções da embalagem, até que esteja al dente. Reserve 1 xícara da água do cozimento, depois escorra o macarrão.
+        - Preparação dos Legumes: Enquanto o macarrão cozinha, aqueça um pouco de óleo em uma frigideira grande ou wok em fogo médio-alto. Adicione a cenoura, os pimentões, o brócolis, a couve-flor, a cebola e o alho-poró. Refogue por cerca de 5 minutos até que os legumes estejam macios, mas ainda crocantes.
+        - Molho e Finalização: Em uma tigela pequena, misture o molho de soja, o molho de ostra vegetariano, o saquê mirin, o amido de milho e o azeite de gergelim. Despeje o molho sobre os legumes na frigideira e mexa bem para cobrir. Adicione o alho picado e continue cozinhando por mais 1-2 minutos.
+        - Mistura com Macarrão: Adicione o macarrão cozido à frigideira com os legumes e o molho. Mexa delicadamente para combinar todos os ingredientes e aquecer o macarrão. Se o molho parecer muito grosso, adicione um pouco da água do cozimento reservada até atingir a consistência desejada.
+        - Servir: Divida o yakisoba vegetariano em pratos individuais e sirva imediatamente. Você pode polvilhar com cebolinha picada ou sementes de gergelim torradas para decorar, se desejar.`,
+        ingredients: [
+            "300g de macarrão para yakisoba", "1 unidade grande de cenoura",
+            "1 unidade de pimentão vermelho", "1 unidade de pimentão amarelo",
+            "1 maço de brócolis", "1/2 cabeça de couve-flor",
+            "1 unidade grande de cebola", "1 unidade média de alho-poró",
+            "1/4 xícara de molho de soja", "2 colheres de sopa de molho de ostra vegetariano",
+            "2 colheres de sopa de saquê mirin", "1 colher de sopa de amido de milho",
+            "1 colher de chá de azeite de gergelim", "2 dentes de alho picado"
+        ],
+        cookTime: '25 min',
+        servings: 6,
+        calories: 350,
         liked: false,
         favorited: false,
         likes: [{ user_id: 1 }, { user_id: 2 }, { user_id: 3 }],
@@ -188,13 +207,27 @@ export const RECIPES = [
         creator: 'Tomasetto',
         creator_image: null,
         registerDate: '23/05/2022',
-        image: 'recipe03.jpg',
+        images: ['recipe03.jpg'],
         title: 'Farofa Verão',
-        instructions: 'In a large skillet over medium heat, cook the diced pancetta until crispy, about 5-7 minutes. Add minced garlic and cook for an additional minute until fragrant. Remove from heat.  In a mixing bowl, whisk together the eggs and grated Parmesan cheese until well combined.',
-        ingredients: null,
-        cookTime: '30 min',
-        servings: 4,
-        calories: 300,
+        instructions: `
+    - Preparo dos Ingredientes: Aqueça uma frigideira grande em fogo médio. Adicione o azeite e refogue a cebola e o alho até ficarem macios e perfumados, cerca de 3 minutos.
+    - Adição dos Legumes: Acrescente a cenoura, o pimentão, o milho, a ervilha e os pimentões à frigideira. Cozinhe por mais 5 minutos, mexendo ocasionalmente, até que os legumes estejam macios.
+    - Farofa: Adicione a farinha de mandioca à frigideira e mexa bem para incorporar todos os ingredientes. Cozinhe por mais 3-5 minutos, mexendo sempre, até que a farofa esteja dourada e crocante.
+    - Finalização e Servir: Tempere a farofa com sal e pimenta a gosto. Transfira para uma travessa de servir e polvilhe com salsinha picada antes de servir.`,
+        ingredients: [
+            "2 xícaras de farinha de mandioca",
+            "1 colher de sopa de azeite de oliva",
+            "1 cebola média picada",
+            "2 dentes de alho picados",
+            "1 cenoura ralada",
+            "1/2 pimentão vermelho picado",
+            "1/2 pimentão amarelo picado",
+            "1/2 xícara de milho verde",
+            "1/2 xícara de ervilha",
+        ],
+        cookTime: '20 min',
+        servings: 6,
+        calories: 250,
         liked: false,
         favorited: false,
         likes: [{ user_id: 1 }, { user_id: 2 }, { user_id: 3 }],
@@ -205,10 +238,17 @@ export const RECIPES = [
         creator: 'Russell Robinson',
         creator_image: 'perry.png',
         registerDate: '28/05/2022',
-        image: 'recipe04.jpg',
+        images: ['recipe04.jpg'],
         title: 'Patê de Rúcula',
         instructions: 'Add the cooked spaghetti to the skillet with the pancetta and garlic. Toss to combine. Remove the skillet from heat and quickly stir in the egg and cheese mixture, using tongs to evenly coat the spaghetti. If the sauce seems too thick, add reserved pasta water, a little at a time, until desired consistency is reached. Season with freshly ground black pepper and salt to taste. Garnish with chopped fresh parsley before serving. Enjoy your delicious Spaghetti Carbonara!',
-        ingredients: null,
+        ingredients: [
+            "2 xícaras de folhas de rúcula",
+            "1 xícara de castanha de caju crua",
+            "1/4 de xícara de azeite de oliva",
+            "Suco de 1 limão",
+            "2 dentes de alho",
+            "Sal e pimenta-do-reino a gosto"
+        ],
         cookTime: '30 min',
         servings: 4,
         calories: 300,

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RecipesPage } from './recipes.page';
 import { APP_ROUTES } from 'src/app/constants/routes.const';
+import { NewRecipePage } from './new-recipe/new-recipe.page';
 
 const routes: Routes = [
   {
@@ -14,8 +15,8 @@ const routes: Routes = [
     component: RecipesPage
   },
   {
-    path: 'new-recipe',
-    loadChildren: () => import('./new-recipe/new-recipe.module').then( m => m.NewRecipePageModule)
+    path: APP_ROUTES.NEW_RECIPE,
+    component: NewRecipePage
   }
 ];
 

@@ -13,7 +13,7 @@
 
   <ion-card *ngFor="let recipe of filteredRecipes" (click)="openRecipe(recipe)">
     <ion-card-content class="ion-no-padding">
-      <img src="../assets/images/{{recipe.image ? recipe.image : 'slider-default.png'}}">
+      <img src="../assets/images/{{recipe.images ? recipe.images[0] : 'slider-default.png'}}">
 
       <ion-button [color]="recipe.favorited ? 'primary' : 'secondary'" (click)="favoriteRecipe(recipe)" expand="block"
         class="favorite-button">

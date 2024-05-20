@@ -31,22 +31,25 @@
       </ion-card-header>
 
       <ion-card-content>
-        <h3 class="event-title"> {{ event?.title }} </h3>
+        <h3 class="event-title">{{ event?.title }}</h3>
 
-        <ion-item lines="none">
-          <ion-icon name="location-outline" slot="start"></ion-icon>
-          <ion-label>
-            <p class="event-local"> {{ event?.local }} </p>
-          </ion-label>
-        </ion-item>
+        <ion-row class="event-info">
+          <ion-col size="auto">
+            <ion-icon name="location-outline"></ion-icon>
+            <ion-label>
+              <p class="event-local">{{ event?.local }}</p>
+            </ion-label>
+          </ion-col>
 
-        <ion-item lines="none">
-          <ion-icon name="people-outline" slot="start"></ion-icon>
-          <ion-label>
-            <p class="event-local"> {{ event.confirmed? event.confirmed.length : '0' }} Confirmed</p>
-          </ion-label>
-        </ion-item>
+          <ion-col size="3">
+            <ion-icon name="people-outline"></ion-icon>
+            <ion-label>
+              <p class="event-local">{{ event.confirmed ? event.confirmed.length : '0' }}</p>
+            </ion-label>
+          </ion-col>
+        </ion-row>
       </ion-card-content>
+
     </div>
 
     <ion-button class="interested-button" expand="block" shape="round" color="{{buttonColor}}"

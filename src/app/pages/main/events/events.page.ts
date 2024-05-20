@@ -14,7 +14,7 @@ import { NewEventPage } from './new-event/new-event.page';
 export class EventsPage implements OnInit {
 
   public buttonColor = 'tertiary';
-  public interestedText = 'I want to Go!';
+  public interestedText = 'I want to go!';
   public interestedIcon = 'leaf-outline';
   public interested: boolean = false;
 

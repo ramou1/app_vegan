@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { SwiperOptions } from 'swiper/types';
+// import SwiperCore, { SwiperOptions } from 'swiper';
+// import { SwiperComponent } from 'swiper/angular';
 
 @Component({
   selector: 'app-recipe-details',
@@ -8,43 +11,57 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./recipe-details.page.scss'],
 })
 export class RecipeDetailsPage implements OnInit {
-// public data: RecipesResponseData[] = [];
-public data: any;
-@Input() recipe: any;
-// @Input() qtdGarrafas: number = 0;
-// @Input() finalize: boolean = false;
 
-constructor(private route: ActivatedRoute, private router: Router, private modalCtrl: ModalController) { }
+  @ViewChild('swiper')
+  swiperRef: ElementRef | undefined;
+  public data: any;
+  @Input() recipe: any;
 
-ngOnInit() {
-  console.log(this.recipe);
-}
+  constructor(private route: ActivatedRoute, private router: Router, private modalCtrl: ModalController) { }
 
-ionViewDidEnter(): void {
-  this.getRecipeData();
-}
-
-public getRecipeData(): void {
-  if (this.recipe) {
-    this.data = this.recipe;      
+  ngOnInit() {
+    console.log(this.recipe);
   }
-  else {
-    // this.toast.presentErrorToast(EVENTS_TXT.EVENTS_SHOW_ERROR);
-    // console.log(EVENTS_TXT.EVENTS_SHOW_ERROR);
-    setTimeout(() => {
-      this.goBack();
-    }, 2000);
+
+  ionViewDidEnter(): void {
+    this.getRecipeData();
   }
-}
 
-public goBack(): void {
-  this.modalCtrl.dismiss().catch((err) => {
-    // console.log(err);
-  });
-}
+  public getRecipeData(): void {
+    if (this.recipe) {
+      this.data = this.recipe;
+    }
+    else {
+      // this.toast.presentErrorToast(EVENTS_TXT.EVENTS_SHOW_ERROR);
+      // console.log(EVENTS_TXT.EVENTS_SHOW_ERROR);
+      setTimeout(() => {
+        this.goBack();
+      }, 2000);
+    }
+  }
 
-public favoriteRecipe(recipe: any): void {
-  recipe.favorited = !recipe.favorited;
-}
+  public favoriteRecipe(recipe: any): void {
+    recipe.favorited = !recipe.favorited;
+  }
+
+  changeSlide() {
+    console.log('Slide changed');
+  }
+
+  // nextSlide() {
+  //   if (this.swiper) {
+  //     this.swiper.swiperRef.slideNext();
+  //   }
+  // }
+
+  // secondButton() {
+  //   console.log('Second button clicked');
+  // }
+
+  public goBack(): void {
+    this.modalCtrl.dismiss().catch((err) => {
+      // console.log(err);
+    });
+  }
 
 }

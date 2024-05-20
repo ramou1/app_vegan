@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActionSheetController, ModalController } from '@ionic/angular';
+import { USER } from 'src/app/constants/mock.const';
 
 @Component({
   selector: 'app-new-recipe',
@@ -8,12 +10,80 @@ import { ModalController } from '@ionic/angular';
 })
 export class NewRecipePage implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  public recipeGroup: FormGroup;
+  public ending: boolean = false;
+  public user = USER;
+  public imageUrl: string | null = null;
 
-  ngOnInit() { }
+  constructor(private modalCtrl: ModalController, private fb: FormBuilder, private actionSheetCtrl: ActionSheetController) { }
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  private buildForm(): void {
+    this.recipeGroup = this.fb.group({
+      creator: this.user.name,
+      creator_image: this.user.image,
+      registerDate: new Date(),
+      image: [],
+      title: [null, [Validators.required]],
+      local: [null, [Validators.required]],
+      startingDate: [null, [Validators.required]],
+      endingDate: [null],
+      startingHour: [null, [Validators.required]],
+      endingHour: [null],
+      description: [null, [Validators.required]],
+      confirmed: 0,
+      comments: {},
+    });
+  }
+
+  async uploadImage() {
+    const mock_image = 'https://doity.com.br/blog/app/uploads/2023/03/Topo-DoityCapa-1.png';
+
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'upload image',
+          handler: () => {
+            // this.openImage(type);
+
+            // TODO: UPLOAD IMAGE
+            this.recipeGroup.get('image')?.setValue(mock_image);
+            this.imageUrl = mock_image;
+          }
+        },
+        {
+          text: 'delete image',
+          handler: () => {
+            this.imageUrl = null;
+          },
+          role: 'cancel',
+          // data: {
+          //   action: 'cancel',
+          // },
+        },
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  public removeEnding(): void {
+    this.ending = false;
+    this.recipeGroup.get('endingHour')?.reset(); // Opcional: limpar o valor do campo ao removê-lo
+  }
+
+  public addEvent(): void {
+    // TODO NEW EVENT
+    console.log(this.recipeGroup.value);
+
+    setTimeout(() => {
+      this.goBack();
+    }, 3000);
+  }
 
   public goBack(): void {
     this.modalCtrl.dismiss();
   }
-
 }

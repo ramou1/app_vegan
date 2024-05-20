@@ -10,5 +10,83 @@
   </ion-toolbar>
 </ion-header>
 
+<div class="add-event-images"
+  [ngStyle]="{'background-image': imageUrl ? 'url(' + imageUrl + ')' : 'url(../assets/images/default-events.png)'}">
+  <ion-button shape="round" size="small" fill="solid" color="secondary" class="add-event-button"
+    (click)="uploadImage()">
+    <ion-icon slot="start" md="images"></ion-icon>
+    upload images
+  </ion-button>
+</div>
+
 <ion-content class="ion-padding">
+
+  <ion-row>
+    <ion-col size="auto">
+      <ion-avatar>
+        <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
+      </ion-avatar>
+    </ion-col>
+
+    <ion-col class="second-column">
+      <h4 class="event-organizer-title">{{user.name ? user.name : ''}}</h4>
+      <h5 class="event-organizer-subtitle">Organizador</h5>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="recipeGroup">
+
+    <!-- <div class="ion-padding"> -->
+    <ion-item>
+      <ion-label position="floating">nome do evento</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">local</ion-label>
+      <ion-input type="text" formControlName="local"></ion-input>
+    </ion-item>
+
+    <div class="two-columns">
+      <ion-item>
+        <ion-label position="floating">data de início</ion-label>
+        <ion-input type="date" formControlName="startingDate"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">hora de início</ion-label>
+        <ion-input type="time" formControlName="startingHour"></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" shape="round" color="secondary" class="add-ending-hour" *ngIf="!ending"
+      (click)="ending = true">adicionar data e hora de término</ion-button>
+
+    <div class="two-columns" *ngIf="ending">
+      <ion-item>
+        <ion-label position="floating">data de término</ion-label>
+        <ion-input type="date" formControlName="endingDate"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">hora de término</ion-label>
+        <ion-input type="time" formControlName="endingHour"></ion-input>
+        <ion-button fill="clear" slot="end" class="close-ending-hour" (click)="removeEnding()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">descrição do evento</ion-label>
+      <ion-textarea rows="6" formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <!-- <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid">novo evento</ion-button> -->
+
+  </form>
 </ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid" (click)="addEvent()">nova receita</ion-button>
+</ion-footer>
