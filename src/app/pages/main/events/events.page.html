@@ -17,12 +17,12 @@
 
         <div class="event-buttons-container">
           <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
-            (click)="openShare()">
+            (click)="openShare($event)">
             <ion-icon slot="icon-only" name="share-social-outline" color="primary"></ion-icon>
           </ion-button>
 
           <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
-            (click)="presentEventActions(event)">
+            (click)="presentEventActions($event, event)">
             <ion-icon slot="icon-only" md="ellipsis-vertical" color="primary"></ion-icon>
           </ion-button>
         </div>

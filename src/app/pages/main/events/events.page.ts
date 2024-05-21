@@ -70,12 +70,14 @@ export class EventsPage implements OnInit {
 
   }
 
-  public openShare(): void {
+  public openShare(event: Event): void {
+    event.stopPropagation();
     //TODO SHARE
     // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
   }
 
-  async presentEventActions(event: any) {
+  async presentEventActions(event: Event, eventDetail: any) {
+    event.stopPropagation();
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {

@@ -19,6 +19,7 @@ export class ProfilePage implements OnInit {
   public user: any;
   public bgImageUrl: string | null = null;
   public profileImageUrl: string | null = null;
+  scrolled: boolean = false;
   slideOpts = {
     slidesPerView: 1.5,
   };
@@ -39,6 +40,10 @@ export class ProfilePage implements OnInit {
   public excerptText(text: string): string {
     const cut = text.substring(0, 100);
     return cut;
+  }
+
+  onScroll(event: any) {
+    this.scrolled = event.detail.scrollTop > 0;
   }
 
   public openShare(): void {

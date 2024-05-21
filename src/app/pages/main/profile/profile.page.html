@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content (ionScroll)="onScroll($event)">
   <div class="profile-background"
     [ngStyle]="{'background-image': bgImageUrl ? 'url(' + bgImageUrl + ')' : 'url(../assets/images/background-default.png)'}">
 
