@@ -9,7 +9,7 @@
 
     <ion-buttons slot="end">
       <ion-button (click)="favoriteRecipe(recipe)">
-        <ion-icon slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon slot="icon-only" [name]="recipe.favorited ? 'star': 'star-outline'" color="warning"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
