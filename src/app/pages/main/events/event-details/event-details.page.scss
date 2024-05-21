@@ -12,11 +12,29 @@ ion-button {
 }
 
 ion-item {
-    ion-icon {
-        margin-inline-end: 10px !important;
+    ion-icon, ion-label > p {
+        color: var(--ion-color-dark);
     }
 
-    ion-label {
-        color: var(--ion-color-dark);
+    ion-icon {
+        margin-inline-end: 8px !important;
+    }
+
+    ion-label > p {
+        font-size: 16px;
+    }
+
+    p.event-description {
+        line-height: 22px;
+    }
+}
+
+ion-button.confirm-preseence-button {
+    height: 4vh;
+    margin: 0 20% 3vh;
+    width: 60%;
+
+    ion-icon {
+        padding-right: 5px;
     }
 }
