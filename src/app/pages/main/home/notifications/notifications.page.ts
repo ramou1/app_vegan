@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
 import { NOTIFICATIONS } from 'src/app/constants/mock.const';
 // import { formatDistanceToNow } from 'date-fns'; // função de formatação de datas
 
@@ -27,11 +28,6 @@ export class NotificationsPage implements OnInit {
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() { }
-
-  getUserAvatar(userId: number): string {
-    // return `../assets/images/${userId.creator_image} ? ${userId.creator_image} : 'default-user.png'`;
-    return '../assets/images/default-user.png';
-  }
 
   // Função para calcular a diferença de tempo entre a data atual e a data da notificação
   public getTimeDifference(notificationDate: string): string {
@@ -62,6 +58,22 @@ export class NotificationsPage implements OnInit {
     return `${minutesDifference} minuto${minutesDifference !== 1 ? 's' : ''} atrás`;
 
     //   return formatDistanceToNow(dateObj, { addSuffix: true });
+  }
+
+  async openUserProfile(user_id: any): Promise<void> {
+    console.log("user_id", user_id);
+    // this.router.navigate(['/profile', user_id]);
+
+    const modal = await this.modalCtrl.create({
+      component: UserProfileComponent,
+      cssClass: 'user-profile-modal',
+      componentProps: {
+        // finalize: false,
+        user: { id: user_id }
+      }
+    });
+
+    return await modal.present();
   }
 
   public followUser(user: any): void {

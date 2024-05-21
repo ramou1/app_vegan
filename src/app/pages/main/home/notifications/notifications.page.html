@@ -15,7 +15,8 @@
     <ion-item *ngFor="let notification of notifications">
       <ion-avatar slot="start">
         <!-- <img src="../assets/images/{{post.creator_image ? post.creator_image : 'default-user.png'}}"> -->
-        <img [src]="getUserAvatar(notification.cited_user_id)" alt="User Avatar">
+        <img [src]="'../assets/images/' + (notification.cited_user_image || 'default-user.png')"
+          (click)="openUserProfile(notification.cited_user_id)">
       </ion-avatar>
       <ion-label>
         <h3 class="notification-title">{{notification.title}}</h3>
@@ -24,7 +25,8 @@
       </ion-label>
 
       <ion-buttons slot="end" *ngIf="notification.type === 'follower'">
-        <ion-button shape="round" color="primary" class="follow-user-button" fill="outline" (click)="followUser(notification)">
+        <ion-button shape="round" color="primary" class="follow-user-button" fill="outline"
+          (click)="followUser(notification)">
           <ion-icon slot="icon-only" name="person-add"></ion-icon>
           follow back
         </ion-button>
