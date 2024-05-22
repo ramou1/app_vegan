@@ -23,18 +23,18 @@ export class NewRecipePage implements OnInit {
 
   private buildForm(): void {
     this.recipeGroup = this.fb.group({
+      creator_id: this.user.id,
       creator: this.user.name,
       creator_image: this.user.image,
       registerDate: new Date(),
       image: [],
       title: [null, [Validators.required]],
-      local: [null, [Validators.required]],
-      startingDate: [null, [Validators.required]],
-      endingDate: [null],
-      startingHour: [null, [Validators.required]],
-      endingHour: [null],
-      description: [null, [Validators.required]],
-      confirmed: 0,
+      ingredients: [null, [Validators.required]],
+      instructions: [null, [Validators.required]],
+      cookTime: [null, [Validators.required]],
+      servings: [null],
+      calories: [null, [Validators.required]],
+      likes: 0,
       comments: {},
     });
   }

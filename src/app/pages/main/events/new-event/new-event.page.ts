@@ -23,6 +23,7 @@ export class NewEventPage implements OnInit {
 
   private buildForm(): void {
     this.eventGroup = this.fb.group({
+      creator_id: this.user.id,
       creator: this.user.name,
       creator_image: this.user.image,
       registerDate: new Date(),

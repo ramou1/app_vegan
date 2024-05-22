@@ -154,7 +154,7 @@ export const POSTS = [
 
 export const RECIPES = [
     {
-        user_id: 1,
+        creator_id: 1,
         creator: 'FGV',
         creator_image: null,
         registerDate: '10/04/2022',
@@ -177,7 +177,7 @@ export const RECIPES = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     },
     {
-        user_id: 2,
+        creator_id: 2,
         creator: 'Irani',
         creator_image: '',
         registerDate: '12/04/2022',
@@ -207,7 +207,7 @@ export const RECIPES = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }, { user_id: 4, comment: 'dddddd' }, { user_id: 5, comment: 'eeeee' }],
     },
     {
-        user_id: 3,
+        creator_id: 3,
         creator: 'Tomasetto',
         creator_image: null,
         registerDate: '23/05/2022',
@@ -238,7 +238,7 @@ export const RECIPES = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     },
     {
-        user_id: 4,
+        creator_id: 4,
         creator: 'Russell Robinson',
         creator_image: 'perry.png',
         registerDate: '28/05/2022',
@@ -264,6 +264,7 @@ export const RECIPES = [
 
 export const EVENTS = [
     {
+        creator_id: 1,
         creator: 'FGV',
         creator_image: '',
         registerDate: '09/10/2022',
@@ -279,6 +280,7 @@ export const EVENTS = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     },
     {
+        creator_id: 1,
         creator: 'Irani',
         creator_image: null,
         registerDate: '05/04/2022',
@@ -294,6 +296,7 @@ export const EVENTS = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     },
     {
+        creator_id: 1,
         creator: 'Tomasetto',
         creator_image: null,
         registerDate: '10/03/2022',
@@ -309,6 +312,7 @@ export const EVENTS = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     },
     {
+        creator_id: 1,
         creator: 'Vokin',
         creator_image: null,
         registerDate: '10/03/2022',
