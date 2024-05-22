@@ -74,8 +74,8 @@ export class NewRecipePage implements OnInit {
     this.recipeGroup.get('endingHour')?.reset(); // Opcional: limpar o valor do campo ao removê-lo
   }
 
-  public addEvent(): void {
-    // TODO NEW EVENT
+  public addRecipe(): void {
+    // TODO NEW RECIPE
     console.log(this.recipeGroup.value);
 
     setTimeout(() => {

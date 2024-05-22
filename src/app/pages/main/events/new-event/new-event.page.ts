@@ -81,7 +81,7 @@ export class NewEventPage implements OnInit {
 
     setTimeout(() => {
       this.goBack();
-    }, 3000);
+    }, 2000);
   }
 
   public goBack(): void {

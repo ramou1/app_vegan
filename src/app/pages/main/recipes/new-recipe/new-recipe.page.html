@@ -10,9 +10,9 @@
   </ion-toolbar>
 </ion-header>
 
-<div class="add-event-images"
+<div class="add-recipe-images"
   [ngStyle]="{'background-image': imageUrl ? 'url(' + imageUrl + ')' : 'url(../assets/images/default-events.png)'}">
-  <ion-button shape="round" size="small" fill="solid" color="secondary" class="add-event-button"
+  <ion-button shape="round" size="small" fill="solid" color="secondary" class="add-recipe-button"
     (click)="uploadImage()">
     <ion-icon slot="start" md="images"></ion-icon>
     upload images
@@ -29,8 +29,8 @@
     </ion-col>
 
     <ion-col class="second-column">
-      <h4 class="event-organizer-title">{{user.name ? user.name : ''}}</h4>
-      <h5 class="event-organizer-subtitle">Criador</h5>
+      <h4 class="recipe-creator-title">{{user.name ? user.name : ''}}</h4>
+      <h5 class="recipe-creator-subtitle">Criador</h5>
     </ion-col>
   </ion-row>
 
@@ -69,12 +69,12 @@
       </ion-item>
     </div>
 
-    <!-- <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid">novo evento</ion-button> -->
+    <!-- <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid">nova receita</ion-button> -->
 
   </form>
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid" (click)="addEvent()">nova
+  <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid" (click)="addRecipe()">nova
     receita</ion-button>
 </ion-footer>

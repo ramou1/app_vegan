@@ -8,6 +8,7 @@ export const APP_ROUTES = {
 
     MAIN: 'main',
     HOME: 'home',
+    NEW_POST: 'new-post',
     PRIVACY: 'privacy',
     
     PROFILE: 'profile',

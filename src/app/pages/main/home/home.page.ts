@@ -8,6 +8,7 @@ import { SearchComponent } from 'src/app/components/search/search.component';
 import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
 import { POSTS } from 'src/app/constants/mock.const';
 import { NotificationsPage } from './notifications/notifications.page';
+import { NewPostPage } from './new-post/new-post.page';
 
 @Component({
   selector: 'app-home',
@@ -141,6 +142,15 @@ export class HomePage implements OnInit {
         // finalize: false,
         user: { id: user_id }
       }
+    });
+
+    return await modal.present();
+  }
+
+  async newPost(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: NewPostPage,
+      cssClass: 'post-modal',
     });
 
     return await modal.present();
