@@ -4,6 +4,7 @@
 
   <div class="app-padding">
     <h1 class="register-title">fill the fields</h1>
+    <!-- <h1 class="register-title">{{ 'fillTheFields' | translate }}</h1> -->
     <form [formGroup]="registerForm">
       <ion-item lines="none">
         <ion-label position="floating">e-mail</ion-label>
@@ -32,9 +33,9 @@
       <ion-item>
         <ion-label>which do you identify with?</ion-label>
         <ion-select interface="popover" formControlName="identify">
-          <ion-select-option value="vegetarian">Vegetarian</ion-select-option>
-          <ion-select-option value="vegan">Vegan</ion-select-option>
-          <ion-select-option value="interested">Interested in the cause</ion-select-option>
+          <ion-select-option value="vegetarian">vegetarian</ion-select-option>
+          <ion-select-option value="vegan">vegan</ion-select-option>
+          <ion-select-option value="interested">interested in the cause</ion-select-option>
         </ion-select>
       </ion-item>
 

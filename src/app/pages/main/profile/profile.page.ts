@@ -6,6 +6,7 @@ import { ToastService } from 'src/app/services/toast.service';
 import { ProfileEditPage } from './profile-edit/profile-edit.page';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
+import { RecipeDetailsPage } from '../recipes/recipe-details/recipe-details.page';
 
 @Component({
   selector: 'app-profile',
@@ -180,6 +181,19 @@ export class ProfilePage implements OnInit {
   async deletePost(post: any): Promise<void> {
     // TODO DELETE POST
     console.log("delete", post);
+  }
+
+  async openRecipe(recipe: any): Promise<void> {    
+    const modal = await this.modalCtrl.create({
+      component: RecipeDetailsPage,
+      cssClass: 'recipe-modal',
+      componentProps: {
+        // finalize: false,
+        recipe: recipe
+      }
+    });
+
+    return await modal.present();
   }
 
 }

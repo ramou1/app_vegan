@@ -1,0 +1,15 @@
+{
+    "fillTheFields": "Preencha os campos",
+    "email": "E-mail",
+    "name": "Nome",
+    "password": "Senha",
+    "birthDate": "Data de nascimento",
+    "identify": "Com o que você se identifica?",
+    "vegetarian": "Vegetariano",
+    "vegan": "Vegano",
+    "interested": "Interessado na causa",
+    "register": "Registrar",
+    "haveAnAccount": "Já tem uma conta?",
+    "signIn": "Entrar"
+  }
+  

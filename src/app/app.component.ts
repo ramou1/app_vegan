@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 import { register } from 'swiper/element/bundle';
+// import { TranslateService } from '@ngx-translate/core';
 
 register();
 @Component({
@@ -13,6 +14,12 @@ export class AppComponent {
   constructor(private platform: Platform) {
     this.initializeApp();
   }
+
+  // constructor(private translate: TranslateService) {
+  //   this.initializeApp();
+  //   const browserLang = translate.getBrowserLang();
+  //   translate.use(browserLang.match(/en|pt/) ? browserLang : 'en');
+  // }
 
   initializeApp() {
     this.platform.ready().then(() => {

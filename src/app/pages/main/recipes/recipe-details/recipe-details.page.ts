@@ -58,6 +58,11 @@ export class RecipeDetailsPage implements OnInit {
   //   console.log('Second button clicked');
   // }
 
+  public openShare(): void {
+    //TODO SHARE
+    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+  }
+
   public goBack(): void {
     this.modalCtrl.dismiss().catch((err) => {
       // console.log(err);

@@ -69,13 +69,6 @@
   </ion-segment>
 
   <ng-container [ngSwitch]="type">
-    <!-- <ion-list *ngSwitchCase="'posts'">
-      <ion-item>
-        <ion-label>
-          Este é o conteúdo dos posts.
-        </ion-label>
-      </ion-item>
-    </ion-list> -->
 
     <div *ngSwitchCase="'posts'" class="ion-padding">
       <ion-card *ngFor="let post of user.posts" class="post-card">
@@ -124,32 +117,32 @@
     </div>
 
     <div *ngSwitchCase="'recipes'" class="ion-padding">
-      <!-- <ion-card>
-      <ion-card-header class="ion-no-padding">
-        <img src="../assets/images/{{recipe.image}}" *ngIf="recipe.image">
-      </ion-card-header>
+      <ion-card *ngFor="let recipe of user.recipes" class="post-card" (click)="openRecipe(recipe)">
+        <ion-card-header class="ion-no-padding">
+          <img src="../assets/images/{{recipe.images ? recipe.images[0] : 'slider-default.png'}}">
+        </ion-card-header>
 
-      <ion-card-content>
-        <p class="recipes-title"> {{ recipe?.title }} </p>
-      </ion-card-content>
+        <ion-card-content>
+          <p class="recipes-title"> {{ recipe?.title }} </p>
+        </ion-card-content>
 
-      <ion-row class="cardfooter">
-        <ion-col size="5">
-          <ion-button fill="clear">
+        <!-- <ion-footer>
+          <ion-button fill="clear" (click)="likePost(recipe)">
             <ion-icon *ngIf="recipe.liked" name="heart"></ion-icon>
             <ion-icon *ngIf="!recipe.liked" name="heart-outline"></ion-icon>
             <ion-label>{{recipe.likes? recipe.likes.length : '0'}}</ion-label>
           </ion-button>
-        </ion-col>
-        <ion-col size="5" offset="2">
-          <ion-button fill="clear">
+
+          <ion-button fill="clear" (click)="openComments(recipe)">
             <ion-icon name="chatbox-ellipses-outline"></ion-icon>
             <ion-label>{{recipe.comments? recipe.comments.length : '0'}}</ion-label>
           </ion-button>
-        </ion-col>
-      </ion-row>
 
-    </ion-card> -->
+          <ion-button fill="clear" (click)="repostPost(recipe)">
+            <ion-icon name="repeat-outline"></ion-icon>
+          </ion-button>
+        </ion-footer> -->
+      </ion-card>
     </div>
   </ng-container>
 

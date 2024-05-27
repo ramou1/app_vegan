@@ -154,6 +154,7 @@ export const POSTS = [
 
 export const RECIPES = [
     {
+        id: 4343,
         creator_id: 1,
         creator: 'FGV',
         creator_image: null,
@@ -177,6 +178,7 @@ export const RECIPES = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     },
     {
+        id: 211,
         creator_id: 2,
         creator: 'Irani',
         creator_image: '',
@@ -207,6 +209,7 @@ export const RECIPES = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }, { user_id: 4, comment: 'dddddd' }, { user_id: 5, comment: 'eeeee' }],
     },
     {
+        id: 232,
         creator_id: 3,
         creator: 'Tomasetto',
         creator_image: null,
@@ -238,6 +241,7 @@ export const RECIPES = [
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     },
     {
+        id: 543,
         creator_id: 4,
         creator: 'Russell Robinson',
         creator_image: 'perry.png',
@@ -391,38 +395,27 @@ export const USER = {
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }, { user_id: 4, comment: 'dddddd' }, { user_id: 5, comment: 'eeeee' }],
     }],
     recipes: [{
-        user_id: 1,
-        creator: 'FGV',
-        creator_image: null,
-        registerDate: null,
-        image: 'recipe01.jpg',
-        title: 'Panqueca de Avocado',
-        text: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
-        liked: false,
-        likes: [{ user_id: 1 }, { user_id: 2 }, { user_id: 3 }],
-        comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
-    },
-    {
-        user_id: 2,
+        id: 543,
+        creator_id: 4,
         creator: 'Russell Robinson',
         creator_image: 'perry.png',
-        registerDate: '10/03/2022',
-        image: 'recipe02.jpg',
-        title: 'Yakisoba Vegetariano',
-        text: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
+        registerDate: '28/05/2022',
+        images: ['recipe04.jpg'],
+        title: 'Patê de Rúcula',
+        instructions: 'Add the cooked spaghetti to the skillet with the pancetta and garlic. Toss to combine. Remove the skillet from heat and quickly stir in the egg and cheese mixture, using tongs to evenly coat the spaghetti. If the sauce seems too thick, add reserved pasta water, a little at a time, until desired consistency is reached. Season with freshly ground black pepper and salt to taste. Garnish with chopped fresh parsley before serving. Enjoy your delicious Spaghetti Carbonara!',
+        ingredients: [
+            "2 xícaras de folhas de rúcula",
+            "1 xícara de castanha de caju crua",
+            "1/4 de xícara de azeite de oliva",
+            "Suco de 1 limão",
+            "2 dentes de alho",
+            "Sal e pimenta-do-reino a gosto"
+        ],
+        cookTime: '30 min',
+        servings: 4,
+        calories: 300,
         liked: false,
-        likes: [{ user_id: 1 }, { user_id: 2 }, { user_id: 3 }],
-        comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }, { user_id: 4, comment: 'dddddd' }, { user_id: 5, comment: 'eeeee' }],
-    },
-    {
-        user_id: 3,
-        creator: 'Russell Robinson',
-        creator_image: 'perry.png',
-        registerDate: '10/03/2022',
-        image: 'recipe03.jpg',
-        title: 'Farofa Verão',
-        text: 'wait a minute. wait a minute, doc. are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
-        liked: false,
+        favorited: false,
         likes: [{ user_id: 1 }, { user_id: 2 }, { user_id: 3 }],
         comments: [{ user_id: 1, comment: 'aaaaaa' }, { user_id: 2, comment: 'bbbbbbb' }, { user_id: 3, comment: 'ccccc' }],
     }]
