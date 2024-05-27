@@ -21,4 +21,5 @@ export interface UserModel {
         }];
     posts: [PostsModel];
     recipes: [RecipesModel];
+    type?: string; // user | admin (poderá criar eventos, mapa, cardápio)
 }
