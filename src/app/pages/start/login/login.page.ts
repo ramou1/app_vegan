@@ -53,9 +53,9 @@ export class LoginPage implements OnInit {
 
   ngOnDestroy() {
     // Restaura a barra de status para a configuração padrão quando a página for deixada
-    StatusBar.setOverlaysWebView({ overlay: false });
-    StatusBar.setBackgroundColor({ color: '#ffffff' });
-    StatusBar.setStyle({ style: Style.Default });
+    // StatusBar.setOverlaysWebView({ overlay: false });
+    // StatusBar.setBackgroundColor({ color: '#ffffff' });
+    // StatusBar.setStyle({ style: Style.Default });
   }
 
 }
