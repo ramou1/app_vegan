@@ -2,29 +2,29 @@
   <ion-tab-bar slot="bottom">
 
     <ion-tab-button tab="home" (click)="changeTab('home')">
-      <!-- <ion-label>Home</ion-label> -->
-      <ion-icon [name]="tabClicked==='home' ? 'home' : 'home-outline'"></ion-icon>
+      <!-- <ion-icon [name]="tabClicked==='home' ? 'home' : 'home-outline'"></ion-icon> -->
+      <ion-icon [name]="tabClicked==='home' ? 'veg-home-clicked' : 'veg-home'" [class.active-icon]="tabClicked==='home'"></ion-icon>
     </ion-tab-button>
 
     <ion-tab-button tab="recipes" (click)="changeTab('recipes')">
-      <!-- <ion-label>Receitas</ion-label> -->
-      <ion-icon [name]="tabClicked==='recipes' ? 'restaurant' : 'restaurant-outline'"></ion-icon>
+      <!-- <ion-icon [name]="tabClicked==='recipes' ? 'restaurant' : 'restaurant-outline'"></ion-icon> -->
+      <ion-icon [name]="tabClicked==='recipes' ? 'veg-recipes-clicked' : 'veg-recipes'" [class.active-icon]="tabClicked==='recipes'"></ion-icon>
     </ion-tab-button>
 
     <ion-tab-button tab="events" (click)="changeTab('events')">
-      <!-- <ion-label>Eventos</ion-label> -->
-      <ion-icon [name]="tabClicked==='events' ? 'calendar-number' : 'calendar-number-outline'"></ion-icon>
+      <!-- <ion-icon [name]="tabClicked==='events' ? 'calendar-number' : 'calendar-number-outline'"></ion-icon> -->
+      <ion-icon [name]="tabClicked==='events' ? 'veg-calendar-clicked' : 'veg-calendar'" [class.active-icon]="tabClicked==='events'"></ion-icon>
       <!-- <ion-icon name="calendar-dark"></ion-icon> -->
     </ion-tab-button>
 
     <ion-tab-button tab="map" (click)="changeTab('map')">
-      <!-- <ion-label>Mapa</ion-label> -->
-      <ion-icon [name]="tabClicked==='map' ? 'map' : 'map-outline'"></ion-icon>
+      <!-- <ion-icon [name]="tabClicked==='map' ? 'map' : 'map-outline'"></ion-icon> -->
+      <ion-icon [name]="tabClicked==='map' ? 'veg-map-clicked' : 'veg-map'" [class.active-icon]="tabClicked==='map'"></ion-icon>
     </ion-tab-button>
 
     <ion-tab-button tab="profile" (click)="changeTab('profile')">
-      <!-- <ion-label>Perfil</ion-label> -->
-      <ion-icon [name]="tabClicked==='profile' ? 'person' : 'person-outline'"></ion-icon>
+      <!-- <ion-icon [name]="tabClicked==='profile' ? 'person' : 'person-outline'"></ion-icon> -->
+      <ion-icon [name]="tabClicked==='profile' ? 'veg-user-clicked' : 'veg-user'" [class.active-icon]="tabClicked==='profile'"></ion-icon>
     </ion-tab-button>
 
   </ion-tab-bar>

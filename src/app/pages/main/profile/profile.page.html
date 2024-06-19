@@ -9,7 +9,7 @@
         </ion-button>
 
         <ion-button (click)="openSettings()">
-          <ion-icon slot="icon-only" name="settings-outline" color="light"></ion-icon>
+          <ion-icon slot="icon-only" name="veg-settings" color="light"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
@@ -85,7 +85,7 @@
               <h5 class="card-subtitle">{{post.registerDate ? post.registerDate : '--/--/----'}}</h5>
             </ion-col>
 
-            <ion-col size="1">
+            <ion-col size="1" class="third-column">
               <ion-icon name="ellipsis-vertical" class="post-options" (click)="presentPostActions(post)"></ion-icon>
             </ion-col>
           </ion-row>

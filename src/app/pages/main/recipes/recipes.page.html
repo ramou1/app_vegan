@@ -7,21 +7,23 @@
 <ion-content class="ion-padding">
 
   <ion-searchbar #recipesSearchbar placeholder="search recipes" class="custom-searchbar"
-    (ionInput)="filterList($event)"></ion-searchbar>
+    (ionInput)="filterList($event)" search-icon="veg-search"></ion-searchbar>
 
   <!-- <app-card-layout [type]="'recipes'" [data]="filteredRecipes"></app-card-layout> -->
 
   <ion-card *ngFor="let recipe of filteredRecipes" (click)="openRecipe(recipe)">
     <ion-card-content class="ion-no-padding">
+      <div class="recipe-favorite-container">
+        <ion-button [color]="recipe.favorited ? 'primary' : 'secondary'" (click)="favoriteRecipe($event, recipe)"
+          expand="block" class="favorite-button">
+          <ion-icon [name]="recipe.favorited ? 'veg-favorited-light': 'veg-favorite-light'" color="light"></ion-icon>
+          <span>{{recipe.favorited ? 'favorited': 'favorite'}}</span>
+        </ion-button>
+      </div>
+
       <img src="../assets/images/{{recipe.images ? recipe.images[0] : 'slider-default.png'}}">
 
-      <ion-button [color]="recipe.favorited ? 'primary' : 'secondary'" (click)="favoriteRecipe(recipe)" expand="block"
-        class="favorite-button">
-        <ion-icon [name]="recipe.favorited ? 'star': 'star-outline'" color="light"></ion-icon>
-        <span>{{recipe.favorited ? 'favorited': 'favorite'}}</span>
-      </ion-button>
-
-      <div>
+      <div class="recipe-title-container">
         <h3 class="recipe-title"> {{ recipe?.title }} </h3>
       </div>
     </ion-card-content>
@@ -32,6 +34,6 @@
 
 <ion-fab vertical="bottom" horizontal="end">
   <ion-fab-button (click)="newRecipe()">
-    <ion-icon name="add"></ion-icon>
+    <ion-icon name="veg-add-light"></ion-icon>
   </ion-fab-button>
 </ion-fab>

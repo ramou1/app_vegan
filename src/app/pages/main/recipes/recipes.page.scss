@@ -1,5 +1,11 @@
 ion-card {
-    div {
+    div.recipe-favorite-container {
+        width: 100%;
+        position: absolute;
+        top: 10px;
+    }
+
+    div.recipe-title-container {
         position: absolute;
         bottom: 0;
         width: 100%;

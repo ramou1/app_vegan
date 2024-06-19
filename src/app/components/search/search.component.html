@@ -2,12 +2,13 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()" class="search-page">
-        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        <!-- <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon> -->
+        <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
 
     <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="filtrar(pesquisa)" placeholder="search name or username"
-      class="custom-searchbar" color="medium" animated></ion-searchbar>
+      class="custom-searchbar" color="medium" search-icon="veg-search" animated></ion-searchbar>
 
   </ion-toolbar>
 </ion-header>

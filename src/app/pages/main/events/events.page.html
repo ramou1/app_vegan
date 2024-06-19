@@ -7,7 +7,7 @@
 <ion-content class="ion-padding">
 
   <ion-searchbar #eventsSearchbar placeholder="search events" class="custom-searchbar"
-    (ionInput)="filterList($event)"></ion-searchbar>
+    (ionInput)="filterList($event)" search-icon="veg-search"></ion-searchbar>
 
   <!-- <app-card-layout [type]="'events'" [data]="filteredEvents"></app-card-layout> -->
 
@@ -63,6 +63,6 @@
 
 <ion-fab vertical="bottom" horizontal="end">
   <ion-fab-button (click)="newEvent()">
-    <ion-icon name="add"></ion-icon>
+    <ion-icon name="veg-add-light"></ion-icon>
   </ion-fab-button>
 </ion-fab>

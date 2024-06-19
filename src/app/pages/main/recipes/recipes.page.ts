@@ -49,7 +49,8 @@ export class RecipesPage implements OnInit {
     return await modal.present();
   }
 
-  public favoriteRecipe(recipe: any): void {
+  public favoriteRecipe(event: Event, recipe: any): void {
+    event.stopPropagation();
     recipe.favorited = !recipe.favorited;
   }
 

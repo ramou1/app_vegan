@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
-        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
       </ion-button>
       <ion-title>{{recipe?.title}}</ion-title>
     </ion-buttons>
@@ -12,7 +12,8 @@
         <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
       </ion-button>
       <ion-button (click)="favoriteRecipe(recipe)">
-        <ion-icon slot="icon-only" [name]="recipe.favorited ? 'star': 'star-outline'" color="warning"></ion-icon>
+        <!-- <ion-icon slot="icon-only" [name]="recipe.favorited ? 'star': 'star-outline'" color="warning"></ion-icon> -->
+        <ion-icon slot="icon-only" [name]="recipe.favorited ? 'veg-favorited': 'veg-favorite'"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
