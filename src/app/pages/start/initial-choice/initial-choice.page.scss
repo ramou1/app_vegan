@@ -6,7 +6,9 @@ ion-toolbar {
 
 ion-content {
     // --background: var(--ion-color-tertiary-tint);
-    --background: linear-gradient(to bottom, var(--ion-color-primary), var(--ion-color-medium));
+    // --background: linear-gradient(to bottom, var(--ion-color-primary), var(--ion-color-medium));
+
+    --background: url('/assets/images/init/init-bg.png') no-repeat center center / cover;
 }
 
 .container {
@@ -15,12 +17,14 @@ ion-content {
     justify-content: center;
     align-items: center;
     height: 100%;
+    justify-content: space-between;
 }
 
 .vegan-logo {
     // margin: 8vh auto;
     // width: 78%;
     width: 65%;
+    margin-top: 15vh;
 }
 
 .app-padding {

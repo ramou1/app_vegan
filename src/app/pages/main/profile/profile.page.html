@@ -119,7 +119,7 @@
     <div *ngSwitchCase="'recipes'" class="ion-padding">
       <ion-card *ngFor="let recipe of user.recipes" class="post-card" (click)="openRecipe(recipe)">
         <ion-card-header class="ion-no-padding">
-          <img src="../assets/images/{{recipe.images ? recipe.images[0] : 'slider-default.png'}}">
+          <img src="../assets/images/{{recipe.images ? recipe.images[0] : 'slider-default.jpeg'}}">
         </ion-card-header>
 
         <ion-card-content>

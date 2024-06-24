@@ -22,7 +22,7 @@
 
 <ion-content>
 
-  <img *ngIf="recipe.images.length === 1" [src]="'../assets/images/' + (recipe.images[0] || 'slider-default.png')" />
+  <img *ngIf="recipe.images.length === 1" [src]="'../assets/images/' + (recipe.images[0] || 'slider-default.jpeg')" />
 
   <ng-container *ngIf="recipe.images.length > 1">
     <swiper-container #swiper (slideChange)="changeSlide()" class="recipe-slider" pagination="true">
