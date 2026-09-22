@@ -1,40 +1,36 @@
 ion-header,
 ion-toolbar {
-    padding-top: 0 !important;
-    --padding-top: 0 !important;
+  padding-top: 0 !important;
+  --padding-top: 0 !important;
 }
 
 .forgot-password {
-    font-size: 0.7em;
-    text-align: right;
-    font-weight: 700;
-    color: var(--ion-color-primary);
-    margin-bottom: 4vh;
+  font-size: 13px;
+  text-align: right;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+  margin: 4px 0 20px;
 }
 
-ion-item {
-    --background: transparent;
-    margin-bottom: 1vh;
-    border: 1px solid var(--ion-color-primary);
-    border-radius: 6px;
-}
-
-ion-icon.md.hydrated {
-    // margin-top: 2vh;
-    margin-top: calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end));
+ion-icon {
+  color: var(--app-muted);
+  font-size: 20px;
 }
 
 .login-bg {
-    margin-bottom: 4vh;
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .sign-up {
-    font-size: 0.8em;
-    text-align: center;
-    margin: 5vh 0 0;
+  font-size: 14px;
+  text-align: center;
+  margin: 28px 0 0;
+  color: var(--app-muted);
 
-    span {
-        font-weight: 700;
-        color: var(--ion-color-primary);
-    }
+  span {
+    font-weight: 800;
+    color: var(--ion-color-primary);
+  }
 }

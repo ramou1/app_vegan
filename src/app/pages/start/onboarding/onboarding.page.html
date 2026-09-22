@@ -1,50 +1,38 @@
 <ion-header>
-  <img src="./assets/images/logo-meelnutri.svg" class="header-logo">
-  <!-- <h3 (click)="skipOnBoarding()">Pular</h3> -->
+  <img src="./assets/images/logo-vegvision.png" class="header-logo" alt="veggie">
   <ion-button fill="clear" (click)="skipOnBoarding()" class="skip-onboarding">
-    <span *ngIf="index === 0">Pular</span>
+    <span>{{ index === 2 ? 'começar' : 'pular' }}</span>
   </ion-button>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <!-- DRAGGABLE ESTAVA FALSE -->
   <swiper-container #swiper class="onboarding-slider" pagination="true" pagination-clickable="true"
     centered-slides="true" (slidechange)="changeSlide()" draggable="true">
 
     <swiper-slide>
       <div class="slide-div">
-        <img src="./assets/images/onboarding/img01.svg" class="img01">
-        <h1>Seja bem-vindo (a)!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. <br><br>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <br><br>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-        <ion-button expand="block" (click)="nextSlide()">Vamos lá!</ion-button>
-        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</h5>
+        <img src="./assets/images/plants-decoration.png" class="img01" alt="">
+        <h1>seja bem-vindo</h1>
+        <p>uma comunidade para quem vive o vegetarianismo e o veganismo no dia a dia — com menos ruído e mais troca.</p>
+        <ion-button expand="block" (click)="nextSlide()">vamos lá</ion-button>
       </div>
     </swiper-slide>
 
     <swiper-slide>
       <div class="slide-div">
-        <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur
-          sint occaecat cupidatat non proident. <br><br>
-          Sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <img src="./assets/images/onboarding/img02.svg" class="img02">
-        <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur
-          sint occaecat cupidatat non proident. <br><br>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. <br><br>
-          Sed do eiusmod tempor incididunt ut labore et.
-        </p>
+        <img src="./assets/images/init/slide02.png" class="img02" alt="">
+        <h1>receitas e eventos</h1>
+        <p>publique pratos, descubra encontros da sua região e marque presença com quem compartilha o mesmo prato.</p>
+      </div>
+    </swiper-slide>
+
+    <swiper-slide>
+      <div class="slide-div">
+        <img src="./assets/images/plants-decoration.png" class="img01" alt="">
+        <h1>pessoas por perto</h1>
+        <p>encontre restaurantes veganos, faça amigos e acompanhe a timeline de quem inspira o seu caminho.</p>
+        <ion-button expand="block" (click)="skipOnBoarding()">começar</ion-button>
       </div>
     </swiper-slide>
 

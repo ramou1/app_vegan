@@ -1,15 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>recipes</ion-title>
+    <ion-title>receitas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-searchbar #recipesSearchbar placeholder="search recipes" class="custom-searchbar"
+  <ion-searchbar #recipesSearchbar placeholder="buscar receitas" class="custom-searchbar"
     (ionInput)="filterList($event)" search-icon="veg-search"></ion-searchbar>
-
-  <!-- <app-card-layout [type]="'recipes'" [data]="filteredRecipes"></app-card-layout> -->
 
   <ion-card *ngFor="let recipe of filteredRecipes" (click)="openRecipe(recipe)">
     <ion-card-content class="ion-no-padding">
@@ -17,7 +15,7 @@
         <ion-button [color]="recipe.favorited ? 'primary' : 'secondary'" (click)="favoriteRecipe($event, recipe)"
           expand="block" class="favorite-button">
           <ion-icon [name]="recipe.favorited ? 'veg-favorited-light': 'veg-favorite-light'" color="light"></ion-icon>
-          <span>{{recipe.favorited ? 'favorited': 'favorite'}}</span>
+          <span>{{recipe.favorited ? 'favorita': 'favoritar'}}</span>
         </ion-button>
       </div>
 

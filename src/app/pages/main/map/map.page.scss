@@ -1,3 +1,26 @@
+ion-header {
+  background: transparent;
+}
+
 ion-content {
-    --background: url('/assets/images/default-map.PNG') no-repeat center center / cover;
+  --background: url('/assets/images/default-map.PNG') no-repeat center center / cover;
+}
+
+.map-sheet {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 80px;
+  padding: 20px 18px 16px;
+  background: var(--app-surface);
+  border-radius: 24px;
+  box-shadow: var(--app-shadow);
+
+  h2 {
+    margin: 0 0 8px;
+  }
+
+  p {
+    margin: 0 0 14px;
+  }
 }

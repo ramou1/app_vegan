@@ -71,13 +71,13 @@ div.profile-picture {
 
 h3.user-name {
     text-align: center;
-    margin-bottom: 0;
+    margin: 12px 0 0;
 }
 
 h5.user-username {
     text-align: center;
-    margin: 0;
-    color: var(--ion-color-secondary);
+    margin: 2px 0 0;
+    color: var(--ion-color-primary);
 }
 
 // h5.user-description {
@@ -116,20 +116,25 @@ ion-slides {
 .info-container {
     display: flex;
     justify-content: space-evenly;
-    width: 50%;
-    margin: 3vh auto;
+    width: 78%;
+    margin: 20px auto 8px;
     text-align: center;
+    padding: 12px 8px;
+    background: var(--app-surface);
+    border-radius: 18px;
+    box-shadow: var(--app-shadow-soft);
 
     .info-data {
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 800;
         margin: 0;
     }
 
     .info-title {
         font-size: 12px;
-        font-weight: 500;
-        margin: 0;
+        font-weight: 700;
+        margin: 2px 0 0;
         color: var(--ion-color-primary);
+        text-transform: lowercase;
     }
 }

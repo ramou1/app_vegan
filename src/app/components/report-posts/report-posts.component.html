@@ -4,23 +4,22 @@
       <ion-button (click)="goBack()">
         <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
       </ion-button>
-      <ion-title>report</ion-title>
+      <ion-title>denunciar</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-item *ngFor="let r of reports" (click)="chooseReport(r)" [color]="r.selected ? 'secondary': ''">
+  <ion-item *ngFor="let r of reports" (click)="chooseReport(r)" [color]="r.selected ? 'secondary': ''" lines="none">
     <ion-label>
-      <h4>{{r.title_en}}</h4>
-      <h5>{{r.title_pt}}</h5>
+      <h4>{{r.title_pt}}</h4>
+      <h5>{{r.title_en}}</h5>
     </ion-label>
   </ion-item>
 
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <ion-button expand="block" color="primary" type="submit" (click)="sendReport()">send
-    report</ion-button>
+  <ion-button expand="block" color="primary" type="submit" (click)="sendReport()">enviar denúncia</ion-button>
 </ion-footer>

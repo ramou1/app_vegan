@@ -1,31 +1,36 @@
 ion-searchbar.custom-searchbar {
-    margin: 15px 10px;
-    width: 93%;
+  margin: 8px 10px;
+  width: 93%;
 }
 
 div.user-info {
+  padding-left: 10px;
 
-    padding-left: 10px;
+  .user-name {
+    margin-bottom: 0;
+  }
 
-    .user-name {
-        margin-bottom: 0;
-    }
-
-    .user-username {
-        font-size: 12px;
-        color: var(--ion-color-primary);
-        margin-top: 0
-    }
+  .user-username {
+    font-size: 12px;
+    color: var(--ion-color-primary);
+    margin-top: 0;
+  }
 }
 
-
 ion-button {
-    --padding-start: 0;
-    --padding-end: 0;
-    width: 100%;
+  --padding-start: 0;
+  --padding-end: 0;
+  width: 100%;
 }
 
 ion-button.follow-user-button {
-    width: 30vw;
-    height: 4vh;
+  width: auto;
+  min-width: 92px;
+  height: 36px;
+}
+
+ion-list-header {
+  text-transform: lowercase;
+  font-weight: 800;
+  color: var(--app-ink);
 }

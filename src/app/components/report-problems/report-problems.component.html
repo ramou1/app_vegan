@@ -13,27 +13,26 @@
 
   <form [formGroup]="reportGroup">
     <ion-item lines="none">
-      <ion-label position="floating">What problem are you going through?</ion-label>
-      <ion-select placeholder="Selecione" interface="popover" formControlName="type">
-        <ion-select-option value="bug">Bug</ion-select-option>
-        <ion-select-option value="performance-issue">Performance Issue</ion-select-option>
-        <ion-select-option value="feature-request">Feature Request</ion-select-option>
-        <ion-select-option value="user-interface">User Interface Issue</ion-select-option>
-        <ion-select-option value="account-related">Account Related</ion-select-option>
-        <ion-select-option value="payment-issues">Payment Issues</ion-select-option>
-        <ion-select-option value="other">Other</ion-select-option>
+      <ion-label position="floating">qual problema você está tendo?</ion-label>
+      <ion-select placeholder="selecione" interface="popover" formControlName="type">
+        <ion-select-option value="bug">erro</ion-select-option>
+        <ion-select-option value="performance-issue">desempenho</ion-select-option>
+        <ion-select-option value="feature-request">sugestão</ion-select-option>
+        <ion-select-option value="user-interface">interface</ion-select-option>
+        <ion-select-option value="account-related">conta</ion-select-option>
+        <ion-select-option value="payment-issues">pagamento</ion-select-option>
+        <ion-select-option value="other">outro</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item lines="none">
-      <ion-label position="floating">Description</ion-label>
-      <ion-textarea formControlName="description" placeholder="Describe the problem" type="text" rows="5"></ion-textarea>
+      <ion-label position="floating">descrição</ion-label>
+      <ion-textarea formControlName="description" placeholder="conte o que aconteceu" type="text" rows="5"></ion-textarea>
     </ion-item>
   </form>
 
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <ion-button expand="block" color="primary" type="submit" (click)="sendReport()">send
-    report</ion-button>
+  <ion-button expand="block" color="primary" type="submit" (click)="sendReport()">enviar relato</ion-button>
 </ion-footer>

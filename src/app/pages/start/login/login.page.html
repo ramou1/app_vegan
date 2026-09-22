@@ -1,28 +1,26 @@
 <ion-content>
 
-  <img class="login-bg" src="../assets/images/login-bg.png">
+  <img class="login-bg" src="../assets/images/login-bg.png" alt="">
 
   <div class="app-padding">
-  <form [formGroup]="loginGroup" (submit)="login()">
-    <ion-item lines="none">
-      <ion-label position="floating">username</ion-label>
-      <ion-input formControlName="username" type="text"></ion-input>
-    </ion-item>
+    <p class="auth-kicker">bem-vindo de volta</p>
+    <h1 class="auth-title">entrar</h1>
 
-    <ion-item>
-      <ion-label position="floating">password</ion-label>
-      <ion-input formControlName="password" type="{{passwordType}}"></ion-input>
-      <ion-icon slot="end" *ngIf="showPassword" name="eye-off-outline" (click)="toggleShow()">
-      </ion-icon>
-      <ion-icon slot="end" *ngIf="!showPassword" name="eye-outline" (click)="toggleShow()">
-      </ion-icon>
-    </ion-item>
+    <form [formGroup]="loginGroup" (submit)="login()">
+      <ion-item lines="none">
+        <ion-input formControlName="username" type="text" label="usuário" labelPlacement="floating"></ion-input>
+      </ion-item>
 
-    <p class="forgot-password" (click)="gotoRecoverPassword()">forgot your password?</p>
-    <ion-button expand="block" color="primary" type="submit" [disabled]="loginGroup.invalid">sign in</ion-button>
-    
-    <p class="sign-up" (click)="gotoSignUp()">don't have an account? <span>sign up</span></p>
-  </form>
-</div>
+      <ion-item lines="none">
+        <ion-input formControlName="password" type="{{passwordType}}" label="senha" labelPlacement="floating"></ion-input>
+        <ion-icon slot="end" [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" (click)="toggleShow()"></ion-icon>
+      </ion-item>
+
+      <p class="forgot-password" (click)="gotoRecoverPassword()">esqueceu a senha?</p>
+      <ion-button expand="block" color="primary" type="submit" [disabled]="loginGroup.invalid">entrar</ion-button>
+
+      <p class="sign-up" (click)="gotoSignUp()">ainda não tem conta? <span>criar conta</span></p>
+    </form>
+  </div>
 
 </ion-content>

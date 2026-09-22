@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title>rating</ion-title>
+    <ion-title>avaliação</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -48,10 +48,10 @@
       <form [formGroup]="ratingGroup">
         <ion-item lines="none">
           <ion-textarea formControlName="description" rows="4" fill="outline"
-            placeholder="what can we improve?"></ion-textarea>
+            placeholder="o que podemos melhorar?"></ion-textarea>
         </ion-item>
 
-        <ion-button expand="block" color="primary" class="send-button" type="submit" [disabled]="ratingGroup.invalid" (click)="send()">send</ion-button>
+        <ion-button expand="block" color="primary" class="send-button" type="submit" [disabled]="ratingGroup.invalid" (click)="send()">enviar</ion-button>
       </form>
     </div>
 
@@ -63,7 +63,7 @@
         <ion-icon name="checkmark-circle" *ngIf="selected.includes(chip.slug)"></ion-icon>
       </ion-chip>
 
-      <ion-button expand="block" color="primary" class="send-button" type="submit" [disabled]="selected.length === 0" (click)="send()">send</ion-button>
+      <ion-button expand="block" color="primary" class="send-button" type="submit" [disabled]="selected.length === 0" (click)="send()">enviar</ion-button>
     </div>
 
   </div>

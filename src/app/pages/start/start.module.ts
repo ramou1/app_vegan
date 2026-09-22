@@ -14,8 +14,7 @@ import { OnboardingPage } from './onboarding/onboarding.page';
 
 // const SHOW_ONBOARDING = localStorage.getItem(STORAGE.SHOW_ONBOARDING);
 // const INITIAL_ROUTE = SHOW_ONBOARDING === '0' ? APP_ROUTES.INITIAL_CHOICE : APP_ROUTES.ONBOARDING;
-const INITIAL_ROUTE = APP_ROUTES.INITIAL_CHOICE;
-// const INITIAL_ROUTE = APP_ROUTES.ONBOARDING;
+const INITIAL_ROUTE = APP_ROUTES.ONBOARDING;
 
 const routes: Routes = [
   {

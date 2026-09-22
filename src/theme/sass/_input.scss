@@ -1,0 +1,27 @@
+ion-item.form-field,
+form ion-item {
+  --background: var(--app-surface);
+  --border-color: transparent;
+  --border-radius: 16px;
+  --padding-start: 14px;
+  --inner-padding-end: 12px;
+  --highlight-color-focused: var(--ion-color-primary);
+  --highlight-color-valid: var(--ion-color-primary);
+  margin-bottom: 12px;
+  border: 1px solid var(--app-line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+ion-input,
+ion-textarea,
+ion-select {
+  font-size: 15px;
+  --placeholder-color: var(--app-muted);
+  --placeholder-opacity: 0.8;
+}
+
+ion-textarea {
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}

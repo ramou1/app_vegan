@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title>edit profile</ion-title>
+    <ion-title>editar perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,74 +19,60 @@
     <form [formGroup]="formGroup">
 
       <ion-item lines="none">
-        <ion-label position="floating">Name</ion-label>
-        <ion-input [disabled]="loading" formControlName="name" placeholder="Write here" type="text"></ion-input>
+        <ion-label position="floating">nome</ion-label>
+        <ion-input [disabled]="loading" formControlName="name" placeholder="escreva aqui" type="text"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="floating">Username</ion-label>
-        <ion-input [disabled]="loading" formControlName="username" placeholder="Write here" type="text"></ion-input>
-      </ion-item>
-
-      <!-- <ion-item lines="none">
-        <ion-label position="floating">Description</ion-label>
-        <ion-input [disabled]="loading" formControlName="description" placeholder="Write here" type="text"></ion-input>
-      </ion-item> -->
-
-      <ion-item lines="none">
-        <ion-label position="floating">Birth Date</ion-label>
-        <ion-input formControlName="birth" placeholder="Write here"></ion-input>
-        <!-- [brmasker]="{ mask: '00/00/0000', type: 'num' }" -->
-      </ion-item>
-
-      <!-- <ion-item>
-        <ion-label position="floating">Birth Date</ion-label>
-        <ion-datetime presentation="date" max="2010-12-09" displayFormat="DD/MM/YYYY" formControlName="birth"
-          placeholder="Birth Date" cancelText="Cancelar" doneText="Concluir">
-        </ion-datetime>
-      </ion-item> -->
-
-      <ion-item lines="none">
-        <ion-label position="floating">E-mail</ion-label>
-        <ion-input [disabled]="loading" formControlName="email" placeholder="Write here" type="email"></ion-input>
+        <ion-label position="floating">usuário</ion-label>
+        <ion-input [disabled]="loading" formControlName="username" placeholder="escreva aqui" type="text"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="floating">Phone number</ion-label>
-        <ion-input formControlName="phoneNumber" placeholder="Write here" type="tel"></ion-input>
-        <!-- [brmasker]="{ mask: '(00) 00000-0000', type: 'num', len:15 }" -->
+        <ion-label position="floating">data de nascimento</ion-label>
+        <ion-input formControlName="birth" placeholder="escreva aqui"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="floating">Country</ion-label>
-        <ion-input [disabled]="loading" formControlName="country" placeholder="Write here" type="text"></ion-input>
+        <ion-label position="floating">e-mail</ion-label>
+        <ion-input [disabled]="loading" formControlName="email" placeholder="escreva aqui" type="email"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="floating">City</ion-label>
-        <ion-input [disabled]="loading" formControlName="city" placeholder="Write here" type="text"></ion-input>
+        <ion-label position="floating">telefone</ion-label>
+        <ion-input formControlName="phoneNumber" placeholder="escreva aqui" type="tel"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="floating">State</ion-label>
-        <ion-select [disabled]="loading" placeholder="Selecione" interface="popover" formControlName="state">
+        <ion-label position="floating">país</ion-label>
+        <ion-input [disabled]="loading" formControlName="country" placeholder="escreva aqui" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="floating">cidade</ion-label>
+        <ion-input [disabled]="loading" formControlName="city" placeholder="escreva aqui" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="floating">estado</ion-label>
+        <ion-select [disabled]="loading" placeholder="selecione" interface="popover" formControlName="state">
           <ion-select-option *ngFor="let estado of estados" [value]="estado.EST_NOME">{{ estado.EST_NOME }}
           </ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="floating">Which do you identify with?</ion-label>
-        <ion-select [disabled]="loading" placeholder="Selecione" interface="popover" formControlName="identify">
-          <ion-select-option value="vegetarian">Vegetarian</ion-select-option>
-          <ion-select-option value="vegan">Vegan</ion-select-option>
-          <ion-select-option value="interested">Interested in the cause</ion-select-option>
+        <ion-label position="floating">com o que você se identifica?</ion-label>
+        <ion-select [disabled]="loading" placeholder="selecione" interface="popover" formControlName="identify">
+          <ion-select-option value="vegetarian">vegetariano</ion-select-option>
+          <ion-select-option value="vegan">vegano</ion-select-option>
+          <ion-select-option value="interested">interessado na causa</ion-select-option>
         </ion-select>
       </ion-item>
 
       <p class="report-problems" (click)="reportProblems()">
         <ion-icon slot="start" name="alert-circle"></ion-icon>
-        Report Problems
+        relatar um problema
       </p>
 
       <div class="interests">
@@ -96,20 +82,20 @@
           <ion-icon name="close-circle" (click)="deleteInterest(interest)"></ion-icon>
         </ion-chip>
 
-        <ion-chip color="tertiary" (click)="openInterests()">
+        <ion-chip color="primary" (click)="openInterests()">
           <ion-icon *ngIf="user.interests" name="create"></ion-icon>
-          <ion-label *ngIf="user.interests">Edit interests</ion-label>
+          <ion-label *ngIf="user.interests">editar interesses</ion-label>
           <ion-icon *ngIf="!user.interests" name="add"></ion-icon>
-          <ion-label *ngIf="!user.interests">Add interests</ion-label>
+          <ion-label *ngIf="!user.interests">adicionar interesses</ion-label>
         </ion-chip>
       </div>
 
       <div class="footer-buttons">
-        <ion-button (click)="saveData()" fill="outline" size="default" expand="block" color="dark"> Save
+        <ion-button (click)="saveData()" fill="solid" size="default" expand="block" color="primary">salvar
         </ion-button>
-        <ion-button class="logout-account" (click)="logout()" size="default" expand="block" color="dark"> Logout
+        <ion-button class="logout-account" (click)="logout()" size="default" expand="block" color="medium">sair
         </ion-button>
-        <p class="delete-account" (click)="deleteAccount()">Delete Account</p>
+        <p class="delete-account" (click)="deleteAccount()">excluir conta</p>
         <ion-progress-bar type="indeterminated" *ngIf="loading"></ion-progress-bar>
       </div>
 

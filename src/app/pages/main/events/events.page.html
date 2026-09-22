@@ -1,15 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Eventos</ion-title>
+    <ion-title>eventos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-searchbar #eventsSearchbar placeholder="search events" class="custom-searchbar"
+  <ion-searchbar #eventsSearchbar placeholder="buscar eventos" class="custom-searchbar"
     (ionInput)="filterList($event)" search-icon="veg-search"></ion-searchbar>
-
-  <!-- <app-card-layout [type]="'events'" [data]="filteredEvents"></app-card-layout> -->
 
   <ion-card *ngFor="let event of filteredEvents">
     <div (click)="openEvent(event)">
@@ -52,7 +50,7 @@
 
     </div>
 
-    <ion-button class="interested-button" expand="block" shape="round" color="{{buttonColor}}"
+    <ion-button class="interested-button" expand="block" color="{{buttonColor}}"
       (click)="checkInterested(event)">
       {{interestedText}}
       <ion-icon slot="end" name="{{interestedIcon}}"></ion-icon>

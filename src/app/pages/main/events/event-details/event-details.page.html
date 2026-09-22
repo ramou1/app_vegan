@@ -25,9 +25,9 @@
 
   <div class="ion-padding">
 
-    <ion-button shape="round" color="primary" class="confirm-preseence-button" fill="outline" (click)="confirmPresence()">
+    <ion-button color="primary" class="confirm-preseence-button" fill="solid" (click)="confirmPresence()">
       <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
-      i want to go
+      quero ir
     </ion-button>
 
     <ion-item lines="none">
@@ -40,7 +40,7 @@
     <ion-item>
       <ion-icon name="people-outline" slot="start"></ion-icon>
       <ion-label>
-        <p class="event-local"> {{ event.confirmed? event.confirmed.length : '0' }} Confirmed</p>
+        <p class="event-local"> {{ event.confirmed? event.confirmed.length : '0' }} confirmados</p>
       </ion-label>
     </ion-item>
 

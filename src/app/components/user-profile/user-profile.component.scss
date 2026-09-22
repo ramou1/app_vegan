@@ -22,13 +22,13 @@
 
 h3.user-name {
     text-align: center;
-    margin-bottom: 0;
+    margin: 12px 0 0;
 }
 
 h5.user-username {
     text-align: center;
-    margin: 0;
-    color: var(--ion-color-secondary);
+    margin: 2px 0 0;
+    color: var(--ion-color-primary);
 }
 
 // h5.user-description {
@@ -40,26 +40,37 @@ h5.user-username {
 .info-container {
     display: flex;
     justify-content: space-evenly;
-    width: 50%;
-    margin: 3vh auto;
+    width: 78%;
+    margin: 20px auto 16px;
     text-align: center;
+    padding: 12px 8px;
+    background: var(--app-surface);
+    border-radius: 18px;
+    box-shadow: var(--app-shadow-soft);
 
     .info-data {
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 800;
         margin: 0;
     }
 
     .info-title {
         font-size: 12px;
-        font-weight: 500;
-        margin: 0;
+        font-weight: 700;
+        margin: 2px 0 0;
         color: var(--ion-color-primary);
+        text-transform: lowercase;
     }
 }
 
 ion-button.follow-user-button {
-    height: 4vh;
-    margin: 0 25%;
-    width: 50%;
+    height: 44px;
+    margin: 0 auto;
+    width: 56%;
+    display: block;
+}
+
+.posts-title {
+    text-transform: lowercase;
+    font-weight: 800;
 }

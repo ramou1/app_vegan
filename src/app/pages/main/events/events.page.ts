@@ -13,8 +13,8 @@ import { NewEventPage } from './new-event/new-event.page';
 })
 export class EventsPage implements OnInit {
 
-  public buttonColor = 'tertiary';
-  public interestedText = 'I want to go!';
+  public buttonColor = 'primary';
+  public interestedText = 'quero ir';
   public interestedIcon = 'leaf-outline';
   public interested: boolean = false;
 
@@ -58,14 +58,14 @@ export class EventsPage implements OnInit {
     this.interested = !this.interested;
 
     if (this.interested) {
-      this.buttonColor = 'primary';
-      this.interestedText = `I'm Interested`;
+      this.buttonColor = 'secondary';
+      this.interestedText = 'tenho interesse';
       this.interestedIcon = 'checkmark-circle-outline'
     }
     else {
-      this.buttonColor = 'danger';
-      this.interestedText = `I'm not Interested`;
-      this.interestedIcon = 'close-circle-outline'
+      this.buttonColor = 'primary';
+      this.interestedText = 'quero ir';
+      this.interestedIcon = 'leaf-outline'
     }
 
   }

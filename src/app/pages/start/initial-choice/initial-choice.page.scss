@@ -1,33 +1,39 @@
 ion-header,
 ion-toolbar {
-    padding-top: 0 !important;
-    --padding-top: 0 !important;
+  padding-top: 0 !important;
+  --padding-top: 0 !important;
 }
 
 ion-content {
-    // --background: var(--ion-color-tertiary-tint);
-    // --background: linear-gradient(to bottom, var(--ion-color-primary), var(--ion-color-medium));
-
-    --background: url('/assets/images/init/init-bg.png') no-repeat center center / cover;
+  --background: url('/assets/images/init/init-bg.png') no-repeat center center / cover;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .vegan-logo {
-    // margin: 8vh auto;
-    // width: 78%;
-    width: 65%;
-    margin-top: 15vh;
+  width: 62%;
+  margin-top: 14vh;
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
 }
 
 .app-padding {
-    width: 100%;
-    max-width: 300px;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 28px;
+}
+
+ion-button[fill="outline"] {
+  --border-width: 1.5px;
+  --background: rgba(255, 255, 255, 0.12);
 }

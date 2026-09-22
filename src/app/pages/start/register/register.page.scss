@@ -1,42 +1,32 @@
 ion-header,
 ion-toolbar {
-    padding-top: 0 !important;
-    --padding-top: 0 !important;
+  padding-top: 0 !important;
+  --padding-top: 0 !important;
 }
 
-ion-item {
-    --background: transparent;
-    margin-bottom: 1vh;
-    border: 1px solid var(--ion-color-secondary);
-    border-radius: 6px;
-}
-
-ion-icon.md.hydrated {
-    // margin-top: 2vh;
-    margin-top: calc(var(--ion-safe-area-right, 0px) + var(--inner-padding-end));
+ion-icon {
+  color: var(--app-muted);
+  font-size: 20px;
 }
 
 .register-bg {
-    // margin-bottom: 3vh;
-}
-
-.register-title {
-    font-size: 0.9em;
-    font-weight: 700;
+  display: block;
+  width: 100%;
 }
 
 ion-select {
-    color: var(--ion-color-primary) !important;
-    font-size: 0.8em !important;
+  color: var(--ion-color-primary) !important;
+  font-size: 0.9em !important;
 }
 
 .sign-in {
-    font-size: 0.8em;
-    text-align: center;
-    margin: 5vh 0 0;
+  font-size: 14px;
+  text-align: center;
+  margin: 28px 0 0;
+  color: var(--app-muted);
 
-    span {
-        font-weight: 700;
-        color: var(--ion-color-primary);
-    }
+  span {
+    font-weight: 800;
+    color: var(--ion-color-primary);
+  }
 }

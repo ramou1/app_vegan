@@ -1,50 +1,45 @@
-form {
-    ion-item {
-        --background: transparent;
-        margin-bottom: 1vh;
-        border: 1px solid var(--ion-color-primary);
-        border-radius: 6px;
-    }
-}
-
 .logout-account {
-    margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .report-problems {
-    font-size: 12px;
-    font-weight: 700;
-    margin: 20px 5px;
-    display: flex;
-    color: var(--ion-color-danger);
+  font-size: 13px;
+  font-weight: 700;
+  margin: 20px 5px;
+  display: flex;
+  color: var(--ion-color-danger);
 
-    ion-icon {
-        margin-right: 5px;
-        font-size: 14px;
-    }
+  ion-icon {
+    margin-right: 5px;
+    font-size: 14px;
+  }
 }
 
 .delete-account {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--ion-color-danger);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ion-color-danger);
 }
 
 .footer-buttons {
-    margin-top: 40px;
+  margin-top: 32px;
 }
 
-
 ion-col {
-    display: grid;
+  display: grid;
 }
 
 .change-picture {
-    margin: auto 0;
-    font-size: 13px;
+  margin: auto 0;
+  font-size: 13px;
 }
 
 .interests {
-    margin: 30px 0;
+  margin: 24px 0;
+}
+
+ion-chip {
+  text-transform: lowercase;
+  font-weight: 700;
 }

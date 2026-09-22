@@ -1,73 +1,65 @@
 ion-segment {
-    margin: 2vh 0 1vh 60%;
-    width: 40%;
+  margin: 2vh 0 1vh 60%;
+  width: 40%;
 
-    ion-segment-button {
-        ion-icon {
-            font-size: 20px;
-        }
+  ion-segment-button {
+    ion-icon {
+      font-size: 20px;
     }
-    
+  }
 }
 
 ion-card.recipe-card {
-    div {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--light-gradient);
+  position: relative;
 
-        h3.recipe-title {
-            font-size: 14px;
-            text-align: center;
-            font-weight: 600;
-            margin: 2vh 0;
-            text-transform: lowercase;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            color: #fff;
-        }
+  div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--light-gradient);
+
+    h3.recipe-title {
+      font-size: 14px;
+      text-align: left;
+      font-weight: 800;
+      margin: 0;
+      padding: 12px 14px;
+      text-transform: lowercase;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      color: #fff;
     }
-
+  }
 }
 
 ion-col {
-    margin: 0 auto;
-    display: flex;
+  margin: 0 auto;
+  display: flex;
 }
 
-// ion-icon {
-//     padding-right: 6px;
-//     font-size: 16px;
-// }
-
 .card-title {
-    padding-left: 10px;
-    font-size: 1em;
-    margin: auto 0;
+  padding-left: 10px;
+  font-size: 1em;
+  margin: auto 0;
 }
 
 .card-subtitle {
-    font-size: 0.7em;
-    margin: auto;
+  font-size: 0.7em;
+  margin: auto;
 }
 
 ion-card.event-card {
-    .event-title {
-        margin-top: 15px;
-        font-size: 16px;
-        text-align: center;
-        font-weight: 700;
-    }
-    
-    .event-local {
-        // text-align: center;
-        // font-weight: 700;
-    }
-    
-    .interested-button {
-        margin: 15px;
-    }
+  .event-title {
+    margin-top: 12px;
+    font-size: 16px;
+    text-align: left;
+    font-weight: 800;
+    text-transform: lowercase;
+  }
+
+  .interested-button {
+    margin: 15px;
+  }
 }

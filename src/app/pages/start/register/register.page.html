@@ -1,47 +1,40 @@
 <ion-content>
 
-  <img class="register-bg" src="../assets/images/login-bg.png">
+  <img class="register-bg" src="../assets/images/login-bg.png" alt="">
 
   <div class="app-padding">
-    <h1 class="register-title">fill the fields</h1>
-    <!-- <h1 class="register-title">{{ 'fillTheFields' | translate }}</h1> -->
+    <p class="auth-kicker">faça parte</p>
+    <h1 class="auth-title">criar conta</h1>
+
     <form [formGroup]="registerForm">
       <ion-item lines="none">
-        <ion-label position="floating">e-mail</ion-label>
-        <ion-input formControlName="email" type="email"></ion-input>
+        <ion-input formControlName="email" type="email" label="e-mail" labelPlacement="floating"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="floating">name</ion-label>
-        <ion-input formControlName="name" type="text" pattern="[a-zA-Z]+"></ion-input>
+        <ion-input formControlName="name" type="text" label="nome" labelPlacement="floating"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">password</ion-label>
-        <ion-input formControlName="password" type="{{passwordType}}"></ion-input>
+      <ion-item lines="none">
+        <ion-input formControlName="password" type="{{passwordType}}" label="senha" labelPlacement="floating"></ion-input>
         <ion-icon slot="end" [name]="passwordIcon" (click)="toggleShow()"></ion-icon>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">birth date</ion-label>
-        <!-- <ion-datetime presentation="date" max="2010-12-09" displayFormat="DD/MM/YYYY" formControlName="birth"
-          placeholder="Birth Date" cancelText="Cancelar" doneText="Concluir">
-        </ion-datetime> -->
-        <ion-input formControlName="birth" type="text"></ion-input>
+      <ion-item lines="none">
+        <ion-input formControlName="birth" type="text" label="data de nascimento" labelPlacement="floating"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label>which do you identify with?</ion-label>
-        <ion-select interface="popover" formControlName="identify">
-          <ion-select-option value="vegetarian">vegetarian</ion-select-option>
-          <ion-select-option value="vegan">vegan</ion-select-option>
-          <ion-select-option value="interested">interested in the cause</ion-select-option>
+      <ion-item lines="none">
+        <ion-select interface="popover" formControlName="identify" label="com o que você se identifica?" labelPlacement="floating">
+          <ion-select-option value="vegetarian">vegetariano</ion-select-option>
+          <ion-select-option value="vegan">vegano</ion-select-option>
+          <ion-select-option value="interested">interessado na causa</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-button (click)="register()" expand="block" color="primary" [disabled]="registerForm.invalid">register</ion-button>
+      <ion-button (click)="register()" expand="block" color="primary" [disabled]="registerForm.invalid">cadastrar</ion-button>
 
-      <p class="sign-in" (click)="goToLogin()">have an account? <span>sign in</span></p>
+      <p class="sign-in" (click)="goToLogin()">já tem uma conta? <span>entrar</span></p>
     </form>
   </div>
 

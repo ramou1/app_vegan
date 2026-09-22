@@ -41,28 +41,28 @@
   <div class="info-container">
     <div>
       <h3 class="info-data"> {{ user?.following ? user.following.length : '0' }} </h3>
-      <p class="info-title"> following </p>
+      <p class="info-title">seguindo</p>
     </div>
 
     <div>
       <h3 class="info-data"> {{ user?.followers ? user.followers.length : '0' }} </h3>
-      <p class="info-title"> followers </p>
+      <p class="info-title">seguidores</p>
     </div>
 
     <div>
       <h3 class="info-data"> {{ user?.trophies ? user.trophies.length : '0' }} </h3>
-      <p class="info-title"> trophies </p>
+      <p class="info-title">troféus</p>
     </div>
 
   </div>
 
   <ion-button shape="round" color="primary" class="follow-user-button" fill="outline" (click)="followUser(user)">
     <ion-icon slot="icon-only" name="person-add"></ion-icon>
-    follow
+    seguir
   </ion-button>
 
   <div class="ion-padding">
-    <h3 class="posts-title">Interests</h3>
+    <h3 class="posts-title">interesses</h3>
     <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
       <ion-icon [name]="interest.icon"></ion-icon>
       <ion-label>{{ interest.description }}</ion-label>

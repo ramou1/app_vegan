@@ -1,40 +1,44 @@
 .item .sc-ion-label-md-h {
-    white-space: normal;
-    background: var(--ion-color-light);
-    padding: 10px;
-    border-radius: 20px;
+  white-space: normal;
+  background: var(--ion-color-light);
+  padding: 10px 12px;
+  border-radius: 16px;
 }
 
 .comment-creator {
-    font-size: 12px;
-    font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .comment-description {
-    font-size: 11px;
+  font-size: 13px;
+  color: var(--app-ink);
 }
 
 ion-avatar {
-    margin-inline-end: 10px !important;
+  margin-inline-end: 10px !important;
 }
 
 ion-icon {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 ion-button {
-    margin: 0;
+  margin: 0;
 }
 
 ion-input {
-    font-size: 14px;
-    background: var(--ion-color-light);
-    border-radius: 15px;
-    --padding-start: 15px;
+  font-size: 14px;
+  background: var(--app-surface);
+  border: 1px solid var(--app-line);
+  border-radius: 16px;
+  --padding-start: 15px;
 }
 
 ion-item {
-    margin: 10px 0px;
+  margin: 10px 0;
 }
 
-
+ion-footer {
+  background: var(--app-bg);
+}

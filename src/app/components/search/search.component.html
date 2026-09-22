@@ -7,7 +7,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="filtrar(pesquisa)" placeholder="search name or username"
+    <ion-searchbar [(ngModel)]="pesquisa" (ionChange)="filtrar(pesquisa)" placeholder="buscar nome ou usuário"
       class="custom-searchbar" color="medium" search-icon="veg-search" animated></ion-searchbar>
 
   </ion-toolbar>
@@ -16,7 +16,7 @@
 <ion-content>
 
   <ion-list *ngIf="!searching && recentSearch.length > 0">
-    <ion-list-header>recent search</ion-list-header>
+    <ion-list-header>buscas recentes</ion-list-header>
     <ion-item *ngFor="let user of recentSearch; let i = index" (click)="openUserProfile(user)">
       <ion-avatar item-start>
         <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
@@ -46,7 +46,7 @@
       <ion-buttons slot="end">
         <ion-button shape="round" color="primary" class="follow-user-button" fill="outline" (click)="followUser(user)">
           <ion-icon slot="icon-only" name="person-add"></ion-icon>
-          follow
+          seguir
         </ion-button>
       </ion-buttons>
     </ion-item>
