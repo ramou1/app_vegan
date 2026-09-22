@@ -1,0 +1,21 @@
+.hint {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--app-muted);
+}
+
+.interests-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+ion-chip {
+  text-transform: lowercase;
+  font-weight: 700;
+  margin: 0;
+}
+
+ion-footer {
+  background: var(--app-bg);
+}

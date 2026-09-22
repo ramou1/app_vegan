@@ -8,6 +8,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 import { ProfileEditPage } from './profile-edit/profile-edit.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ProfileEditPage } from './profile-edit/profile-edit.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    ComponentsModule,
     ProfilePageRoutingModule
   ],
   declarations: [ProfilePage, ProfileEditPage]

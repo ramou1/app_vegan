@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>interesses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p class="hint">escolha os temas que combinam com você</p>
+
+  <div class="interests-grid">
+    <ion-chip
+      *ngFor="let option of options"
+      [color]="isSelected(option) ? option.color : 'medium'"
+      [outline]="!isSelected(option)"
+      (click)="toggleInterest(option)">
+      <ion-icon [name]="option.icon"></ion-icon>
+      <ion-label>{{ option.description }}</ion-label>
+      <ion-icon *ngIf="isSelected(option)" name="checkmark-circle"></ion-icon>
+    </ion-chip>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border ion-padding">
+  <ion-button expand="block" color="primary" (click)="save()">salvar interesses</ion-button>
+</ion-footer>

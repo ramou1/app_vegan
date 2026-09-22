@@ -1,6 +1,14 @@
-<ion-content (ionScroll)="onScroll($event)">
-  <div class="profile-background"
-    [ngStyle]="{'background-image': bgImageUrl ? 'url(' + bgImageUrl + ')' : 'url(../assets/images/background-default.png)'}">
+<input
+  #galleryInput
+  type="file"
+  accept="image/*"
+  hidden
+  (change)="onGallerySelected($event)" />
+
+<ion-content (ionScroll)="onScroll($event)" [class.scrolled]="scrolled">
+  <div
+    class="profile-background"
+    [ngStyle]="{'background-image': 'url(' + getBackgroundSrc() + ')'}">
 
     <ion-toolbar class="first-toolbar">
       <ion-buttons slot="end">
@@ -16,31 +24,37 @@
 
     <ion-toolbar class="edit-bg-toolbar">
       <ion-buttons slot="end">
-        <ion-button shape="round" size="small" fill="solid" color="secondary" class="teste edit-image-button"
+        <ion-button
+          shape="round"
+          size="small"
+          fill="solid"
+          color="secondary"
+          class="edit-image-button"
           (click)="changeImageActions('background')">
-          <ion-icon slot="icon-only" md="camera" color="primary"></ion-icon>
+          <ion-icon slot="icon-only" name="camera-outline" color="primary"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </div>
 
   <div class="profile-picture">
-    <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
+    <img [src]="getProfileSrc()" alt="foto de perfil">
 
-    <ion-button shape="round" size="small" fill="solid" color="secondary" class="edit-image-button"
+    <ion-button
+      shape="round"
+      size="small"
+      fill="solid"
+      color="secondary"
+      class="edit-image-button"
       (click)="changeImageActions('profile')">
-      <ion-icon slot="icon-only" md="camera" color="primary"></ion-icon>
+      <ion-icon slot="icon-only" name="camera-outline" color="primary"></ion-icon>
     </ion-button>
   </div>
 
-  <!-- header="Ação" -->
-
   <h3 class="user-name"> {{ user?.name }} </h3>
   <h5 class="user-username"> {{ user?.username }} </h5>
-  <!-- <h5 class="user-description"> {{ user?.description }} </h5> -->
 
   <div class="info-container">
-
     <div>
       <h3 class="info-data"> {{ user?.following ? user.following.length : '0' }} </h3>
       <p class="info-title">seguindo</p>
@@ -55,7 +69,6 @@
       <h3 class="info-data"> {{ user?.trophies ? user.trophies.length : '0' }} </h3>
       <p class="info-title">troféus</p>
     </div>
-
   </div>
 
   <ion-segment [(ngModel)]="type" class="profile-segment">
@@ -68,14 +81,13 @@
   </ion-segment>
 
   <ng-container [ngSwitch]="type">
-
     <div *ngSwitchCase="'posts'" class="ion-padding">
       <ion-card *ngFor="let post of user.posts" class="post-card">
         <ion-card-header>
           <ion-row>
             <ion-col size="2">
               <ion-avatar>
-                <img src="../assets/images/{{post.creator_image ? post.creator_image : 'default-user.png'}}">
+                <img [src]="getProfileSrc()">
               </ion-avatar>
             </ion-col>
 
@@ -113,6 +125,8 @@
           </ion-button>
         </ion-footer>
       </ion-card>
+
+      <p class="empty-state" *ngIf="!user?.posts?.length">nenhum post ainda</p>
     </div>
 
     <div *ngSwitchCase="'recipes'" class="ion-padding">
@@ -124,34 +138,14 @@
         <ion-card-content>
           <p class="recipes-title"> {{ recipe?.title }} </p>
         </ion-card-content>
-
-        <!-- <ion-footer>
-          <ion-button fill="clear" (click)="likePost(recipe)">
-            <ion-icon *ngIf="recipe.liked" name="heart"></ion-icon>
-            <ion-icon *ngIf="!recipe.liked" name="heart-outline"></ion-icon>
-            <ion-label>{{recipe.likes? recipe.likes.length : '0'}}</ion-label>
-          </ion-button>
-
-          <ion-button fill="clear" (click)="openComments(recipe)">
-            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-            <ion-label>{{recipe.comments? recipe.comments.length : '0'}}</ion-label>
-          </ion-button>
-
-          <ion-button fill="clear" (click)="repostPost(recipe)">
-            <ion-icon name="repeat-outline"></ion-icon>
-          </ion-button>
-        </ion-footer> -->
       </ion-card>
     </div>
   </ng-container>
-
-
-  <!-- <div class="ion-padding">
-    <h3 class="posts-title">Interests</h3>
-    <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
-      <ion-icon [name]="interest.icon"></ion-icon>
-      <ion-label>{{ interest.description }}</ion-label>
-    </ion-chip>
-  </div> -->
-
 </ion-content>
+
+<div class="image-viewer" *ngIf="viewingImage" (click)="closeImageViewer()">
+  <button type="button" class="image-viewer-close" (click)="closeImageViewer()">
+    <ion-icon name="close"></ion-icon>
+  </button>
+  <img [src]="viewingImage" alt="visualização" (click)="$event.stopPropagation()">
+</div>

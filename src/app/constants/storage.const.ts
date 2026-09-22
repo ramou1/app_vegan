@@ -3,4 +3,6 @@ export const STORAGE = {
     USER_ID: 'user_id',
     CUSTOMER_ID: 'customer_id',
     SHOW_ONBOARDING: 'show_onboarding',
+    THEME: 'app_theme',
+    LANGUAGE: 'app_language',
 }

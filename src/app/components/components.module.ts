@@ -11,10 +11,12 @@ import { ReportPostsComponent } from './report-posts/report-posts.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { ReportProblemsComponent } from './report-problems/report-problems.component';
+import { ChooseInterestsComponent } from './choose-interests/choose-interests.component';
 
 @NgModule({
   declarations: [
     CardLayoutComponent,
+    ChooseInterestsComponent,
     CommentsComponent,
     RatingComponent,
     ReportPostsComponent,
@@ -32,6 +34,7 @@ import { ReportProblemsComponent } from './report-problems/report-problems.compo
   ],
   exports: [
     CardLayoutComponent,
+    ChooseInterestsComponent,
     CommentsComponent,
     RatingComponent,
     ReportPostsComponent,

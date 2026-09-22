@@ -340,26 +340,28 @@ export const USER = {
     description: 'i am a programmer',
     birth: '19/07/2000',
     email: 'teste@gmail.com',
+    phoneNumber: '(11) 99999-9999',
     identify: 'vegan',
     country: 'Brasil',
     city: 'São Paulo',
+    state: 'São Paulo',
     background: '',
     image: 'russell.png',
     interests: [
         {
-            icon: 'wine',
+            icon: 'wine-outline',
+            color: 'warning',
+            description: 'nightlife',
+        },
+        {
+            icon: 'restaurant-outline',
             color: 'secondary',
-            description: 'Nightlife',
+            description: 'restaurantes',
         },
         {
-            icon: 'restaurant',
-            color: 'tertiary',
-            description: 'Dining',
-        },
-        {
-            icon: 'videocam',
+            icon: 'videocam-outline',
             color: 'dark',
-            description: 'Movies',
+            description: 'filmes',
         }],
     posts: [{
         post_id: 13412,

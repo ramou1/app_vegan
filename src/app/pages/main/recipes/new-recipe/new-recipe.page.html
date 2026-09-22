@@ -14,7 +14,7 @@
   [ngStyle]="{'background-image': imageUrl ? 'url(' + imageUrl + ')' : 'url(../assets/images/default-events.png)'}">
   <ion-button shape="round" size="small" fill="solid" color="secondary" class="add-recipe-button"
     (click)="uploadImage()">
-    <ion-icon slot="start" md="images"></ion-icon>
+    <ion-icon slot="start" name="images-outline"></ion-icon>
     enviar imagens
   </ion-button>
 </div>
@@ -36,40 +36,31 @@
 
   <form [formGroup]="recipeGroup">
 
-    <!-- <div class="ion-padding"> -->
-    <ion-item>
-      <ion-label position="floating">nome da receita</ion-label>
-      <ion-input type="text" formControlName="title"></ion-input>
+    <ion-item lines="none">
+      <ion-input type="text" formControlName="title" label="nome da receita" labelPlacement="floating"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">ingredientes</ion-label>
-      <ion-input type="text" formControlName="ingredients"></ion-input>
+    <ion-item lines="none">
+      <ion-input type="text" formControlName="ingredients" label="ingredientes" labelPlacement="floating"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">instruções</ion-label>
-      <ion-textarea rows="7" formControlName="instructions"></ion-textarea>
+    <ion-item lines="none">
+      <ion-textarea rows="7" formControlName="instructions" label="instruções" labelPlacement="floating"></ion-textarea>
     </ion-item>
 
     <div class="three-columns">
-      <ion-item>
-        <ion-label position="floating">tempo de cozimento</ion-label>
-        <ion-input type="number" formControlName="cookTime"></ion-input>
+      <ion-item lines="none">
+        <ion-input type="number" formControlName="cookTime" label="tempo de cozimento" labelPlacement="floating"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">porções</ion-label>
-        <ion-input type="number" formControlName="servings"></ion-input>
+      <ion-item lines="none">
+        <ion-input type="number" formControlName="servings" label="porções" labelPlacement="floating"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">calorias</ion-label>
-        <ion-input type="number" formControlName="calories"></ion-input>
+      <ion-item lines="none">
+        <ion-input type="number" formControlName="calories" label="calorias" labelPlacement="floating"></ion-input>
       </ion-item>
     </div>
-
-    <!-- <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid">nova receita</ion-button> -->
 
   </form>
 </ion-content>

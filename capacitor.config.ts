@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'app_vegan',
+  appId: 'com.veggie.app',
+  appName: 'veggie',
   webDir: 'www',
   server: {
     androidScheme: 'https'

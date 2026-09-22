@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 import { register } from 'swiper/element/bundle';
-// import { TranslateService } from '@ngx-translate/core';
+import { STORAGE } from './constants/storage.const';
+import { StorageService } from './services/storage.service';
 
 register();
 @Component({
@@ -11,23 +12,22 @@ register();
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private storage: StorageService) {
     this.initializeApp();
   }
 
-  // constructor(private translate: TranslateService) {
-  //   this.initializeApp();
-  //   const browserLang = translate.getBrowserLang();
-  //   translate.use(browserLang.match(/en|pt/) ? browserLang : 'en');
-  // }
-
   initializeApp() {
+    this.applyStoredTheme();
+
     this.platform.ready().then(() => {
-      // StatusBar.setBackgroundColor({ color: '#ffffff' });
-      // StatusBar.setBackgroundColor({ color: 'transparent' });
       StatusBar.setBackgroundColor({ color: '#00000080' });
       StatusBar.setOverlaysWebView({ overlay: true });
-      StatusBar.setStyle({ style: Style.Light }); // ou Style.Dark conforme a necessidade
+      StatusBar.setStyle({ style: Style.Light });
     });
+  }
+
+  private applyStoredTheme(): void {
+    const theme = this.storage.getItem(STORAGE.THEME) || 'light';
+    document.body.classList.toggle('dark', theme === 'dark');
   }
 }

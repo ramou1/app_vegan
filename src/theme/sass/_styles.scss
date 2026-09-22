@@ -73,9 +73,15 @@ ion-footer {
 .report-problems-modal,
 .search-modal,
 .event-modal,
-.notifications-modal {
+.notifications-modal,
+.choose-interest-modal,
+.edit-profile-modal {
   --border-radius: 24px 24px 0 0;
   --backdrop-opacity: 0.4;
+}
+
+.choose-interest-modal {
+  --height: 75%;
 }
 
 .comments-modal {

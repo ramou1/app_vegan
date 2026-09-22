@@ -11,69 +11,122 @@
 </ion-header>
 
 <ion-content>
-
   <div class="app-padding">
-
     <ion-progress-bar type="indeterminated" *ngIf="loading"></ion-progress-bar>
 
     <form [formGroup]="formGroup">
+      <h3 class="section-title">dados pessoais</h3>
+
+      <div class="two-columns">
+        <ion-item lines="none">
+          <ion-input [disabled]="loading" formControlName="name" label="nome" labelPlacement="floating" placeholder="escreva aqui" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-input [disabled]="loading" formControlName="username" label="usuário" labelPlacement="floating" placeholder="escreva aqui" type="text"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="two-columns">
+        <ion-item lines="none">
+          <ion-input [disabled]="loading" formControlName="email" label="e-mail" labelPlacement="floating" placeholder="escreva aqui" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-input formControlName="phoneNumber" label="telefone" labelPlacement="floating" placeholder="escreva aqui" type="tel"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="two-columns">
+        <ion-item lines="none">
+          <ion-input formControlName="birth" label="data de nascimento" labelPlacement="floating" placeholder="dd/mm/aaaa"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-select [disabled]="loading" label="identificação" labelPlacement="floating" placeholder="selecione" interface="popover" formControlName="identify">
+            <ion-select-option value="vegetarian">vegetariano</ion-select-option>
+            <ion-select-option value="vegan">vegano</ion-select-option>
+            <ion-select-option value="interested">interessado na causa</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
 
       <ion-item lines="none">
-        <ion-label position="floating">nome</ion-label>
-        <ion-input [disabled]="loading" formControlName="name" placeholder="escreva aqui" type="text"></ion-input>
+        <ion-input [disabled]="loading" formControlName="country" label="país" labelPlacement="floating" placeholder="escreva aqui" type="text"></ion-input>
       </ion-item>
 
-      <ion-item lines="none">
-        <ion-label position="floating">usuário</ion-label>
-        <ion-input [disabled]="loading" formControlName="username" placeholder="escreva aqui" type="text"></ion-input>
-      </ion-item>
+      <div class="two-columns">
+        <ion-item lines="none">
+          <ion-input [disabled]="loading" formControlName="city" label="cidade" labelPlacement="floating" placeholder="escreva aqui" type="text"></ion-input>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-label position="floating">data de nascimento</ion-label>
-        <ion-input formControlName="birth" placeholder="escreva aqui"></ion-input>
-      </ion-item>
+        <ion-item lines="none">
+          <ion-select [disabled]="loading" label="estado" labelPlacement="floating" placeholder="selecione" interface="popover" formControlName="state">
+            <ion-select-option *ngFor="let estado of estados" [value]="estado.EST_NOME">{{ estado.EST_NOME }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
 
-      <ion-item lines="none">
-        <ion-label position="floating">e-mail</ion-label>
-        <ion-input [disabled]="loading" formControlName="email" placeholder="escreva aqui" type="email"></ion-input>
-      </ion-item>
+      <h3 class="section-title">preferências</h3>
 
-      <ion-item lines="none">
-        <ion-label position="floating">telefone</ion-label>
-        <ion-input formControlName="phoneNumber" placeholder="escreva aqui" type="tel"></ion-input>
-      </ion-item>
+      <div class="two-columns">
+        <ion-item lines="none">
+          <ion-select
+            label="idioma"
+            labelPlacement="floating"
+            interface="popover"
+            formControlName="language"
+            (ionChange)="onLanguageChange($event.detail.value)">
+            <ion-select-option value="pt">português</ion-select-option>
+            <ion-select-option value="en">english</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-label position="floating">país</ion-label>
-        <ion-input [disabled]="loading" formControlName="country" placeholder="escreva aqui" type="text"></ion-input>
-      </ion-item>
+        <ion-item lines="none" class="theme-item">
+          <ion-label>tema</ion-label>
+          <ion-segment
+            [value]="theme"
+            (ionChange)="onThemeChange($any($event.detail.value))"
+            class="theme-segment">
+            <ion-segment-button value="light">
+              <ion-label>claro</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="dark">
+              <ion-label>escuro</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-item>
+      </div>
 
-      <ion-item lines="none">
-        <ion-label position="floating">cidade</ion-label>
-        <ion-input [disabled]="loading" formControlName="city" placeholder="escreva aqui" type="text"></ion-input>
-      </ion-item>
+      <h3 class="section-title">segurança</h3>
 
-      <ion-item lines="none">
-        <ion-label position="floating">estado</ion-label>
-        <ion-select [disabled]="loading" placeholder="selecione" interface="popover" formControlName="state">
-          <ion-select-option *ngFor="let estado of estados" [value]="estado.EST_NOME">{{ estado.EST_NOME }}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="primary"
+        class="password-toggle"
+        (click)="togglePasswordSection()">
+        {{ showPasswordSection ? 'ocultar troca de senha' : 'trocar senha' }}
+      </ion-button>
 
-      <ion-item lines="none">
-        <ion-label position="floating">com o que você se identifica?</ion-label>
-        <ion-select [disabled]="loading" placeholder="selecione" interface="popover" formControlName="identify">
-          <ion-select-option value="vegetarian">vegetariano</ion-select-option>
-          <ion-select-option value="vegan">vegano</ion-select-option>
-          <ion-select-option value="interested">interessado na causa</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <div class="password-section" *ngIf="showPasswordSection" [formGroup]="passwordGroup">
+        <ion-item lines="none">
+          <ion-input formControlName="currentPassword" label="senha atual" labelPlacement="floating" type="password"></ion-input>
+        </ion-item>
 
-      <p class="report-problems" (click)="reportProblems()">
-        <ion-icon slot="start" name="alert-circle"></ion-icon>
-        relatar um problema
-      </p>
+        <div class="two-columns">
+          <ion-item lines="none">
+            <ion-input formControlName="newPassword" label="nova senha" labelPlacement="floating" type="password"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-input formControlName="confirmPassword" label="confirmar senha" labelPlacement="floating" type="password"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+      <h3 class="section-title">interesses</h3>
 
       <div class="interests">
         <ion-chip outline [color]="interest.color" *ngFor="let interest of user.interests">
@@ -83,24 +136,21 @@
         </ion-chip>
 
         <ion-chip color="primary" (click)="openInterests()">
-          <ion-icon *ngIf="user.interests" name="create"></ion-icon>
-          <ion-label *ngIf="user.interests">editar interesses</ion-label>
-          <ion-icon *ngIf="!user.interests" name="add"></ion-icon>
-          <ion-label *ngIf="!user.interests">adicionar interesses</ion-label>
+          <ion-icon [name]="user.interests?.length ? 'create' : 'add'"></ion-icon>
+          <ion-label>{{ user.interests?.length ? 'editar interesses' : 'adicionar interesses' }}</ion-label>
         </ion-chip>
       </div>
 
+      <p class="report-problems" (click)="reportProblems()">
+        <ion-icon slot="start" name="alert-circle"></ion-icon>
+        relatar um problema
+      </p>
+
       <div class="footer-buttons">
-        <ion-button (click)="saveData()" fill="solid" size="default" expand="block" color="primary">salvar
-        </ion-button>
-        <ion-button class="logout-account" (click)="logout()" size="default" expand="block" color="medium">sair
-        </ion-button>
+        <ion-button (click)="saveData()" fill="solid" expand="block" color="primary">salvar</ion-button>
+        <ion-button class="logout-account" (click)="logout()" expand="block" color="medium">sair</ion-button>
         <p class="delete-account" (click)="deleteAccount()">excluir conta</p>
-        <ion-progress-bar type="indeterminated" *ngIf="loading"></ion-progress-bar>
       </div>
-
     </form>
-
   </div>
-
 </ion-content>

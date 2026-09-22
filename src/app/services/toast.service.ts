@@ -32,4 +32,31 @@ export class ToastService {
 
     await toast.present();
   }
+
+  public async confirm(
+    message: string,
+    header: string = 'confirmação',
+    confirmText: string = 'confirmar',
+    cancelText: string = 'cancelar'
+  ): Promise<boolean> {
+    const alert = await this.alertCtrl.create({
+      header,
+      message,
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: cancelText,
+          role: 'cancel',
+        },
+        {
+          text: confirmText,
+          role: 'confirm',
+        },
+      ],
+    });
+
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+    return role === 'confirm';
+  }
 }

@@ -10,19 +10,11 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- <div class="add-event-images">
-  <ion-button shape="round" size="small" fill="solid" color="secondary" class="add-event-button"
-    (click)="uploadImage()">
-    <ion-icon slot="start" md="images"></ion-icon>
-    enviar imagem
-  </ion-button>
-</div> -->
-
 <div class="add-event-images"
   [ngStyle]="{'background-image': imageUrl ? 'url(' + imageUrl + ')' : 'url(../assets/images/default-events.png)'}">
   <ion-button shape="round" size="small" fill="solid" color="secondary" class="add-event-button"
     (click)="uploadImage()">
-    <ion-icon slot="start" md="images"></ion-icon>
+    <ion-icon slot="start" name="images-outline"></ion-icon>
     enviar imagem
   </ion-button>
 </div>
@@ -44,26 +36,21 @@
 
   <form [formGroup]="eventGroup">
 
-    <!-- <div class="ion-padding"> -->
-    <ion-item>
-      <ion-label position="floating">nome do evento</ion-label>
-      <ion-input type="text" formControlName="title"></ion-input>
+    <ion-item lines="none">
+      <ion-input type="text" formControlName="title" label="nome do evento" labelPlacement="floating"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">local</ion-label>
-      <ion-input type="text" formControlName="local"></ion-input>
+    <ion-item lines="none">
+      <ion-input type="text" formControlName="local" label="local" labelPlacement="floating"></ion-input>
     </ion-item>
 
     <div class="two-columns">
-      <ion-item>
-        <ion-label position="floating">data de início</ion-label>
-        <ion-input type="date" formControlName="startingDate"></ion-input>
+      <ion-item lines="none">
+        <ion-input type="date" formControlName="startingDate" label="data de início" labelPlacement="floating"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">hora de início</ion-label>
-        <ion-input type="time" formControlName="startingHour"></ion-input>
+      <ion-item lines="none">
+        <ion-input type="time" formControlName="startingHour" label="hora de início" labelPlacement="floating"></ion-input>
       </ion-item>
     </div>
 
@@ -71,26 +58,21 @@
       (click)="ending = true">adicionar data e hora de término</ion-button>
 
     <div class="two-columns" *ngIf="ending">
-      <ion-item>
-        <ion-label position="floating">data de término</ion-label>
-        <ion-input type="date" formControlName="endingDate"></ion-input>
+      <ion-item lines="none">
+        <ion-input type="date" formControlName="endingDate" label="data de término" labelPlacement="floating"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">hora de término</ion-label>
-        <ion-input type="time" formControlName="endingHour"></ion-input>
+      <ion-item lines="none">
+        <ion-input type="time" formControlName="endingHour" label="hora de término" labelPlacement="floating"></ion-input>
         <ion-button fill="clear" slot="end" class="close-ending-hour" (click)="removeEnding()">
           <ion-icon name="close-circle-outline"></ion-icon>
         </ion-button>
       </ion-item>
     </div>
 
-    <ion-item>
-      <ion-label position="floating">descrição do evento</ion-label>
-      <ion-textarea rows="6" formControlName="description"></ion-textarea>
+    <ion-item lines="none">
+      <ion-textarea rows="6" formControlName="description" label="descrição do evento" labelPlacement="floating"></ion-textarea>
     </ion-item>
-
-    <!-- <ion-button expand="block" shape="round" type="submit" [disabled]="!eventGroup.valid">novo evento</ion-button> -->
 
   </form>
 </ion-content>

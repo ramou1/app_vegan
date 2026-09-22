@@ -13,8 +13,7 @@
 
   <form [formGroup]="reportGroup">
     <ion-item lines="none">
-      <ion-label position="floating">qual problema você está tendo?</ion-label>
-      <ion-select placeholder="selecione" interface="popover" formControlName="type">
+      <ion-select label="qual problema você está tendo?" labelPlacement="floating" placeholder="selecione" interface="popover" formControlName="type">
         <ion-select-option value="bug">erro</ion-select-option>
         <ion-select-option value="performance-issue">desempenho</ion-select-option>
         <ion-select-option value="feature-request">sugestão</ion-select-option>
@@ -26,8 +25,7 @@
     </ion-item>
 
     <ion-item lines="none">
-      <ion-label position="floating">descrição</ion-label>
-      <ion-textarea formControlName="description" placeholder="conte o que aconteceu" type="text" rows="5"></ion-textarea>
+      <ion-textarea formControlName="description" label="descrição" labelPlacement="floating" placeholder="conte o que aconteceu" rows="5"></ion-textarea>
     </ion-item>
   </form>
 

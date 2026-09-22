@@ -1,60 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
+import { CommentsComponent } from 'src/app/components/comments/comments.component';
 import { USER } from 'src/app/constants/mock.const';
 import { ToastService } from 'src/app/services/toast.service';
-import { ProfileEditPage } from './profile-edit/profile-edit.page';
-import { DomSanitizer } from '@angular/platform-browser';
-import { CommentsComponent } from 'src/app/components/comments/comments.component';
 import { RecipeDetailsPage } from '../recipes/recipe-details/recipe-details.page';
+import { ProfileEditPage } from './profile-edit/profile-edit.page';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-
 export class ProfilePage implements OnInit {
+  @ViewChild('galleryInput') galleryInput!: ElementRef<HTMLInputElement>;
 
-  public type: string = 'posts';
+  public type = 'posts';
   public user: any;
   public bgImageUrl: string | null = null;
   public profileImageUrl: string | null = null;
-  scrolled: boolean = false;
-  slideOpts = {
-    slidesPerView: 1.5,
-  };
+  public viewingImage: string | null = null;
+  public scrolled = false;
+  private pendingImageType: 'profile' | 'background' | null = null;
 
-  constructor(private router: Router, private modalCtrl: ModalController, private toast: ToastService, private actionSheetCtrl: ActionSheetController, private sanitizer: DomSanitizer) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private toast: ToastService,
+    private actionSheetCtrl: ActionSheetController
+  ) {}
 
   async ngOnInit() {
-    await this.getUserData();
+    this.getUserData();
   }
 
   public getUserData(): void {
     this.user = USER;
-    this.bgImageUrl = this.user.background;
-    this.profileImageUrl = this.user.image;
-    console.log(this.user);
+    this.bgImageUrl = this.user.background || null;
+    this.profileImageUrl = this.user.image || null;
   }
 
   public excerptText(text: string): string {
-    const cut = text.substring(0, 100);
-    return cut;
+    return text.substring(0, 100);
   }
 
   onScroll(event: any) {
     this.scrolled = event.detail.scrollTop > 0;
   }
 
-  public openShare(): void {
-    //TODO SHARE
-    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
-  }
-
-  // public openSettings(): void {
-  //   this.router.navigate([APP_ROUTES.MAIN, APP_ROUTES.PROFILE_EDIT]);
-  // }
+  public openShare(): void {}
 
   async openSettings(): Promise<void> {
     const modal = await this.modalCtrl.create({
@@ -62,73 +54,143 @@ export class ProfilePage implements OnInit {
       cssClass: 'edit-profile-modal',
     });
 
-    return await modal.present();
+    await modal.present();
+    await modal.onDidDismiss();
+    this.getUserData();
   }
 
-  async changeImageActions(type: string) {
-    const mock_bg_image = 'https://blog.even3.com.br/wp-content/uploads/2020/05/65-imagens-de-destaque_capa-abnt.png';
+  public getProfileSrc(): string {
+    return this.resolveImageSrc(this.profileImageUrl || this.user?.image, 'default-user.png');
+  }
+
+  public getBackgroundSrc(): string {
+    return this.resolveImageSrc(this.bgImageUrl || this.user?.background, 'background-default.png');
+  }
+
+  private resolveImageSrc(image: string | null | undefined, fallback: string): string {
+    if (!image) {
+      return `../assets/images/${fallback}`;
+    }
+    if (
+      image.startsWith('data:') ||
+      image.startsWith('blob:') ||
+      image.startsWith('http://') ||
+      image.startsWith('https://') ||
+      image.startsWith('../') ||
+      image.startsWith('/')
+    ) {
+      return image;
+    }
+    return `../assets/images/${image}`;
+  }
+
+  async changeImageActions(type: 'profile' | 'background') {
+    const label = type === 'profile' ? 'foto de perfil' : 'foto de capa';
 
     const actionSheet = await this.actionSheetCtrl.create({
+      header: label,
       buttons: [
         {
-          text: 'change ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
+          text: `trocar ${label}`,
           handler: () => {
-            if (type === 'background') {
-              this.user.background = mock_bg_image;
-              this.bgImageUrl = mock_bg_image;
-            } else {
-              // this.user.image = 'https://www.w3schools.com/w3css/img_lights.jpg';
-            }
-          }
-        },
-        {
-          text: 'view ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
-          // handler: () => {
-          //   this.openImage(type);
-          // }
-          // data: {
-          //   action: 'share',
-          // },
-        },
-        {
-          text: 'delete ' + (type === 'profile' ? 'profile' : 'background') + ' picture',
-          handler: () => {
-            if (type === 'background') {
-              this.user.background = null;
-              this.bgImageUrl = null;
-            } else {
-              this.user.image = null;
-              this.profileImageUrl = null;
-            }
+            this.openGallery(type);
           },
         },
-        // {
-        //   text: 'cancelar',
-        //   role: 'cancel',
-        //   data: {
-        //     action: 'cancel',
-        //   },
-        // },
-      ]
+        {
+          text: `ver ${label}`,
+          handler: () => {
+            this.viewImage(type);
+          },
+        },
+        {
+          text: `apagar ${label}`,
+          role: 'destructive',
+          handler: () => {
+            this.confirmDeleteImage(type);
+          },
+        },
+        {
+          text: 'cancelar',
+          role: 'cancel',
+        },
+      ],
     });
+
     await actionSheet.present();
   }
 
-  // openImage(imageUrl: string) {
-  //   imageUrl = 'https://www.w3schools.com/w3css/img_lights.jpg';
-  //   // imageUrl = '../assets/images/' +
-  //   //   this.user.image ? this.user.image : 'default-user.png';
-  //   window.open(imageUrl, '_blank');
-  // }
-
-  public changeProfilePicture(): void {
-    //TODO
-    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+  private openGallery(type: 'profile' | 'background'): void {
+    this.pendingImageType = type;
+    this.galleryInput?.nativeElement?.click();
   }
 
-  public changeBGPicture(): void {
-    //TODO
-    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+  public onGallerySelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    if (!file || !this.pendingImageType) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+
+      if (this.pendingImageType === 'background') {
+        this.user.background = result;
+        this.bgImageUrl = result;
+        USER.background = result;
+      } else {
+        this.user.image = result;
+        this.profileImageUrl = result;
+        USER.image = result;
+      }
+
+      this.pendingImageType = null;
+      input.value = '';
+      this.toast.showToast('imagem atualizada (não salva no servidor)');
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  private viewImage(type: 'profile' | 'background'): void {
+    const src =
+      type === 'profile'
+        ? this.getProfileSrc()
+        : this.getBackgroundSrc();
+
+    this.viewingImage = src;
+  }
+
+  public closeImageViewer(): void {
+    this.viewingImage = null;
+  }
+
+  private async confirmDeleteImage(type: 'profile' | 'background'): Promise<void> {
+    const label = type === 'profile' ? 'foto de perfil' : 'foto de capa';
+    const confirmed = await this.toast.confirm(
+      `tem certeza que deseja apagar a ${label}?`,
+      `apagar ${label}`,
+      'apagar',
+      'cancelar'
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    if (type === 'background') {
+      this.user.background = null;
+      this.bgImageUrl = null;
+      USER.background = '';
+    } else {
+      this.user.image = null;
+      this.profileImageUrl = null;
+      USER.image = '';
+    }
+
+    await this.toast.showToast(`${label} removida`);
   }
 
   async presentPostActions(post: any) {
@@ -136,23 +198,36 @@ export class ProfilePage implements OnInit {
       buttons: [
         {
           text: 'apagar post',
+          role: 'destructive',
           handler: () => {
-            this.deletePost(post);
-          }
+            this.confirmDeletePost(post);
+          },
         },
         {
           text: 'compartilhar post',
         },
-        // {
-        //   text: 'cancelar',
-        //   role: 'cancel',
-        //   data: {
-        //     action: 'cancel',
-        //   },
-        // },
-      ]
+        {
+          text: 'cancelar',
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
+  }
+
+  private async confirmDeletePost(post: any): Promise<void> {
+    const confirmed = await this.toast.confirm(
+      'tem certeza que deseja apagar este post?',
+      'apagar post',
+      'apagar',
+      'cancelar'
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.deletePost(post);
   }
 
   public likePost(post: any): void {
@@ -166,34 +241,34 @@ export class ProfilePage implements OnInit {
       cssClass: 'comments-modal',
       componentProps: {
         comments: post.comments,
-        post_id: post.post_id
-      }
+        post_id: post.post_id,
+      },
     });
 
     return await modal.present();
   }
 
   async repostPost(post: any): Promise<void> {
-    // TODO REPOST POST
-    console.log("repost", post);
+    console.log('repost', post);
   }
 
   async deletePost(post: any): Promise<void> {
-    // TODO DELETE POST
-    console.log("delete", post);
+    this.user.posts = (this.user.posts || []).filter(
+      (item: any) => item.post_id !== post.post_id
+    );
+    USER.posts = this.user.posts;
+    await this.toast.showToast('post apagado');
   }
 
-  async openRecipe(recipe: any): Promise<void> {    
+  async openRecipe(recipe: any): Promise<void> {
     const modal = await this.modalCtrl.create({
       component: RecipeDetailsPage,
       cssClass: 'recipe-modal',
       componentProps: {
-        // finalize: false,
-        recipe: recipe
-      }
+        recipe,
+      },
     });
 
     return await modal.present();
   }
-
 }
