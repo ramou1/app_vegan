@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { EventDetailsPage } from './events/event-details/event-details.page';
 
 const routes: Routes = [
   {
@@ -19,35 +18,20 @@ const routes: Routes = [
       },
       {
         path: APP_ROUTES.RECIPES,
-        // components: EventsPage,
         loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesPageModule)
       },
       {
         path: APP_ROUTES.EVENTS,
-        // component: EventsPage,
         loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule)
       },
       {
-        path: APP_ROUTES.EVENT_DETAILS,
-        component: EventDetailsPage
-      },
-      {
         path: APP_ROUTES.MAP,
-        // component: MapPage,
         loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
       },
       {
         path: APP_ROUTES.PROFILE,
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       },
-      // {
-      //   path: APP_ROUTES.PRIVACY,
-      //   component: PrivacyPage,
-      // },
-      // {
-      //   path: APP_ROUTES.TERMS,
-      //   component: TermsPage,
-      // },
       {
         path: '',
         redirectTo: APP_ROUTES.HOME,
@@ -67,10 +51,7 @@ const routes: Routes = [
     FormsModule,
   ],
   declarations: [
-    // LoadingPage,
     MainComponent,
-    // PrivacyPage,
-    // TermsPage,
   ]
 })
 export class MainModule { }

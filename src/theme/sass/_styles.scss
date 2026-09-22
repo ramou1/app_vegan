@@ -13,10 +13,21 @@ ion-header {
     letter-spacing: -0.02em;
     text-transform: lowercase;
     color: var(--app-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   ion-buttons + ion-title {
     padding-left: 0;
+  }
+
+  .toolbar-logo {
+    height: 28px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
   }
 }
 
@@ -73,11 +84,22 @@ ion-footer {
 .report-problems-modal,
 .search-modal,
 .event-modal,
+.attendees-modal,
 .notifications-modal,
 .choose-interest-modal,
-.edit-profile-modal {
+.edit-profile-modal,
+.user-profile-modal,
+.post-modal {
   --border-radius: 24px 24px 0 0;
   --backdrop-opacity: 0.4;
+}
+
+.user-profile-modal {
+  --height: 92%;
+}
+
+.attendees-modal {
+  --height: 70%;
 }
 
 .choose-interest-modal {

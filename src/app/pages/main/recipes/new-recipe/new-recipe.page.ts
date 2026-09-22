@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActionSheetController, ModalController } from '@ionic/angular';
-import { USER } from 'src/app/constants/mock.const';
+import { RECIPES, USER } from 'src/app/constants/mock.const';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-new-recipe',
@@ -9,13 +10,17 @@ import { USER } from 'src/app/constants/mock.const';
   styleUrls: ['./new-recipe.page.scss'],
 })
 export class NewRecipePage implements OnInit {
-
   public recipeGroup: FormGroup;
-  public ending: boolean = false;
   public user = USER;
   public imageUrl: string | null = null;
+  public selectedImage = 'recipe01.jpg';
 
-  constructor(private modalCtrl: ModalController, private fb: FormBuilder, private actionSheetCtrl: ActionSheetController) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private fb: FormBuilder,
+    private actionSheetCtrl: ActionSheetController,
+    private toast: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -26,61 +31,97 @@ export class NewRecipePage implements OnInit {
       creator_id: this.user.id,
       creator: this.user.name,
       creator_image: this.user.image,
-      registerDate: new Date(),
-      image: [],
+      registerDate: new Date().toLocaleDateString('pt-BR'),
       title: [null, [Validators.required]],
       ingredients: [null, [Validators.required]],
       instructions: [null, [Validators.required]],
       cookTime: [null, [Validators.required]],
       servings: [null],
       calories: [null, [Validators.required]],
-      likes: 0,
-      comments: {},
     });
   }
 
   async uploadImage() {
-    const mock_image = 'https://doity.com.br/blog/app/uploads/2023/03/Topo-DoityCapa-1.png';
-
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'upload image',
-          handler: () => {
-            // this.openImage(type);
-
-            // TODO: UPLOAD IMAGE
-            this.recipeGroup.get('image')?.setValue(mock_image);
-            this.imageUrl = mock_image;
-          }
+          text: 'usar imagem de exemplo 1',
+          handler: () => this.setImage('recipe01.jpg'),
         },
         {
-          text: 'delete image',
+          text: 'usar imagem de exemplo 2',
+          handler: () => this.setImage('recipe02.jpg'),
+        },
+        {
+          text: 'usar imagem de exemplo 3',
+          handler: () => this.setImage('recipe03.jpg'),
+        },
+        {
+          text: 'remover imagem',
+          role: 'destructive',
           handler: () => {
             this.imageUrl = null;
+            this.selectedImage = 'slider-default.jpeg';
           },
-          role: 'cancel',
-          // data: {
-          //   action: 'cancel',
-          // },
         },
-      ]
+        {
+          text: 'cancelar',
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
   }
 
-  public removeEnding(): void {
-    this.ending = false;
-    this.recipeGroup.get('endingHour')?.reset(); // Opcional: limpar o valor do campo ao removê-lo
+  private setImage(file: string): void {
+    this.selectedImage = file;
+    this.imageUrl = `../assets/images/${file}`;
   }
 
-  public addRecipe(): void {
-    // TODO NEW RECIPE
-    console.log(this.recipeGroup.value);
+  public async addRecipe(): Promise<void> {
+    if (this.recipeGroup.invalid) {
+      await this.toast.showToast('preencha os campos obrigatórios', true);
+      return;
+    }
 
-    setTimeout(() => {
-      this.goBack();
-    }, 3000);
+    const value = this.recipeGroup.value;
+    const ingredients = String(value.ingredients || '')
+      .split(/\r?\n/)
+      .map((item: string) => item.replace(/^[-•\s]+/, '').trim())
+      .filter(Boolean);
+
+    const instructions = String(value.instructions || '')
+      .split(/\r?\n/)
+      .map((line: string) => line.trim())
+      .filter(Boolean)
+      .map((line: string) => `<p>${line.replace(/^[-•]\s*/, '')}</p>`)
+      .join('');
+
+    const nextId = RECIPES.reduce((max, item) => Math.max(max, Number(item.id) || 0), 0) + 1;
+    const recipe = {
+      id: nextId,
+      creator_id: this.user.id,
+      creator: this.user.name,
+      creator_image: this.user.image,
+      registerDate: new Date().toLocaleDateString('pt-BR'),
+      images: [this.selectedImage],
+      title: String(value.title).toLowerCase(),
+      ingredients,
+      instructions,
+      cookTime: `${value.cookTime} min`,
+      servings: Number(value.servings) || 1,
+      calories: Number(value.calories) || 0,
+      liked: false,
+      favorited: false,
+      likes: [] as any[],
+      comments: [] as any[],
+    };
+
+    RECIPES.unshift(recipe);
+    USER.recipes = [recipe, ...(USER.recipes || [])];
+
+    await this.toast.showToast('receita criada');
+    this.goBack();
   }
 
   public goBack(): void {

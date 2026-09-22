@@ -1,0 +1,24 @@
+.attendee-item {
+  --background: var(--app-surface);
+  --border-radius: 16px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  box-shadow: var(--app-shadow-soft);
+}
+
+h3 {
+  margin: 0;
+  text-transform: lowercase;
+  font-weight: 800;
+}
+
+p {
+  margin: 2px 0 0;
+  color: var(--ion-color-primary);
+}
+
+.empty {
+  text-align: center;
+  color: var(--app-muted);
+  margin-top: 40px;
+}

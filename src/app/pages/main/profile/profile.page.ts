@@ -1,7 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { CommentsComponent } from 'src/app/components/comments/comments.component';
-import { USER } from 'src/app/constants/mock.const';
+import { RECIPES, USER } from 'src/app/constants/mock.const';
+import { APP_ROUTES } from 'src/app/constants/routes.const';
+import { PostService } from 'src/app/services/post.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { RecipeDetailsPage } from '../recipes/recipe-details/recipe-details.page';
 import { ProfileEditPage } from './profile-edit/profile-edit.page';
@@ -16,6 +19,8 @@ export class ProfilePage implements OnInit {
 
   public type = 'posts';
   public user: any;
+  public posts: any[] = [];
+  public recipes: any[] = [];
   public bgImageUrl: string | null = null;
   public profileImageUrl: string | null = null;
   public viewingImage: string | null = null;
@@ -25,10 +30,16 @@ export class ProfilePage implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private toast: ToastService,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController,
+    private postService: PostService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
+    this.getUserData();
+  }
+
+  ionViewWillEnter() {
     this.getUserData();
   }
 
@@ -36,10 +47,20 @@ export class ProfilePage implements OnInit {
     this.user = USER;
     this.bgImageUrl = this.user.background || null;
     this.profileImageUrl = this.user.image || null;
+    this.posts = this.postService.getByUser(USER.id);
+    const ownRecipes = RECIPES.filter((recipe) => Number(recipe.creator_id) === Number(USER.id));
+    const profileRecipes = this.user.recipes || [];
+    const merged = [...ownRecipes, ...profileRecipes];
+    this.recipes = merged.filter(
+      (recipe, index, arr) => arr.findIndex((item) => Number(item.id) === Number(recipe.id)) === index
+    );
   }
 
   public excerptText(text: string): string {
-    return text.substring(0, 100);
+    if (!text) {
+      return '';
+    }
+    return text.length > 160 ? `${text.substring(0, 160).trim()}...` : text;
   }
 
   onScroll(event: any) {
@@ -193,9 +214,27 @@ export class ProfilePage implements OnInit {
     await this.toast.showToast(`${label} removida`);
   }
 
-  async presentPostActions(post: any) {
+  public openPost(post: any): void {
+    this.router.navigate([
+      '/',
+      APP_ROUTES.MAIN,
+      APP_ROUTES.HOME,
+      APP_ROUTES.POST_DETAILS,
+      post.post_id,
+    ]);
+  }
+
+  async presentPostActions(event: Event, post: any) {
+    event.stopPropagation();
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
+        {
+          text: post.saved ? 'remover dos salvos' : 'salvar post',
+          handler: () => {
+            const saved = this.postService.toggleSave(post);
+            this.toast.showToast(saved ? 'post salvo' : 'post removido dos salvos');
+          },
+        },
         {
           text: 'apagar post',
           role: 'destructive',
@@ -230,12 +269,21 @@ export class ProfilePage implements OnInit {
     this.deletePost(post);
   }
 
-  public likePost(post: any): void {
+  public likePost(event: Event, post: any): void {
+    event.stopPropagation();
     post.liked = !post.liked;
-    post.liked ? post.likes.length++ : post.likes.length--;
+    if (!Array.isArray(post.likes)) {
+      post.likes = [];
+    }
+    if (post.liked) {
+      post.likes.push({ user_id: USER.id });
+    } else if (post.likes.length) {
+      post.likes.pop();
+    }
   }
 
-  async openComments(post: any): Promise<void> {
+  async openComments(event: Event, post: any): Promise<void> {
+    event.stopPropagation();
     const modal = await this.modalCtrl.create({
       component: CommentsComponent,
       cssClass: 'comments-modal',
@@ -248,15 +296,14 @@ export class ProfilePage implements OnInit {
     return await modal.present();
   }
 
-  async repostPost(post: any): Promise<void> {
-    console.log('repost', post);
+  async repostPost(event: Event, post: any): Promise<void> {
+    event.stopPropagation();
+    post.reposts = this.postService.repost(post);
+    await this.toast.showToast('repost feito');
   }
 
   async deletePost(post: any): Promise<void> {
-    this.user.posts = (this.user.posts || []).filter(
-      (item: any) => item.post_id !== post.post_id
-    );
-    USER.posts = this.user.posts;
+    this.posts = this.posts.filter((item: any) => item.post_id !== post.post_id);
     await this.toast.showToast('post apagado');
   }
 

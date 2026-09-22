@@ -68,8 +68,7 @@ export class NotificationsPage implements OnInit {
       component: UserProfileComponent,
       cssClass: 'user-profile-modal',
       componentProps: {
-        // finalize: false,
-        user: { id: user_id }
+        userId: user_id,
       }
     });
 

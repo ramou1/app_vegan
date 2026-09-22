@@ -51,8 +51,7 @@ export class SearchComponent implements OnInit {
       component: UserProfileComponent,
       cssClass: 'user-profile-modal',
       componentProps: {
-        // finalize: false,
-        user: user
+        userId: user.id,
       }
     });
 

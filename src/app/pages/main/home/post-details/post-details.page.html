@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="post">
+  <ion-card class="post-card">
+    <ion-card-header>
+      <ion-row>
+        <ion-col size="2" (click)="openUserProfile($event)">
+          <ion-avatar>
+            <img [src]="'../assets/images/' + (post.creator_image || 'default-user.png')" [alt]="post.creator">
+          </ion-avatar>
+        </ion-col>
+
+        <ion-col size="9" class="second-column">
+          <h4 class="card-title">
+            <button type="button" class="name-link" (click)="openUserProfile($event)">{{ post.creator }}</button>
+            <button type="button" class="username-link" (click)="openUserProfile($event)">{{ '@' + post.creator_username }}</button>
+          </h4>
+          <h5 class="card-subtitle">{{ post.relativeTime }}</h5>
+        </ion-col>
+
+        <ion-col size="1" class="third-column">
+          <ion-icon name="ellipsis-vertical" class="post-options" (click)="presentPostActions($event)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="post-text">{{ post.text }}</p>
+      <img *ngIf="post.image" [src]="'../assets/images/' + post.image" [alt]="post.creator">
+    </ion-card-content>
+
+    <ion-footer>
+      <ion-button fill="clear" (click)="likePost($event)">
+        <ion-icon [name]="post.liked ? 'veg-heart-clicked' : 'veg-heart'"></ion-icon>
+        <ion-label>{{ post.likes?.length || 0 }}</ion-label>
+      </ion-button>
+
+      <ion-button fill="clear" (click)="openComments($event)">
+        <ion-icon name="veg-comments"></ion-icon>
+        <ion-label>{{ post.comments?.length || 0 }}</ion-label>
+      </ion-button>
+
+      <ion-button fill="clear" (click)="repostPost($event)">
+        <ion-icon name="veg-repost"></ion-icon>
+        <ion-label>{{ post.reposts || 0 }}</ion-label>
+      </ion-button>
+    </ion-footer>
+  </ion-card>
+</ion-content>

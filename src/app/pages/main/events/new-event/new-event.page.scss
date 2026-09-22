@@ -77,3 +77,16 @@ div.two-columns {
     width: 49%;
   }
 }
+
+.org-empty {
+  margin-bottom: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow-soft);
+
+  p {
+    margin: 0 0 10px;
+    color: var(--app-muted);
+  }
+}

@@ -141,6 +141,29 @@
         </ion-chip>
       </div>
 
+      <h3 class="section-title">organizações</h3>
+      <p class="org-hint">só é possível criar eventos se você fizer parte de uma organização.</p>
+
+      <div class="org-list" *ngIf="organizations.length; else noOrganizations">
+        <div class="org-item" *ngFor="let org of organizations">
+          <div class="org-item-icon">
+            <ion-icon name="business-outline"></ion-icon>
+          </div>
+          <div>
+            <h4>{{ org.name }}</h4>
+            <p>{{ org.city || 'sem cidade' }} · {{ org.members?.length || 0 }} membros</p>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noOrganizations>
+        <p class="org-empty">você ainda não tem organização.</p>
+      </ng-template>
+
+      <ion-button expand="block" fill="outline" color="primary" class="create-org-btn" (click)="openCreateOrganization()">
+        criar organização
+      </ion-button>
+
       <p class="report-problems" (click)="reportProblems()">
         <ion-icon slot="start" name="alert-circle"></ion-icon>
         relatar um problema

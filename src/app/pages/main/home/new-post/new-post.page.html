@@ -6,35 +6,91 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title>novo post</ion-title>
+    <ion-title>nova publicação</ion-title>
 
     <ion-buttons slot="end" class="publish-buttons">
       <ion-button fill="solid" color="primary" (click)="publish()">
         publicar
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-
   <ion-row>
     <ion-col size="auto">
       <ion-avatar>
-        <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
+        <img [src]="'../assets/images/' + (user.image || 'default-user.png')" [alt]="user.name">
       </ion-avatar>
     </ion-col>
 
     <ion-col class="second-column">
-      <h4 class="user-title">{{user.name ? user.name : ''}}</h4>
+      <h4 class="user-title">{{ user.name }}</h4>
+      <p class="user-meta" *ngIf="feeling || location">
+        <span *ngIf="feeling">está se sentindo {{ feeling }}</span>
+        <span *ngIf="feeling && location"> · </span>
+        <span *ngIf="location">em {{ location }}</span>
+      </p>
     </ion-col>
   </ion-row>
 
   <form [formGroup]="postGroup">
-    <ion-item>
-      <ion-textarea rows="10" formControlName="description"></ion-textarea>
+    <ion-item lines="none" class="composer-item">
+      <ion-textarea
+        rows="8"
+        formControlName="text"
+        placeholder="no que você está pensando?"
+        autoGrow="true"></ion-textarea>
     </ion-item>
   </form>
 
+  <div class="attachments" *ngIf="attachments.length">
+    <div class="attachment" *ngFor="let item of attachments; let i = index">
+      <img [src]="item.url" [alt]="item.label">
+      <span class="badge">{{ item.type === 'video' ? 'vídeo' : 'foto' }}</span>
+      <button type="button" class="remove-btn" (click)="removeAttachment(i)" aria-label="remover">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="chips" *ngIf="taggedPeople.length">
+    <ion-chip *ngFor="let person of taggedPeople" color="primary" outline>
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>{{ person }}</ion-label>
+    </ion-chip>
+  </div>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="composer-tools">
+    <p class="tools-label">adicionar à publicação</p>
+
+    <div class="tools-grid">
+      <button type="button" class="tool" (click)="openMediaOptions()">
+        <ion-icon name="images-outline" color="primary"></ion-icon>
+        <span>foto/vídeo</span>
+      </button>
+
+      <button type="button" class="tool" (click)="openTagPeople()">
+        <ion-icon name="people-outline" color="secondary"></ion-icon>
+        <span>marcar</span>
+      </button>
+
+      <button type="button" class="tool" (click)="openFeeling()">
+        <ion-icon name="happy-outline" color="warning"></ion-icon>
+        <span>sentimento</span>
+      </button>
+
+      <button type="button" class="tool" (click)="openLocation()">
+        <ion-icon name="location-outline" color="danger"></ion-icon>
+        <span>local</span>
+      </button>
+
+      <button type="button" class="tool" (click)="openPoll()">
+        <ion-icon name="stats-chart-outline" color="tertiary"></ion-icon>
+        <span>enquete</span>
+      </button>
+    </div>
+  </div>
+</ion-footer>

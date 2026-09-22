@@ -4,27 +4,27 @@
       <ion-button (click)="goBack()">
         <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
       </ion-button>
-      <ion-title>{{recipe?.title}}</ion-title>
     </ion-buttons>
+
+    <ion-title>{{ recipe?.title || 'receita' }}</ion-title>
 
     <ion-buttons slot="end">
       <ion-button (click)="openShare()">
         <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
       </ion-button>
       <ion-button (click)="favoriteRecipe(recipe)">
-        <!-- <ion-icon slot="icon-only" [name]="recipe.favorited ? 'star': 'star-outline'" color="warning"></ion-icon> -->
         <ion-icon slot="icon-only" [name]="recipe.favorited ? 'veg-favorited': 'veg-favorite'"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+<ion-content *ngIf="recipe">
 
-<ion-content>
+  <img *ngIf="!recipe.images?.length || recipe.images.length === 1"
+    [src]="'../assets/images/' + ((recipe.images && recipe.images[0]) || 'slider-default.jpeg')" />
 
-  <img *ngIf="recipe.images.length === 1" [src]="'../assets/images/' + (recipe.images[0] || 'slider-default.jpeg')" />
-
-  <ng-container *ngIf="recipe.images.length > 1">
+  <ng-container *ngIf="recipe.images?.length > 1">
     <swiper-container #swiper (slideChange)="changeSlide()" class="recipe-slider" pagination="true">
       <swiper-slide *ngFor="let image of recipe.images">
         <div class="recipe-slide-div">
@@ -35,40 +35,37 @@
     </swiper-container>
   </ng-container>
 
-  <h2>{{recipe.title}}</h2>
-  <h4>{{recipe.creator}} | {{recipe.registerDate}}</h4>
+  <h2>{{ recipe.title }}</h2>
+  <h4>{{ recipe.creator }} · {{ recipe.registerDate }}</h4>
 
   <div class="ion-padding">
 
     <ion-row class="recipe-info">
       <ion-col>
         <ion-icon name="time-outline"></ion-icon>
-        <span>{{recipe.cookTime}}</span>
+        <span>{{ recipe.cookTime }}</span>
       </ion-col>
       <ion-col>
         <ion-icon name="bar-chart-outline"></ion-icon>
-        <span>{{recipe.calories}}</span>
+        <span>{{ recipe.calories }}</span>
       </ion-col>
       <ion-col>
         <ion-icon name="people-outline"></ion-icon>
-        <span>{{recipe.servings}}</span>
+        <span>{{ recipe.servings }}</span>
       </ion-col>
     </ion-row>
 
-    <!-- <ion-item>
-      <p class="recipe-instructions"> {{ recipe.instructions }} </p>
-    </ion-item> -->
-
-    <ion-item>
+    <section class="recipe-section">
       <h3>ingredientes</h3>
-      <p class="recipe-instructions">{{ recipe.ingredients }}</p>
-    </ion-item>
+      <ul class="ingredient-list">
+        <li *ngFor="let item of ingredientList">{{ item }}</li>
+      </ul>
+    </section>
 
-    <ion-item>
+    <section class="recipe-section">
       <h3>instruções</h3>
-      <!-- <p class="recipe-instructions">{{ recipe.instructions }}</p> -->
-      <p [innerHTML]="recipe.instructions"></p>
-    </ion-item>
+      <div class="instructions-text" [innerHTML]="instructionsHtml"></div>
+    </section>
 
   </div>
 

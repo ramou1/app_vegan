@@ -91,6 +91,52 @@ h5.user-username {
     margin: auto;
 }
 
+.card-title {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: lowercase;
+  text-align: left;
+}
+
+.name-link {
+  color: var(--app-ink);
+  font-weight: 800;
+}
+
+.username-link {
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.second-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.post-card {
+  cursor: pointer;
+}
+
+ion-footer {
+  display: flex;
+  gap: 4px;
+  padding: 0 8px 8px;
+
+  ion-label {
+    margin-left: 4px;
+  }
+}
+
 .posts-title {
     font-size: 16px;
     font-weight: 600;

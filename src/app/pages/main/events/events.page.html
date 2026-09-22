@@ -1,61 +1,88 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>eventos</ion-title>
+    <ion-title>
+      <img class="toolbar-logo" src="../assets/images/logo-vegvision.png" alt="vegvision">
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-searchbar #eventsSearchbar placeholder="buscar eventos" class="custom-searchbar"
-    (ionInput)="filterList($event)" search-icon="veg-search"></ion-searchbar>
+  <div class="search-row">
+    <ion-searchbar
+      #eventsSearchbar
+      placeholder="buscar eventos"
+      class="custom-searchbar"
+      debounce="150"
+      (ionInput)="filterList($event)"
+      search-icon="veg-search"></ion-searchbar>
 
-  <ion-card *ngFor="let event of filteredEvents">
-    <div (click)="openEvent(event)">
-      <ion-card-header class="ion-no-padding">
+    <ion-button
+      class="filter-btn"
+      fill="solid"
+      color="secondary"
+      shape="round"
+      (click)="openCategoryFilter()"
+      [class.filter-active]="!!selectedCategory">
+      <ion-icon slot="icon-only" name="options-outline" color="primary"></ion-icon>
+    </ion-button>
+  </div>
 
-        <div class="event-buttons-container">
-          <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
-            (click)="openShare($event)">
-            <ion-icon slot="icon-only" name="share-social-outline" color="primary"></ion-icon>
-          </ion-button>
+  <div class="active-filter" *ngIf="selectedCategory">
+    <ion-chip color="primary" outline (click)="clearCategoryFilter()">
+      <ion-label>{{ selectedCategory }}</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+  </div>
 
-          <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
-            (click)="presentEventActions($event, event)">
-            <ion-icon slot="icon-only" name="ellipsis-vertical" color="primary"></ion-icon>
-          </ion-button>
-        </div>
+  <ion-card *ngFor="let event of filteredEvents" class="event-card" (click)="openEvent(event)">
+    <div class="event-media">
+      <img [src]="'../assets/images/' + (event.image || 'slider-default.jpeg')" [alt]="event.title">
 
-        <img src="../assets/images/{{event.image ? event.image : 'slider-default.jpeg'}}">
-      </ion-card-header>
+      <div class="date-badge">{{ getDateBadge(event) }}</div>
 
-      <ion-card-content>
-        <h3 class="event-title">{{ event?.title }}</h3>
+      <div class="event-buttons-container">
+        <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
+          (click)="openShare($event)">
+          <ion-icon slot="icon-only" name="share-social-outline" color="primary"></ion-icon>
+        </ion-button>
 
-        <ion-row class="event-info">
-          <ion-col size="auto">
-            <ion-icon name="location-outline"></ion-icon>
-            <ion-label>
-              <p class="event-local">{{ event?.local }}</p>
-            </ion-label>
-          </ion-col>
-
-          <ion-col size="3">
-            <ion-icon name="people-outline"></ion-icon>
-            <ion-label>
-              <p class="event-local">{{ event.confirmed ? event.confirmed.length : '0' }}</p>
-            </ion-label>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-
+        <ion-button shape="round" size="small" fill="solid" color="secondary" class="event-buttons"
+          (click)="presentEventActions($event, event)">
+          <ion-icon slot="icon-only" name="ellipsis-vertical" color="primary"></ion-icon>
+        </ion-button>
+      </div>
     </div>
 
-    <ion-button class="interested-button" expand="block" color="{{buttonColor}}"
-      (click)="checkInterested(event)">
-      {{interestedText}}
-      <ion-icon slot="end" name="{{interestedIcon}}"></ion-icon>
-    </ion-button>
+    <ion-card-content>
+      <h3 class="event-title">{{ event?.title }}</h3>
+
+      <div class="meta-row">
+        <ion-icon name="location-outline"></ion-icon>
+        <span>{{ event?.local }}</span>
+      </div>
+
+      <div class="meta-row" *ngIf="event?.category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <span>{{ event.category }}</span>
+      </div>
+
+      <div class="attendees-row" *ngIf="event.attendees?.length">
+        <div class="avatars">
+          <img
+            *ngFor="let person of getPreviewAttendees(event)"
+            [src]="getAttendeeImage(person)"
+            [alt]="person.name">
+        </div>
+        <p>
+          {{ event.attendees.length }}
+          {{ event.attendees.length === 1 ? 'pessoa vai' : 'pessoas vão' }}
+        </p>
+      </div>
+    </ion-card-content>
   </ion-card>
+
+  <p class="empty-state" *ngIf="!filteredEvents.length">nenhum evento encontrado</p>
 
 </ion-content>
 

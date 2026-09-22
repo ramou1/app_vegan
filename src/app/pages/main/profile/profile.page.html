@@ -52,7 +52,7 @@
   </div>
 
   <h3 class="user-name"> {{ user?.name }} </h3>
-  <h5 class="user-username"> {{ user?.username }} </h5>
+  <h5 class="user-username">{{ user?.username ? ('@' + user.username) : '' }}</h5>
 
   <div class="info-container">
     <div>
@@ -82,7 +82,7 @@
 
   <ng-container [ngSwitch]="type">
     <div *ngSwitchCase="'posts'" class="ion-padding">
-      <ion-card *ngFor="let post of user.posts" class="post-card">
+      <ion-card *ngFor="let post of posts" class="post-card" (click)="openPost(post)">
         <ion-card-header>
           <ion-row>
             <ion-col size="2">
@@ -92,45 +92,47 @@
             </ion-col>
 
             <ion-col size="9" class="second-column">
-              <h4 class="card-title">{{post.creator ? post.creator : ''}}</h4>
-              <h5 class="card-subtitle">{{post.registerDate ? post.registerDate : '--/--/----'}}</h5>
+              <h4 class="card-title">
+                <span class="name-link">{{ post.creator }}</span>
+                <span class="username-link">{{ '@' + post.creator_username }}</span>
+              </h4>
+              <h5 class="card-subtitle">{{ post.relativeTime }}</h5>
             </ion-col>
 
             <ion-col size="1" class="third-column">
-              <ion-icon name="ellipsis-vertical" class="post-options" (click)="presentPostActions(post)"></ion-icon>
+              <ion-icon name="ellipsis-vertical" class="post-options" (click)="presentPostActions($event, post)"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-card-header>
 
         <ion-card-content>
-          <p [innerHTML]="post.text">
-            {{ post.text? excerptText(post.text) : '' }}...</p>
-          <img src="../assets/images/{{post.image}}" *ngIf="post.image">
+          <p class="post-text">{{ excerptText(post.text) }}</p>
+          <img *ngIf="post.image" [src]="'../assets/images/' + post.image" [alt]="post.creator">
         </ion-card-content>
 
         <ion-footer>
-          <ion-button fill="clear" (click)="likePost(post)">
-            <ion-icon *ngIf="post.liked" name="heart"></ion-icon>
-            <ion-icon *ngIf="!post.liked" name="heart-outline"></ion-icon>
-            <ion-label>{{post.likes? post.likes.length : '0'}}</ion-label>
+          <ion-button fill="clear" (click)="likePost($event, post)">
+            <ion-icon [name]="post.liked ? 'veg-heart-clicked' : 'veg-heart'"></ion-icon>
+            <ion-label>{{ post.likes?.length || 0 }}</ion-label>
           </ion-button>
 
-          <ion-button fill="clear" (click)="openComments(post)">
-            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-            <ion-label>{{post.comments? post.comments.length : '0'}}</ion-label>
+          <ion-button fill="clear" (click)="openComments($event, post)">
+            <ion-icon name="veg-comments"></ion-icon>
+            <ion-label>{{ post.comments?.length || 0 }}</ion-label>
           </ion-button>
 
-          <ion-button fill="clear" (click)="repostPost(post)">
-            <ion-icon name="repeat-outline"></ion-icon>
+          <ion-button fill="clear" (click)="repostPost($event, post)">
+            <ion-icon name="veg-repost"></ion-icon>
+            <ion-label>{{ post.reposts || 0 }}</ion-label>
           </ion-button>
         </ion-footer>
       </ion-card>
 
-      <p class="empty-state" *ngIf="!user?.posts?.length">nenhum post ainda</p>
+      <p class="empty-state" *ngIf="!posts.length">nenhum post ainda</p>
     </div>
 
     <div *ngSwitchCase="'recipes'" class="ion-padding">
-      <ion-card *ngFor="let recipe of user.recipes" class="post-card" (click)="openRecipe(recipe)">
+      <ion-card *ngFor="let recipe of recipes" class="post-card" (click)="openRecipe(recipe)">
         <ion-card-header class="ion-no-padding">
           <img src="../assets/images/{{recipe.images ? recipe.images[0] : 'slider-default.jpeg'}}">
         </ion-card-header>
@@ -139,6 +141,8 @@
           <p class="recipes-title"> {{ recipe?.title }} </p>
         </ion-card-content>
       </ion-card>
+
+      <p class="empty-state" *ngIf="!recipes.length">nenhuma receita ainda</p>
     </div>
   </ng-container>
 </ion-content>

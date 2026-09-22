@@ -6,7 +6,9 @@ import { RatingComponent } from 'src/app/components/rating/rating.component';
 import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
-import { POSTS } from 'src/app/constants/mock.const';
+import { APP_ROUTES } from 'src/app/constants/routes.const';
+import { PostService } from 'src/app/services/post.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { NotificationsPage } from './notifications/notifications.page';
 import { NewPostPage } from './new-post/new-post.page';
 
@@ -16,31 +18,59 @@ import { NewPostPage } from './new-post/new-post.page';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  public posts: any[] = [];
 
-  public posts = POSTS;
-  public likedIcon = 'heart-outline';
-
-  constructor(private router: Router, private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController) { }
+  constructor(
+    private router: Router,
+    private modalCtrl: ModalController,
+    private actionSheetCtrl: ActionSheetController,
+    private postService: PostService,
+    private toast: ToastService
+  ) {}
 
   ngOnInit() {
+    this.reloadPosts();
+  }
+
+  ionViewWillEnter() {
+    this.reloadPosts();
+  }
+
+  private reloadPosts(): void {
+    this.posts = this.postService.getAll();
   }
 
   public excerptText(text: string): string {
-    const cut = text.substring(0, 100);
-    return cut;
+    if (!text) {
+      return '';
+    }
+    return text.length > 160 ? `${text.substring(0, 160).trim()}...` : text;
   }
 
-  public likePost(post: any): void {
+  public openPost(post: any): void {
+    this.router.navigate([
+      '/',
+      APP_ROUTES.MAIN,
+      APP_ROUTES.HOME,
+      APP_ROUTES.POST_DETAILS,
+      post.post_id,
+    ]);
+  }
+
+  public likePost(event: Event, post: any): void {
+    event.stopPropagation();
     post.liked = !post.liked;
-    post.liked ? post.likes.length++ : post.likes.length--;
-  }
-
-  public getContent() {
-    return document.querySelector('ion-content');
+    if (!Array.isArray(post.likes)) {
+      post.likes = [];
+    }
+    if (post.liked) {
+      post.likes.push({ user_id: 4 });
+    } else if (post.likes.length) {
+      post.likes.pop();
+    }
   }
 
   async openNotifications(): Promise<void> {
-    // this.router.navigate(['/notifications']);
     const modal = await this.modalCtrl.create({
       component: NotificationsPage,
       cssClass: 'notifications-modal',
@@ -58,35 +88,34 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  async presentPostActions(post: any) {
+  async presentPostActions(event: Event, post: any) {
+    event.stopPropagation();
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'denunciar post',
+          text: post.saved ? 'remover dos salvos' : 'salvar post',
           handler: () => {
-            this.reportPost(post);
-          }
+            const saved = this.postService.toggleSave(post);
+            this.toast.showToast(saved ? 'post salvo' : 'post removido dos salvos');
+          },
         },
         {
           text: 'compartilhar post',
         },
         {
-          text: 'favorite post',
-          data: {
-            action: 'share',
+          text: 'denunciar post',
+          handler: () => {
+            this.reportPost(post);
           },
         },
         {
-          text: 'unfollow',
+          text: 'deixar de seguir',
         },
-        // {
-        //   text: 'cancelar',
-        //   role: 'cancel',
-        //   data: {
-        //     action: 'cancel',
-        //   },
-        // },
-      ]
+        {
+          text: 'cancelar',
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
   }
@@ -96,32 +125,33 @@ export class HomePage implements OnInit {
       component: ReportPostsComponent,
       cssClass: 'report-posts-modal',
       componentProps: {
-        post_id: post.id
-      }
+        post_id: post.post_id,
+      },
     });
 
     return await modal.present();
   }
 
-  async openComments(post: any): Promise<void> {
+  async openComments(event: Event, post: any): Promise<void> {
+    event.stopPropagation();
     const modal = await this.modalCtrl.create({
       component: CommentsComponent,
       cssClass: 'comments-modal',
       componentProps: {
         comments: post.comments,
-        post_id: post.post_id
-      }
+        post_id: post.post_id,
+      },
     });
 
     return await modal.present();
   }
 
-  async repostPost(post: any): Promise<void> {
-    // TODO REPOST POST
-    console.log("repost", post);
+  async repostPost(event: Event, post: any): Promise<void> {
+    event.stopPropagation();
+    post.reposts = this.postService.repost(post);
+    await this.toast.showToast('repost feito');
   }
 
-  // TODO: teste da tela de rating, apagar depois
   async openRating(): Promise<void> {
     const modal = await this.modalCtrl.create({
       component: RatingComponent,
@@ -131,17 +161,14 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  async openUserProfile(user_id: any): Promise<void> {
-    console.log("user_id", user_id);
-    // this.router.navigate(['/profile', user_id]);
-
+  async openUserProfile(event: Event, userId: any): Promise<void> {
+    event.stopPropagation();
     const modal = await this.modalCtrl.create({
       component: UserProfileComponent,
       cssClass: 'user-profile-modal',
       componentProps: {
-        // finalize: false,
-        user: { id: user_id }
-      }
+        userId,
+      },
     });
 
     return await modal.present();
@@ -153,7 +180,8 @@ export class HomePage implements OnInit {
       cssClass: 'post-modal',
     });
 
-    return await modal.present();
+    await modal.present();
+    await modal.onDidDismiss();
+    this.reloadPosts();
   }
-
 }

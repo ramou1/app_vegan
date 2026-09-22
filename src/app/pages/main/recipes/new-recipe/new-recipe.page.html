@@ -24,12 +24,12 @@
   <ion-row>
     <ion-col size="auto">
       <ion-avatar>
-        <img src="../assets/images/{{user.image ? user.image : 'default-user.png'}}">
+        <img [src]="'../assets/images/' + (user.image || 'default-user.png')" [alt]="user.name">
       </ion-avatar>
     </ion-col>
 
     <ion-col class="second-column">
-      <h4 class="recipe-creator-title">{{user.name ? user.name : ''}}</h4>
+      <h4 class="recipe-creator-title">{{ user.name }}</h4>
       <h5 class="recipe-creator-subtitle">criador</h5>
     </ion-col>
   </ion-row>
@@ -40,17 +40,29 @@
       <ion-input type="text" formControlName="title" label="nome da receita" labelPlacement="floating"></ion-input>
     </ion-item>
 
-    <ion-item lines="none">
-      <ion-input type="text" formControlName="ingredients" label="ingredientes" labelPlacement="floating"></ion-input>
+    <ion-item lines="none" class="multiline-item">
+      <ion-textarea
+        rows="6"
+        formControlName="ingredients"
+        label="ingredientes"
+        labelPlacement="floating"
+        placeholder="um ingrediente por linha&#10;ex:&#10;2 xícaras de farinha&#10;1 xícara de leite vegetal"
+        autoGrow="true"></ion-textarea>
     </ion-item>
 
-    <ion-item lines="none">
-      <ion-textarea rows="7" formControlName="instructions" label="instruções" labelPlacement="floating"></ion-textarea>
+    <ion-item lines="none" class="multiline-item">
+      <ion-textarea
+        rows="8"
+        formControlName="instructions"
+        label="instruções"
+        labelPlacement="floating"
+        placeholder="escreva o passo a passo&#10;use uma linha para cada etapa"
+        autoGrow="true"></ion-textarea>
     </ion-item>
 
     <div class="three-columns">
       <ion-item lines="none">
-        <ion-input type="number" formControlName="cookTime" label="tempo de cozimento" labelPlacement="floating"></ion-input>
+        <ion-input type="number" formControlName="cookTime" label="tempo (min)" labelPlacement="floating"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
@@ -66,6 +78,7 @@
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid" (click)="addRecipe()">nova
-    receita</ion-button>
+  <ion-button expand="block" shape="round" type="submit" [disabled]="!recipeGroup.valid" (click)="addRecipe()">
+    nova receita
+  </ion-button>
 </ion-footer>

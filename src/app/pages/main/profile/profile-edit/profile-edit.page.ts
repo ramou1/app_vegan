@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { ChooseInterestsComponent } from 'src/app/components/choose-interests/choose-interests.component';
 import { ReportProblemsComponent } from 'src/app/components/report-problems/report-problems.component';
@@ -8,6 +9,8 @@ import { InterestOption } from 'src/app/constants/interests.const';
 import { USER } from 'src/app/constants/mock.const';
 import { APP_ROUTES } from 'src/app/constants/routes.const';
 import { STORAGE } from 'src/app/constants/storage.const';
+import { Organization } from 'src/app/models/organization-model';
+import { OrganizationService } from 'src/app/services/organization.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -25,19 +28,27 @@ export class ProfileEditPage implements OnInit {
   public theme: 'light' | 'dark' = 'light';
   public language = 'pt';
   public estados = ESTADOS;
+  public organizations: Organization[] = [];
 
   constructor(
     private fb: FormBuilder,
     private toast: ToastService,
     private modalCtrl: ModalController,
     public navCtrl: NavController,
-    private storage: StorageService
+    private storage: StorageService,
+    private organizationService: OrganizationService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
     this.createForm();
     this.getUserData();
     this.loadPreferences();
+    this.refreshOrganizations();
+  }
+
+  ionViewWillEnter() {
+    this.refreshOrganizations();
   }
 
   public getUserData(): void {
@@ -46,6 +57,10 @@ export class ProfileEditPage implements OnInit {
       this.user.interests = [];
     }
     this.formGroup.patchValue(this.user);
+  }
+
+  private refreshOrganizations(): void {
+    this.organizations = this.organizationService.getCurrentUserOrganizations();
   }
 
   private loadPreferences(): void {
@@ -153,6 +168,16 @@ export class ProfileEditPage implements OnInit {
       (item: InterestOption) => item.description !== interest.description
     );
     USER.interests = this.user.interests;
+  }
+
+  public async openCreateOrganization(): Promise<void> {
+    await this.modalCtrl.dismiss().catch(() => undefined);
+    this.router.navigate([
+      '/',
+      APP_ROUTES.MAIN,
+      APP_ROUTES.EVENTS,
+      APP_ROUTES.NEW_ORGANIZATION,
+    ]);
   }
 
   public logout(): void {

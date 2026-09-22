@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, IonSearchbar, ModalController } from '@ionic/angular';
-import { EVENTS } from 'src/app/constants/mock.const';
-import { EventDetailsPage } from './event-details/event-details.page';
+import { ActionSheetController, AlertController, IonSearchbar, ModalController } from '@ionic/angular';
 import { ReportPostsComponent } from 'src/app/components/report-posts/report-posts.component';
+import { APP_ROUTES } from 'src/app/constants/routes.const';
+import { EventService } from 'src/app/services/event.service';
+import { OrganizationService } from 'src/app/services/organization.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { NewOrganizationPage } from '../organization/new-organization/new-organization.page';
 import { NewEventPage } from './new-event/new-event.page';
 
 @Component({
@@ -12,99 +15,164 @@ import { NewEventPage } from './new-event/new-event.page';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-
-  public buttonColor = 'primary';
-  public interestedText = 'quero ir';
-  public interestedIcon = 'leaf-outline';
-  public interested: boolean = false;
-
   @ViewChild('eventsSearchbar') searchbar: IonSearchbar;
-  public events = EVENTS;
-  public filteredEvents: any = [];
 
-  constructor(private router: Router, private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController) { }
+  public events: any[] = [];
+  public filteredEvents: any[] = [];
+  public selectedCategory = '';
+  public categories: string[] = [];
+  private searchTerm = '';
+
+  constructor(
+    private router: Router,
+    private modalCtrl: ModalController,
+    private actionSheetCtrl: ActionSheetController,
+    private alertCtrl: AlertController,
+    private eventService: EventService,
+    private organizationService: OrganizationService,
+    private toast: ToastService
+  ) {}
 
   ngOnInit() {
-    this.filteredEvents = this.events;
+    this.reloadEvents();
+  }
+
+  ionViewWillEnter() {
+    this.reloadEvents();
+  }
+
+  private reloadEvents(): void {
+    this.events = this.eventService.getAll().map((event) => this.eventService.enrich(event));
+    this.categories = Array.from(
+      new Set(
+        this.events
+          .map((event) => String(event.category || '').trim().toLowerCase())
+          .filter(Boolean)
+      )
+    ).sort();
+    this.searchTerm = ((this.searchbar as any)?.value || this.searchTerm || '').toString();
+    this.applyFilters();
   }
 
   public filterList(evt: any): void {
-    const searchTerm = evt.target.value;
-
-    if (searchTerm === '') {
-      this.filteredEvents = this.events;
-    }
-    else {
-      this.filteredEvents = this.events?.filter((data: any) => {
-        return data.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-      }).slice(0, 15);
-    }
+    this.searchTerm = (evt?.detail?.value ?? evt?.target?.value ?? '').toString();
+    this.applyFilters();
   }
 
-  async openEvent(event: any): Promise<void> {
-    const modal = await this.modalCtrl.create({
-      component: EventDetailsPage,
-      cssClass: 'search-modal',
-      componentProps: {
-        // finalize: false,
-        event: event
-      }
+  private applyFilters(): void {
+    const term = this.searchTerm.trim().toLowerCase();
+    const category = this.selectedCategory.trim().toLowerCase();
+
+    this.filteredEvents = this.events.filter((event) => {
+      const matchesTitle = !term || String(event.title || '').toLowerCase().includes(term);
+      const matchesCategory = !category || String(event.category || '').toLowerCase() === category;
+      return matchesTitle && matchesCategory;
+    });
+  }
+
+  public async openCategoryFilter(): Promise<void> {
+    const buttons = [
+      {
+        text: 'todos os tipos',
+        handler: () => {
+          this.selectedCategory = '';
+          this.applyFilters();
+        },
+      },
+      ...this.categories.map((category) => ({
+        text: category,
+        handler: () => {
+          this.selectedCategory = category;
+          this.applyFilters();
+        },
+      })),
+      {
+        text: 'cancelar',
+        role: 'cancel' as const,
+      },
+    ];
+
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'filtrar por tipo',
+      buttons,
     });
 
-    return await modal.present();
+    await actionSheet.present();
   }
 
-  public checkInterested(event: any): void {
-    this.interested = !this.interested;
+  public clearCategoryFilter(): void {
+    this.selectedCategory = '';
+    this.applyFilters();
+  }
 
-    if (this.interested) {
-      this.buttonColor = 'secondary';
-      this.interestedText = 'tenho interesse';
-      this.interestedIcon = 'checkmark-circle-outline'
+  public getDateBadge(event: any): string {
+    return this.eventService.getDateBadge(event);
+  }
+
+  public getPreviewAttendees(event: any): any[] {
+    return this.eventService.getPreviewAttendees(event, 4);
+  }
+
+  public getAttendeeImage(user: any): string {
+    if (!user?.image) {
+      return '../assets/images/default-user.png';
     }
-    else {
-      this.buttonColor = 'primary';
-      this.interestedText = 'quero ir';
-      this.interestedIcon = 'leaf-outline'
-    }
-
+    return `../assets/images/${user.image}`;
   }
 
-  public openShare(event: Event): void {
-    event.stopPropagation();
-    //TODO SHARE
-    // this.toast.presentToast(TOAST_MSG.NOT_IMPLEMENTED, true);
+  public openEvent(event: any): void {
+    this.router.navigate([
+      '/',
+      APP_ROUTES.MAIN,
+      APP_ROUTES.EVENTS,
+      APP_ROUTES.EVENT_DETAILS,
+      event.id,
+    ]);
   }
 
-  async presentEventActions(event: Event, eventDetail: any) {
-    event.stopPropagation();
+  public openShare(domEvent: Event): void {
+    domEvent.stopPropagation();
+  }
+
+  async presentEventActions(domEvent: Event, eventDetail: any) {
+    domEvent.stopPropagation();
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
+          text: 'copiar link do evento',
+          handler: () => {
+            this.copyEventLink(eventDetail);
+          },
+        },
+        {
           text: 'denunciar evento',
           handler: () => {
-            this.reportEvent(event);
-          }
+            this.reportEvent(eventDetail);
+          },
         },
         {
           text: 'favoritar evento',
-          data: {
-            action: 'share',
-          },
         },
         {
           text: 'convidar amigos',
         },
-        // {
-        //   text: 'cancelar',
-        //   role: 'cancel',
-        //   data: {
-        //     action: 'cancel',
-        //   },
-        // },
-      ]
+        {
+          text: 'cancelar',
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
+  }
+
+  private async copyEventLink(event: any): Promise<void> {
+    const link = `${window.location.origin}/main/events/event-details/${event.id}`;
+    try {
+      await navigator.clipboard.writeText(link);
+      await this.toast.showToast('link do evento copiado');
+    } catch {
+      await this.toast.showToast(link);
+    }
   }
 
   async reportEvent(event: any): Promise<void> {
@@ -112,20 +180,52 @@ export class EventsPage implements OnInit {
       component: ReportPostsComponent,
       cssClass: 'report-posts-modal',
       componentProps: {
-        post_id: event.id
-      }
+        post_id: event.id,
+      },
     });
 
     return await modal.present();
   }
 
   async newEvent(): Promise<void> {
+    if (!this.organizationService.hasOrganization()) {
+      const alert = await this.alertCtrl.create({
+        header: 'organização necessária',
+        message: 'para criar um evento, você precisa ter uma organização.',
+        buttons: [
+          { text: 'cancelar', role: 'cancel' },
+          {
+            text: 'criar organização',
+            handler: () => {
+              this.openNewOrganization();
+            },
+          },
+        ],
+      });
+      await alert.present();
+      return;
+    }
+
     const modal = await this.modalCtrl.create({
       component: NewEventPage,
       cssClass: 'event-modal',
     });
 
-    return await modal.present();
+    await modal.present();
+    await modal.onDidDismiss();
+    this.reloadEvents();
   }
 
+  async openNewOrganization(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: NewOrganizationPage,
+      cssClass: 'event-modal',
+    });
+
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+      await this.newEvent();
+    }
+  }
 }

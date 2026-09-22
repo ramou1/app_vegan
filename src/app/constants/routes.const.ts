@@ -8,6 +8,7 @@ export const APP_ROUTES = {
 
     MAIN: 'main',
     HOME: 'home',
+    POST_DETAILS: 'post-details',
     NEW_POST: 'new-post',
     PRIVACY: 'privacy',
     
@@ -23,6 +24,7 @@ export const APP_ROUTES = {
     EVENTS: 'events',
     EVENT_DETAILS: 'event-details',
     NEW_EVENT: 'new-event',
+    NEW_ORGANIZATION: 'new-organization',
 
     MAP: 'map',
 }

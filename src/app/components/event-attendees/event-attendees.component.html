@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="attendees?.length; else empty">
+    <ion-item *ngFor="let person of attendees" lines="none" class="attendee-item">
+      <ion-avatar slot="start">
+        <img [src]="getImage(person)" [alt]="person.name">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{ person.name }}</h3>
+        <p>{{ '@' + person.username }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #empty>
+    <p class="empty">ninguém confirmou presença ainda</p>
+  </ng-template>
+</ion-content>

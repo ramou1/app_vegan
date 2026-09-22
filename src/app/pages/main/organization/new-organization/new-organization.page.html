@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="veg-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>nova organização</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p class="hint">para criar eventos, você precisa de uma organização. ela aparece na seção “criado por”.</p>
+
+  <form [formGroup]="formGroup">
+    <ion-item lines="none">
+      <ion-input formControlName="name" label="nome da organização" labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input formControlName="city" label="cidade" labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-textarea rows="5" formControlName="description" label="descrição" labelPlacement="floating"></ion-textarea>
+    </ion-item>
+  </form>
+</ion-content>
+
+<ion-footer class="ion-no-border ion-padding">
+  <ion-button expand="block" color="primary" [disabled]="formGroup.invalid" (click)="save()">
+    criar organização
+  </ion-button>
+</ion-footer>

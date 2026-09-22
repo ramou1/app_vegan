@@ -91,6 +91,63 @@
   gap: 8px;
 }
 
+.org-hint,
+.org-empty {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--app-muted);
+  text-transform: lowercase;
+}
+
+.org-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.org-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow-soft);
+
+  h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: lowercase;
+  }
+
+  p {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--app-muted);
+    text-transform: lowercase;
+  }
+}
+
+.org-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--ion-color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ion-icon {
+    font-size: 20px;
+    color: var(--ion-color-primary);
+  }
+}
+
+.create-org-btn {
+  margin-bottom: 8px;
+}
+
 ion-chip {
   text-transform: lowercase;
   font-weight: 700;

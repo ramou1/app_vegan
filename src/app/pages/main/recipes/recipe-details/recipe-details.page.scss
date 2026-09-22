@@ -9,28 +9,51 @@ h4 {
   margin: 0 20px 8px;
   color: var(--app-muted);
   font-weight: 600;
+  text-transform: lowercase;
 }
 
 ion-content > img {
   width: 100%;
   height: 260px;
   object-fit: cover;
+  object-position: center center;
 }
 
-ion-item {
-  --padding-start: 0;
-  --inner-padding-end: 0;
-  margin-bottom: 16px;
-  display: block;
+.recipe-section {
+  margin-bottom: 20px;
 
   h3 {
-    margin-bottom: 8px;
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: lowercase;
   }
+}
+
+.ingredient-list {
+  margin: 0;
+  padding: 0 0 0 18px;
+  list-style: disc;
+
+  li {
+    margin: 0 0 8px;
+    line-height: 1.45;
+    color: var(--app-ink);
+    font-family: inherit;
+    font-size: 15px;
+    text-transform: lowercase;
+  }
+}
+
+.instructions-text {
+  color: var(--app-ink);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
 
   p {
-    margin-top: 0;
-    line-height: 22px;
-    color: var(--app-ink);
+    margin: 0 0 10px;
+    text-transform: lowercase;
   }
 }
 

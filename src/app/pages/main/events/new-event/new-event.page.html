@@ -36,8 +36,32 @@
 
   <form [formGroup]="eventGroup">
 
+    <ion-item lines="none" *ngIf="organizations.length; else noOrg">
+      <ion-select
+        label="organização"
+        labelPlacement="floating"
+        interface="popover"
+        formControlName="organization_id"
+        (ionChange)="onOrganizationChange($event.detail.value)">
+        <ion-select-option *ngFor="let org of organizations" [value]="org.id">{{ org.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ng-template #noOrg>
+      <div class="org-empty">
+        <p>você ainda não tem organização.</p>
+        <ion-button expand="block" fill="outline" color="primary" (click)="openCreateOrganization()">
+          criar organização
+        </ion-button>
+      </div>
+    </ng-template>
+
     <ion-item lines="none">
       <ion-input type="text" formControlName="title" label="nome do evento" labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input type="text" formControlName="category" label="categoria" labelPlacement="floating"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
@@ -78,6 +102,7 @@
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <ion-button expand="block" shape="round" type="submit" [disabled]="!eventGroup.valid" (click)="addEvent()">novo
-    evento</ion-button>
+  <ion-button expand="block" shape="round" type="submit" [disabled]="!eventGroup.valid || !organizations.length" (click)="addEvent()">
+    novo evento
+  </ion-button>
 </ion-footer>

@@ -63,3 +63,15 @@ div.three-columns {
     width: 32%;
   }
 }
+
+.multiline-item {
+  align-items: flex-start;
+  margin-bottom: 8px;
+
+  ion-textarea {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+  }
+}
